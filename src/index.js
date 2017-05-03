@@ -28,18 +28,12 @@ export const store = createStore(
 
 // sync store with storage
 persistStore(store, {storage: asyncSessionStorage}, () => {
-
   ReactDOM.render(
     (<Provider store={store}>
       <HashRouter>
-
-        <App/>
-
+        <App />
       </HashRouter>
     </Provider>),
     document.getElementById('root')
   )
-
 })
-
-

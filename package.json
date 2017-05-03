@@ -15,12 +15,15 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "react-scripts": "^0.9.5"
+    "react-scripts": "^0.9.5",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "standard --verbose | snazzy && react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "fix": "standard --verbose --fix | snazzy"
   }
 }

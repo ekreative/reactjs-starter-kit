@@ -1,2 +1,1 @@
-export const SOME_NAME = 'SOME VALUE';
-
+export const SOME_NAME = 'SOME VALUE'
