@@ -1,9 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 // components
-import App from './components/App'
-// router
-import { HashRouter } from 'react-router-dom'
+import AppContainer from './components/AppContainer'
 // redux
 import {
   applyMiddleware,
@@ -16,6 +14,7 @@ import { autoRehydrate, persistStore } from 'redux-persist'
 import { asyncSessionStorage } from 'redux-persist/storages'
 // reducer
 import reducers from './reducers/index'
+
 // store
 export const store = createStore(
   reducers,
@@ -29,11 +28,11 @@ export const store = createStore(
 // sync store with storage
 persistStore(store, {storage: asyncSessionStorage}, () => {
   ReactDOM.render(
-    (<Provider store={store}>
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </Provider>),
+    (
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    ),
     document.getElementById('root')
   )
 })

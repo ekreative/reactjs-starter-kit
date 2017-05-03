@@ -9,7 +9,14 @@ class ComponentB extends Component {
           <h2>Welcome to ComponentB</h2>
         </div>
         <p className='ComponentB-intro'>
-          To get started, edit <code>src/ComponentB.js</code> and save to reload.
+          <code>src/components/componentsA/ComponentB.js</code>
+        </p>
+        <p className='ComponentA-intro'>
+          Value: {this.props.value}
+        </p>
+        <p className='ComponentA-intro'>
+          <button onClick={this.props.increment}>Increment</button>
+          <button onClick={this.props.decrement}>Decrement</button>
         </p>
       </div>
     )

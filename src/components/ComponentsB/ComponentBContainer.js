@@ -1,17 +1,26 @@
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import {changeStateProp} from '../../actions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { changeStateProp } from '../../actions'
+import { increment, decrement } from '../../actions/main'
 import ComponentB from './ComponentB'
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({main: {value}}, ownProps) => {
   return {
-    state,
+    value,
     ...ownProps
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({changeStateProp}, dispatch)
+  return {
+    // bind actions with dispatch
+    ...bindActionCreators({changeStateProp, increment}, dispatch),
+    // example that we can add our custom funcs to props
+    decrement: function () {
+      // call of action in custom func
+      decrement()(dispatch)
+    }
+  }
 }
 
 const ComponentBContainer = connect(
