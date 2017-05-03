@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../../logo.svg';
 import './ComponentA.css';
 
 class ComponentA extends Component {
@@ -7,8 +6,7 @@ class ComponentA extends Component {
     return (
       <div className="ComponentA">
         <div className="ComponentA-header">
-          <img src={logo} className="ComponentA-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to ComponentA</h2>
         </div>
         <p className="ComponentA-intro">
           To get started, edit <code>src/ComponentA.js</code> and save to reload.
