@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+
 // components
 import AppContainer from './components/AppContainer'
+
 // redux
 import {
   applyMiddleware,
@@ -12,6 +14,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { autoRehydrate, persistStore } from 'redux-persist'
 import { asyncSessionStorage } from 'redux-persist/storages'
+
 // reducer
 import reducers from './reducers/index'
 

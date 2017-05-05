@@ -11,22 +11,26 @@ import { Route, Switch } from 'react-router'
 import { HashRouter, Link } from 'react-router-dom'
 
 class App extends Component {
-  render () {
-    const Status = ({code, children}) => (
+  Status ({code, children}) {
+    return (
       <Route render={({staticContext}) => {
         if (staticContext) { staticContext.status = code }
         return children
-      }} />
+      }}/>
     )
+  }
 
-    const NotFound = () => (
+  NotFound () {
+    return (
       <Status code={404}>
         <div>
           <h1>Sorry, can’t find that.</h1>
         </div>
       </Status>
     )
+  }
 
+  render () {
     return (
       <HashRouter>
         <div className='App'>
