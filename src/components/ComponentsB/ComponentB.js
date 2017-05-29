@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import './ComponentB.css'
 
 class ComponentB extends Component {
@@ -21,6 +22,18 @@ class ComponentB extends Component {
       </div>
     )
   }
+}
+
+ComponentB.propTypes = {
+  value: PropTypes.number.isRequired,
+  increment: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired
+}
+
+ComponentB.defaultProps = {
+  value: 0,
+  increment: () => {},
+  decrement: () => {}
 }
 
 export default ComponentB

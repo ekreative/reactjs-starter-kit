@@ -15,9 +15,9 @@ const mapDispatchToProps = (dispatch) => {
     // bind actions with dispatch
     ...bindActionCreators({changeStateProp}, dispatch),
     // example that we can add our custom funcs to props
-    myCustomPropsFunc: function () {
+    myCustomPropsFunc: function (prop, value, reducer) {
       // call of action in custom func
-      changeStateProp()(dispatch)
+      changeStateProp(prop, value, reducer)(dispatch)
       return null
     }
   }
