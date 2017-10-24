@@ -13,7 +13,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "axios": "^0.16.1",
+    "axios": "^0.17.0",
     "immutability-helper": "^2.2.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
