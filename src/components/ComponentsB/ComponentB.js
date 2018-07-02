@@ -12,10 +12,10 @@ class ComponentB extends Component {
         <p className='ComponentB-intro'>
           <code>src/components/componentsB/ComponentB.js</code>
         </p>
-        <p className='ComponentA-intro'>
-          Value: {this.props.value}
+        <p className='ComponentB-intro'>
+          {this.props.fullDescription}
         </p>
-        <p className='ComponentA-intro'>
+        <p className='ComponentB-intro'>
           <button onClick={this.props.increment}>Increment</button>
           <button onClick={this.props.decrement}>Decrement</button>
         </p>
@@ -27,7 +27,9 @@ class ComponentB extends Component {
 ComponentB.propTypes = {
   value: PropTypes.number.isRequired,
   increment: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired
+  decrement: PropTypes.func.isRequired,
+  description: PropTypes.string.isRequired,
+  fullDescription: PropTypes.string.isRequired
 }
 
 ComponentB.defaultProps = {

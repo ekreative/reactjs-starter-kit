@@ -66,7 +66,12 @@ class App extends Component {
               <Route path='/componentA'
                 component={ComponentAContainer} />
               <Route path='/componentB'
-                component={ComponentBContainer} />
+                render={obj => {
+                  return (
+                    <ComponentBContainer {...obj}
+                      description='Value (custom description)' />
+                  )
+                }} />
               <Route component={NotFound} />
             </Switch>
           </div>
