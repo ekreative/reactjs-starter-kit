@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import logo from '../../assets/images/logo.svg'
-import './App.css'
-// components
-import ComponentAContainer from '../components/ComponentsA/ComponentAContainer'
-import ComponentBContainer from '../components/ComponentsB/ComponentBContainer'
 // router
 import { Route, Switch } from 'react-router'
 import { HashRouter, Link } from 'react-router-dom'
+// components
+import ComponentAContainer from '../components/ComponentsA/ComponentAContainer'
+import ComponentBContainer from '../components/ComponentsB/ComponentBContainer'
+import logo from '../assets/images/logo.svg'
+import './App.css'
 
 const NotFound = () => {
   return (
@@ -66,7 +66,12 @@ class App extends Component {
               <Route path='/componentA'
                 component={ComponentAContainer} />
               <Route path='/componentB'
-                component={ComponentBContainer} />
+                render={obj => {
+                  return (
+                    <ComponentBContainer {...obj}
+                      description='Value (custom description)' />
+                  )
+                }} />
               <Route component={NotFound} />
             </Switch>
           </div>

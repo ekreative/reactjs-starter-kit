@@ -10,7 +10,7 @@ class ComponentA extends Component {
           <h2>Welcome to ComponentA</h2>
         </div>
         <p className='ComponentA-intro'>
-          <code>src/components/componentsB/ComponentA.js</code>
+          <code>src/components/componentsA/ComponentA.js</code>
         </p>
         <p className='ComponentA-intro'>
           Value: {this.props.value}

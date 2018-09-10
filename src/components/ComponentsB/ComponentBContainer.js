@@ -7,7 +7,7 @@ import ComponentB from './ComponentB'
 const mapStateToProps = ({main: {value}}, ownProps) => {
   return {
     value,
-    ...ownProps
+    fullDescription: `${ownProps.description}: ${value}`
   }
 }
 

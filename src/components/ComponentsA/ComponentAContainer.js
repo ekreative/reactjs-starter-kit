@@ -4,10 +4,9 @@ import { changeStateProp } from '../../actions'
 import { increment, decrement } from '../../actions/main'
 import ComponentA from './ComponentA'
 
-const mapStateToProps = ({main: {value}}, ownProps) => {
+const mapStateToProps = ({main: {value}}) => {
   return {
-    value,
-    ...ownProps
+    value
   }
 }
 
