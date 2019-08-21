@@ -6,4 +6,5 @@ import ComponentB from './ComponentB'
 it('renders without crashing', () => {
   const div = document.createElement('div')
   ReactDOM.render(<ComponentB />, div)
+  ReactDOM.unmountComponentAtNode(div)
 })
