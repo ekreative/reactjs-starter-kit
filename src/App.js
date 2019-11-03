@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router'
 import { HashRouter, Link } from 'react-router-dom'
 // components
-import ComponentAContainer from '../components/ComponentsA/ComponentAContainer'
-import ComponentBContainer from '../components/ComponentsB/ComponentBContainer'
-import logo from '../assets/images/logo.svg'
+import ComponentAContainer from './components/ComponentsA/ComponentAContainer'
+import ComponentBContainer from './components/ComponentsB/ComponentBContainer'
+import logo from './assets/images/logo.svg'
 import './App.css'
 
 const NotFound = () => {

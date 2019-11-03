@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { changeStateProp } from '../actions'
+import { changeStateProp } from './actions'
 import App from './App'
 
 const mapStateToProps = ({main: {value}}) => {

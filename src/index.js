@@ -6,7 +6,7 @@ import { persistStore } from 'redux-persist'
 // store
 import store from './services/store'
 // components
-import AppContainer from './components/AppContainer'
+import AppContainer from './AppContainer'
 import * as serviceWorker from './serviceWorker'
 
 // persist the store
