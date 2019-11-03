@@ -27,9 +27,7 @@ class ComponentB extends Component {
 ComponentB.propTypes = {
   value: PropTypes.number.isRequired,
   increment: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired,
-  description: PropTypes.string.isRequired,
-  fullDescription: PropTypes.string.isRequired
+  decrement: PropTypes.func.isRequired
 }
 
 ComponentB.defaultProps = {
