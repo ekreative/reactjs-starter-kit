@@ -19,6 +19,10 @@ class ComponentA extends Component {
           <button onClick={this.props.increment}>Increment</button>
           <button onClick={this.props.decrement}>Decrement</button>
         </p>
+        <p className='ComponentA-intro'>
+          <button onClick={this.props.incrementAsync}>Increment Async</button>
+          <button onClick={this.props.decrementAsync}>Decrement Async</button>
+        </p>
       </div>
     )
   }
@@ -27,13 +31,17 @@ class ComponentA extends Component {
 ComponentA.propTypes = {
   value: PropTypes.number.isRequired,
   increment: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired
+  incrementAsync: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
+  decrementAsync: PropTypes.func.isRequired
 }
 
 ComponentA.defaultProps = {
   value: 0,
   increment: () => {},
-  decrement: () => {}
+  incrementAsync: () => {},
+  decrement: () => {},
+  decrementAsync: () => {}
 }
 
 export default ComponentA

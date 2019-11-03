@@ -4,9 +4,11 @@ import {
   createStore
 } from 'redux'
 import thunk from 'redux-thunk'
+import createSagaMiddleware from 'redux-saga'
 import { persistCombineReducers } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // or whatever storage you are using
 import reducers from '../reducers'
+import sagas from '../sagas'
 
 const config = {
   key: 'primary', // you can choose any key name
@@ -15,14 +17,17 @@ const config = {
   storage
 }
 
-let reducer = persistCombineReducers(config, reducers)
+const reducer = persistCombineReducers(config, reducers)
+const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(
   reducer,
   undefined,
   compose(
-    applyMiddleware(...[thunk])
+    applyMiddleware(...[thunk, sagaMiddleware])
   )
 )
+
+sagaMiddleware.run(sagas)
 
 export default store
