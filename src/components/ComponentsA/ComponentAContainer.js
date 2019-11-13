@@ -22,9 +22,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const ComponentAContainer = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ComponentA)
-
-export default ComponentAContainer

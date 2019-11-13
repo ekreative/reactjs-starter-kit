@@ -6,6 +6,7 @@ import { HashRouter, Link } from 'react-router-dom'
 // components
 import ComponentAContainer from './components/ComponentsA/ComponentAContainer'
 import ComponentBContainer from './components/ComponentsB/ComponentBContainer'
+import LoginContainer from './components/Login/LoginContainer'
 import logo from './assets/images/logo.svg'
 import './App.css'
 
@@ -33,12 +34,10 @@ class App extends Component {
 
           <div>
             <ul>
-              <li><Link to={`/`}>AppContainer
-                (Home)</Link></li>
-              <li><Link to={`/componentA`}>ComponentAContainer</Link>
-              </li>
-              <li><Link to={`/componentB`}>ComponentBContainer</Link>
-              </li>
+              <li><Link to={`/`}>AppContainer (Home)</Link></li>
+              <li><Link to={`/login`}>Login</Link></li>
+              <li><Link to={`/componentA`}>ComponentAContainer</Link></li>
+              <li><Link to={`/componentB`}>ComponentBContainer</Link></li>
             </ul>
           </div>
 
@@ -63,8 +62,8 @@ class App extends Component {
                   </div>
                 )
               }} />
-              <Route path='/componentA'
-                component={ComponentAContainer} />
+              <Route path='/login' component={LoginContainer} />
+              <Route path='/componentA' component={ComponentAContainer} />
               <Route path='/componentB'
                 render={obj => {
                   return (

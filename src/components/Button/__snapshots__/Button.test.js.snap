@@ -8,12 +8,3 @@ exports[`<Button /> tests should render as default button 1`] = `
   test
 </button>
 `;
-
-exports[`<Button /> tests should render as default button 1 1`] = `
-<button
-  class="button-red"
-  data-testid="button"
->
-  test
-</button>
-`;

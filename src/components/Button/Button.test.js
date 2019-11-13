@@ -34,7 +34,7 @@ describe('<Button /> tests', () => {
     const content = 'button'
     const onClick = jest.fn()
 
-    const { getByTestId } = render(<Button color={`${color}`} callback={onClick}>{children}</Button>)
+    const { getByTestId } = render(<Button color={`${color}`} onClick={onClick}>{children}</Button>)
     fireEvent.click(getByTestId(content))
     expect(onClick).toHaveBeenCalledTimes(1)
   })

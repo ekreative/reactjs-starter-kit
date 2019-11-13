@@ -1,3 +1,4 @@
 import main from './main'
+import user from './user'
 
-export default { main }
+export default { main, user }
