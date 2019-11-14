@@ -34,8 +34,8 @@ class App extends Component {
 
           <div>
             <ul>
-              <li><Link to={`/`}>AppContainer (Home)</Link></li>
               <li><Link to={`/login`}>Login</Link></li>
+              <li><Link to={`/`}>AppContainer (Home)</Link></li>
               <li><Link to={`/componentA`}>ComponentAContainer</Link></li>
               <li><Link to={`/componentB`}>ComponentBContainer</Link></li>
             </ul>
