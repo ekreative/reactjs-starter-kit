@@ -15,7 +15,7 @@ const Login = ({login, name, isRequesting, isFailure, isLoggedIn}) => {
     setEmailError(isEmailValid(email) ?  {...defaultError} : setEmailError({status: true, message: 'Email is not valid'}));
     setPasswordError(isPasswordValid(email) ? {...defaultError} : {status: true, message: 'Password is not valid'})
     if (!emailError.status && !passwordError.status) {
-      login({email, password})
+      login(email, password)
     }
   }, [email, password])
 
