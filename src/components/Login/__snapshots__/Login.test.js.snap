@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login test component rendered 1`] = `
+<div
+  class="login"
+>
+  <div
+    class="login-header"
+  >
+    <h2>
+      Welcome to login
+    </h2>
+  </div>
+  <p
+    class="login-intro"
+  >
+    <code>
+      src/components/Login/Login.js
+    </code>
+  </p>
+  <div
+    class="login-form"
+  >
+    <div>
+      <label
+        for="email"
+      >
+        Email
+      </label>
+      <input
+        id="email"
+        name="email"
+        type="text"
+        value=""
+      />
+    </div>
+    <div>
+      <label
+        for="password"
+      >
+        Password
+      </label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        value=""
+      />
+    </div>
+    <div>
+      <button
+        data-testid="submit"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;
