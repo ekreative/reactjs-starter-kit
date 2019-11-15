@@ -35,18 +35,16 @@ api.interceptors.response.use(
   }
 )
 
-export default class API {
-  static get (id) {
-    return api.get(`/some/${id}`)
-      .then(response => {
-        return response.data // return response;
-      })
-  }
+export function get (id) {
+  return api.get(`/some/${id}`)
+    .then(response => {
+      return response.data // return response;
+    })
+}
 
-  static post (data) {
-    return api.post(`/some`, data)
-      .then(response => {
-        return response.data // return response;
-      })
-  }
+export function post (data) {
+  return api.post(`/some`, data)
+    .then(response => {
+      return response.data // return response;
+    })
 }
