@@ -11,10 +11,26 @@ export function increment () {
   }
 }
 
+export function incrementAsync () {
+  return dispatch => {
+    dispatch({
+      type: INCREMENT_ASYNC
+    })
+  }
+}
+
 export function decrement () {
   return dispatch => {
     dispatch({
       type: DECREMENT
+    })
+  }
+}
+
+export function decrementAsync () {
+  return dispatch => {
+    dispatch({
+      type: DECREMENT_ASYNC
     })
   }
 }

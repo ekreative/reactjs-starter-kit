@@ -13,7 +13,7 @@ const mapStateToProps = ({main: {value}}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     // bind actions with dispatch
-    ...bindActionCreators({changeStateProp, increment, incrementAsync, decrementAsync}, dispatch),
+    ...bindActionCreators({changeStateProp, increment, incrementAsync, decrement, decrementAsync}, dispatch),
     // example that we can add our custom funcs to props
     decrement: function () {
       // call of action in custom func

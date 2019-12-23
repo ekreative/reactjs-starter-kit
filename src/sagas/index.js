@@ -4,5 +4,8 @@ import increment from './increment'
 import decrement from './decrement'
 
 export default function * rootSaga () {
-  yield all([increment(), decrement()])
+  yield all([
+    increment(),
+    decrement()
+  ])
 }
