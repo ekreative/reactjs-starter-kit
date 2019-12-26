@@ -8,6 +8,6 @@ export function * incrementAsync () {
   yield put({ type: INCREMENT })
 }
 
-export default function * increment () {
+export default function * watchIncrement () {
   yield takeEvery(INCREMENT_ASYNC, incrementAsync)
 }

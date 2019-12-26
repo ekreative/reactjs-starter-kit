@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition */
 
-import { takeEvery, put, delay } from 'redux-saga/effects'
+import { takeLatest, put, delay } from 'redux-saga/effects'
 import { DECREMENT, DECREMENT_ASYNC } from '../actions/main'
 
 export function * decrementAsync () {
@@ -8,6 +8,6 @@ export function * decrementAsync () {
   yield put({ type: DECREMENT })
 }
 
-export default function * decrement () {
-  yield takeEvery(DECREMENT_ASYNC, decrementAsync)
+export default function * watchDecrement () {
+  yield takeLatest(DECREMENT_ASYNC, decrementAsync)
 }

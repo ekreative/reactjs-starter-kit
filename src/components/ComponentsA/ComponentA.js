@@ -23,6 +23,9 @@ class ComponentA extends Component {
           <button onClick={this.props.incrementAsync}>Increment Async</button>
           <button onClick={this.props.decrementAsync}>Decrement Async</button>
         </p>
+        <p className='ComponentA-intro'>
+          <button onClick={this.props.postData.bind(this, {data: 'Hello'})}>Post Data</button>
+        </p>
       </div>
     )
   }
