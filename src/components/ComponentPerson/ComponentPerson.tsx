@@ -1,25 +1,36 @@
 // @ts-ignore
-import React from "react";
+import React, { useState } from "react";
 import "./ComponentPerson.css";
 import { IProps } from "./ComponentPersonInterfaces";
-import API from "../../services/api"
+import API from "../../services/api";
 
-const getSWPeople = () => {
-  API.get("https://swapi.co/api/people/")
-}
 export const ComponentPerson: React.FC<IProps> = props => {
+  // @ts-ignore
+  const [people, setPeople] = useState({ results: [] });
+
+  const getSWPeople = async () => {
+    let peopleData = await API.get("https://swapi.co/api/people/");
+    await setPeople(peopleData);
+  };
 
   return (
     <div className="ComponentA">
       <div className="ComponentA-header">
-        <h2>Welcome to ComponentA</h2>
+        <h2>Welcome to SWapi People Component</h2>
       </div>
-      <p className="ComponentA-intro">
-        <code>src/components/componentsA/ComponentA.ts</code>
-      </p>
+      <div className="ComponentA-intro">
+        <div>
+          {people.results.map((element: {name: string, url: string})  => {
+            console.log(element)
+            return(
+              <p key={element.url}>{element.name}</p>
+            )
+          })}
+        </div>
+      </div>
       <p className="ComponentA-intro">Value: {props.value}</p>
       <p className="ComponentA-intro">
-        <button onClick={getSWPeople}>get SW Pe111ople</button>
+        <button onClick={getSWPeople}>get SW People</button>
         <button onClick={props.decrement}>Decrement</button>
       </p>
     </div>

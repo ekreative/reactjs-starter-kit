@@ -3,7 +3,7 @@ import { CHANGE_STATE_PROP } from "../actions";
 import { DECREMENT, INCREMENT } from "../actions/main";
 
 const REDUCER = "MAIN";
-const defaultState: { value: number } = {
+const defaultState: { value: number} = {
   value: 0
 };
 

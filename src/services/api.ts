@@ -38,7 +38,6 @@ export default class API {
     return axios
       .get(url)
       .then(response => {
-        console.log(1212121, response.data)
         return response.data; // return response;
       })
       .catch(error => {
