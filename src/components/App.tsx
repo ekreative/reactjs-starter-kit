@@ -6,10 +6,12 @@ import { HashRouter, Link, RouteComponentProps } from "react-router-dom";
 // components
 import ComponentAContainer from "./ComponentsA/ComponentAContainer";
 import ComponentBContainer from "./ComponentsB/ComponentBContainer";
+import ComponentPersonContainer from "./ComponentPerson/ComponentPersonContainer";
 // @ts-ignore
 import logo from "../assets/images/logo.svg";
 import "./App.css";
 import { IProps } from "./AppInterfaces";
+import API from "../services/api";
 
 const NotFound = () => {
   return (
@@ -48,6 +50,9 @@ export const App: React.FC<IProps> = props => {
             <li>
               <Link to="/componentB">ComponentBContainer</Link>
             </li>
+            <li>
+              <Link to="/componentPerson">componentPerson</Link>
+            </li>
           </ul>
         </div>
 
@@ -78,6 +83,7 @@ export const App: React.FC<IProps> = props => {
               }}
             />
             <Route path="/componentA" component={ComponentAContainer} />
+            <Route path="/componentPerson" component={ComponentPersonContainer} />
             <Route
               path="/componentB"
               render={obj => {
