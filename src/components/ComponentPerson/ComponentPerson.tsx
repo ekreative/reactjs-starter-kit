@@ -19,7 +19,7 @@ export const ComponentPerson: React.FC<IProps> = props => {
       </p>
       <p className="ComponentA-intro">Value: {props.value}</p>
       <p className="ComponentA-intro">
-        <button onClick={getSWPeople}>get SW People</button>
+        <button onClick={getSWPeople}>get SW Pe111ople</button>
         <button onClick={props.decrement}>Decrement</button>
       </p>
     </div>
