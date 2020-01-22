@@ -1,15 +1,23 @@
 // @ts-ignore
 import React, { useState } from "react";
 import "./ComponentPerson.css";
-import { IProps } from "./ComponentPersonInterfaces";
+import { IProps, IElement } from "./ComponentPersonInterfaces";
 import API from "../../services/api";
+import ComponentPersonDataContainer from "../ComponentPersonData/ComponentPersonDataContainer";
 
 export const ComponentPerson: React.FC<IProps> = props => {
-  // @ts-ignore
   const [people, setPeople] = useState({ results: [] });
+  const [swPeoplePage, setSwPeoplePage] = useState(2);
 
   const getSWPeople = async () => {
-    let peopleData = await API.get("https://swapi.co/api/people/");
+    setSwPeoplePage(2)
+    let peopleData = await API.get(`https://swapi.co/api/people/?page=1`);
+    await setPeople(peopleData);
+  };
+
+  const getNextPageSWPeople = async () => {
+    setSwPeoplePage(swPeoplePage +1)
+    let peopleData = await API.get(`https://swapi.co/api/people/?page=${swPeoplePage}`);
     await setPeople(peopleData);
   };
 
@@ -20,18 +28,16 @@ export const ComponentPerson: React.FC<IProps> = props => {
       </div>
       <div className="ComponentA-intro">
         <div>
-          {people.results.map((element: {name: string, url: string})  => {
-            console.log(element)
-            return(
-              <p key={element.url}>{element.name}</p>
-            )
+          {people.results.map((element: IElement) => {
+            return (
+                <ComponentPersonDataContainer key={element.url} data={element} />
+            );
           })}
         </div>
       </div>
-      <p className="ComponentA-intro">Value: {props.value}</p>
       <p className="ComponentA-intro">
         <button onClick={getSWPeople}>get SW People</button>
-        <button onClick={props.decrement}>Decrement</button>
+        <button onClick={getNextPageSWPeople}> >>> </button>
       </p>
     </div>
   );

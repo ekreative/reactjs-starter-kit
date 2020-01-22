@@ -11,7 +11,6 @@ import ComponentPersonContainer from "./ComponentPerson/ComponentPersonContainer
 import logo from "../assets/images/logo.svg";
 import "./App.css";
 import { IProps } from "./AppInterfaces";
-import API from "../services/api";
 
 const NotFound = () => {
   return (

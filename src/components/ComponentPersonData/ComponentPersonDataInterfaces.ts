@@ -1,4 +1,7 @@
-export interface IProps {
+export interface IPropsData {
+  data: {
+    name: string
+  };
   value: number;
   increment: () => void;
   decrement: () => void;
