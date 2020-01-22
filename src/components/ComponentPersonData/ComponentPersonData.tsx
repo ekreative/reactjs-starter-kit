@@ -5,17 +5,31 @@ import { IPropsData } from "./ComponentPersonDataInterfaces";
 import API from "../../services/api";
 
 export const ComponentPersonData: React.FC<IPropsData> = props => {
-const [personData, setPersonData] = useState({})
+  const initialPersonData = {
+    height: null,
+    mass: null,
+    hair_color: null
+  };
+  const [personData, setPersonData] = useState(initialPersonData);
 
-  const getSWPeople = async () => {
-    let onePersonData = await API.get(`https://swapi.co/api/people/1`);
+  const getSWPersonData = async () => {
+    let onePersonData = await API.get(`${props.data.url}`);
     await setPersonData(onePersonData);
   };
 
-  console.log(props.data)
   return (
     <div className="ComponentA">
-      <p>{props.data.name}</p>
+      <button className="PersonName" onClick={getSWPersonData}>
+        {props.data.name}
+      </button>
+
+      {props.data.name && (
+        <div>
+          {personData.height && <p>height: {personData.height}</p>}
+          {personData.mass && <p>mass: {personData.mass}</p>}
+          {personData.hair_color && <p>hair color: {personData.hair_color}</p>}
+        </div>
+      )}
     </div>
   );
 };

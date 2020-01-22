@@ -1,6 +1,7 @@
 export interface IPropsData {
   data: {
-    name: string
+    name: string;
+    url: string;
   };
   value: number;
   increment: () => void;

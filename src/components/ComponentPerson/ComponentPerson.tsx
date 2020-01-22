@@ -42,7 +42,7 @@ export const ComponentPerson: React.FC<IProps> = props => {
       </div>
       <div className="ComponentA-intro">
         <div>
-          {people.results.map((element: IElement) => {
+          {people?.results.map((element: IElement) => {
             return (
               <ComponentPersonDataContainer key={element.url} data={element} />
             );
