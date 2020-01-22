@@ -7,18 +7,33 @@ import ComponentPersonDataContainer from "../ComponentPersonData/ComponentPerson
 
 export const ComponentPerson: React.FC<IProps> = props => {
   const [people, setPeople] = useState({ results: [] });
-  const [swPeoplePage, setSwPeoplePage] = useState(2);
+  const [swPeoplePage, setSwPeoplePage] = useState(1);
 
   const getSWPeople = async () => {
-    setSwPeoplePage(2)
+    console.log(0, swPeoplePage);
+    setSwPeoplePage(1);
     let peopleData = await API.get(`https://swapi.co/api/people/?page=1`);
     await setPeople(peopleData);
   };
 
   const getNextPageSWPeople = async () => {
-    setSwPeoplePage(swPeoplePage +1)
-    let peopleData = await API.get(`https://swapi.co/api/people/?page=${swPeoplePage}`);
+    await setSwPeoplePage(swPeoplePage + 1);
+    let peopleData = await API.get(
+      `https://swapi.co/api/people/?page=${swPeoplePage + 1}`
+    );
     await setPeople(peopleData);
+    console.log('+', swPeoplePage);
+  };
+
+  const getPrevPageSWPeople = async () => {
+    console.log("-", swPeoplePage);
+    if (swPeoplePage > 1) {
+      setSwPeoplePage(swPeoplePage - 1);
+      let peopleData = await API.get(
+        `https://swapi.co/api/people/?page=${swPeoplePage - 1}`
+      );
+      await setPeople(peopleData);
+    }
   };
 
   return (
@@ -30,14 +45,15 @@ export const ComponentPerson: React.FC<IProps> = props => {
         <div>
           {people.results.map((element: IElement) => {
             return (
-                <ComponentPersonDataContainer key={element.url} data={element} />
+              <ComponentPersonDataContainer key={element.url} data={element} />
             );
           })}
         </div>
       </div>
       <p className="ComponentA-intro">
+        <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
         <button onClick={getSWPeople}>get SW People</button>
-        <button onClick={getNextPageSWPeople}> >>> </button>
+        <button onClick={getNextPageSWPeople}> {`>>>`} </button>
       </p>
     </div>
   );
