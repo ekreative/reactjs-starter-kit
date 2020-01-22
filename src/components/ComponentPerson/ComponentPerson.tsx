@@ -10,23 +10,22 @@ export const ComponentPerson: React.FC<IProps> = props => {
   const [swPeoplePage, setSwPeoplePage] = useState(1);
 
   const getSWPeople = async () => {
-    console.log(0, swPeoplePage);
     setSwPeoplePage(1);
     let peopleData = await API.get(`https://swapi.co/api/people/?page=1`);
     await setPeople(peopleData);
   };
 
   const getNextPageSWPeople = async () => {
-    await setSwPeoplePage(swPeoplePage + 1);
-    let peopleData = await API.get(
-      `https://swapi.co/api/people/?page=${swPeoplePage + 1}`
-    );
-    await setPeople(peopleData);
-    console.log('+', swPeoplePage);
+    if (swPeoplePage < 9) {
+      setSwPeoplePage(swPeoplePage + 1);
+      let peopleData = await API.get(
+        `https://swapi.co/api/people/?page=${swPeoplePage + 1}`
+      );
+      await setPeople(peopleData);
+    }
   };
 
   const getPrevPageSWPeople = async () => {
-    console.log("-", swPeoplePage);
     if (swPeoplePage > 1) {
       setSwPeoplePage(swPeoplePage - 1);
       let peopleData = await API.get(
@@ -52,15 +51,9 @@ export const ComponentPerson: React.FC<IProps> = props => {
       </div>
       <p className="ComponentA-intro">
         <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
-        <button onClick={getSWPeople}>get SW People</button>
+        <button onClick={getSWPeople}>get SW People page 1</button>
         <button onClick={getNextPageSWPeople}> {`>>>`} </button>
       </p>
     </div>
   );
-};
-
-ComponentPerson.defaultProps = {
-  value: 0,
-  increment: () => {},
-  decrement: () => {}
 };
