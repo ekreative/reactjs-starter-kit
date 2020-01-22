@@ -11,10 +11,14 @@ export const ComponentPersonData: React.FC<IPropsData> = props => {
     hair_color: null
   };
   const [personData, setPersonData] = useState(initialPersonData);
+  const [openData, setOpenData] = useState(false);
 
   const getSWPersonData = async () => {
-    let onePersonData = await API.get(`${props.data.url}`);
-    await setPersonData(onePersonData);
+    if (!openData){
+      let onePersonData = await API.get(`${props.data.url}`);
+      await setPersonData(onePersonData);
+    }
+      setOpenData(!openData)
   };
 
   return (
@@ -23,7 +27,7 @@ export const ComponentPersonData: React.FC<IPropsData> = props => {
         {props.data.name}
       </button>
 
-      {props.data.name && (
+      {props.data.name && openData &&(
         <div>
           {personData.height && <p>height: {personData.height}</p>}
           {personData.mass && <p>mass: {personData.mass}</p>}

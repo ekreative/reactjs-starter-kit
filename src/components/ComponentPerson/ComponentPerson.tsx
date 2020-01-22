@@ -49,11 +49,11 @@ export const ComponentPerson: React.FC<IProps> = props => {
           })}
         </div>
       </div>
-      <p className="ComponentA-intro">
+      <div className="ComponentA-intro">
         <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
         <button onClick={getSWPeople}>get SW People page 1</button>
         <button onClick={getNextPageSWPeople}> {`>>>`} </button>
-      </p>
+      </div>
     </div>
   );
 };
