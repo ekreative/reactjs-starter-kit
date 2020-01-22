@@ -14,20 +14,20 @@ export const ComponentPersonData: React.FC<IPropsData> = props => {
   const [openData, setOpenData] = useState(false);
 
   const getSWPersonData = async () => {
-    if (!openData){
-      let onePersonData = await API.get(`${props.data.url}`);
+    if (!openData) {
+      let onePersonData = await API.get(`${props.element.url}`);
       await setPersonData(onePersonData);
     }
-      setOpenData(!openData)
+    setOpenData(!openData);
   };
 
   return (
     <div className="ComponentA">
-      <button className="PersonName" onClick={getSWPersonData}>
-        {props.data.name}
-      </button>
+      <div className="PersonName" onClick={getSWPersonData}>
+        <p>{props.swPeoplePage * 10 + props.id + 1 - 10}. {props.element.name}</p>
+      </div>
 
-      {props.data.name && openData &&(
+      {props.element.name && openData && (
         <div>
           {personData.height && <p>height: {personData.height}</p>}
           {personData.mass && <p>mass: {personData.mass}</p>}

@@ -1,5 +1,7 @@
 export interface IPropsData {
-  data: {
+  swPeoplePage: number
+  id: number;
+  element: {
     name: string;
     url: string;
   };

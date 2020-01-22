@@ -10,6 +10,7 @@ export const ComponentPerson: React.FC<IProps> = props => {
   const [swPeoplePage, setSwPeoplePage] = useState(1);
 
   const getSWPeople = async () => {
+    console.log(people);
     setSwPeoplePage(1);
     let peopleData = await API.get(`https://swapi.co/api/people/?page=1`);
     await setPeople(peopleData);
@@ -42,9 +43,14 @@ export const ComponentPerson: React.FC<IProps> = props => {
       </div>
       <div className="ComponentA-intro">
         <div>
-          {people?.results.map((element: IElement) => {
+          {people?.results.map((element: IElement, id: number) => {
             return (
-              <ComponentPersonDataContainer key={element.url} data={element} />
+              <ComponentPersonDataContainer
+                id={id}
+                key={element.url}
+                element={element}
+                swPeoplePage={swPeoplePage}
+              />
             );
           })}
         </div>
