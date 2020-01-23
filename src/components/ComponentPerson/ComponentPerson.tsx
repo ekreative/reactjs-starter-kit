@@ -4,7 +4,7 @@ import "./ComponentPerson.css";
 import { IProps, IElement } from "./ComponentPersonInterfaces";
 import API from "../../services/api";
 import ComponentPersonDataContainer from "../ComponentPersonData/ComponentPersonDataContainer";
-import { ComponentSinglePersonData } from "../ComponentSinglePersonData/ComponentSinglePersonData";
+import ComponentSinglePersonDataContainer from "../ComponentSinglePersonData/ComponentSinglePersonDataContainer";
 
 export const ComponentPerson: React.FC<IProps> = props => {
   const [people, setPeople] = useState({ results: [] });
@@ -61,7 +61,7 @@ export const ComponentPerson: React.FC<IProps> = props => {
             );
           })}
         </div>
-        <ComponentSinglePersonData element={onePersonData} />
+        <ComponentSinglePersonDataContainer element={onePersonData} />
       </div>
       <div className="ComponentA-intro">
         <button onClick={getPrevPageSWPeople}> {`<<<`} </button>

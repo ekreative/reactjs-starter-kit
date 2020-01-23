@@ -21,7 +21,7 @@ export const ComponentSinglePersonData: React.FC<IPropsSinglePerson> = props => 
         {props.element.height && <p>Height: {props.element.height}</p>}
         {props.element.homeworld && (
           <button onClick={getOnePersonHomeworld}>
-            Homeworld: {props.element.homeworld}
+            Homeworld
           </button>
         )}
         {personPlanet && <p>{personPlanet?.name}</p>}
