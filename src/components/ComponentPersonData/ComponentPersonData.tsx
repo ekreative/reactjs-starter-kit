@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import "./ComponentPersonData.css";
 import { IPropsData } from "./ComponentPersonDataInterfaces";
 import API from "../../services/api";
+import { Link } from "react-router-dom";
 
 export const ComponentPersonData: React.FC<IPropsData> = props => {
   const initialPersonData = {
     height: null,
     mass: null,
-    hair_color: null
+    hair_color: null,
+    homeworld: null
   };
   const [personData, setPersonData] = useState(initialPersonData);
   const [openData, setOpenData] = useState(false);
@@ -32,6 +34,8 @@ export const ComponentPersonData: React.FC<IPropsData> = props => {
           {personData.height && <p>height: {personData.height}</p>}
           {personData.mass && <p>mass: {personData.mass}</p>}
           {personData.hair_color && <p>hair color: {personData.hair_color}</p>}
+          {personData.homeworld && <p>homeworld: {personData.homeworld}</p>}
+          <Link to="/componentPlanet">componentPlanet</Link>
         </div>
       )}
     </div>
