@@ -4,10 +4,12 @@ import "./ComponentPerson.css";
 import { IProps, IElement } from "./ComponentPersonInterfaces";
 import API from "../../services/api";
 import ComponentPersonDataContainer from "../ComponentPersonData/ComponentPersonDataContainer";
+import { ComponentSinglePersonData } from "../ComponentSinglePersonData/ComponentSinglePersonData";
 
 export const ComponentPerson: React.FC<IProps> = props => {
   const [people, setPeople] = useState({ results: [] });
   const [swPeoplePage, setSwPeoplePage] = useState(1);
+  const [onePersonData, setOnePersonData] = useState({ results: [] });
 
   const getSWPeople = async () => {
     console.log(people);
@@ -35,6 +37,10 @@ export const ComponentPerson: React.FC<IProps> = props => {
       await setPeople(peopleData);
     }
   };
+  const getOnePersonData = async (url: string) => {
+    let onePersonData = await API.get(url);
+    await setOnePersonData(onePersonData);
+  };
 
   return (
     <div className="ComponentA">
@@ -50,10 +56,12 @@ export const ComponentPerson: React.FC<IProps> = props => {
                 key={element.url}
                 element={element}
                 swPeoplePage={swPeoplePage}
+                getOnePersonData={getOnePersonData}
               />
             );
           })}
         </div>
+        <ComponentSinglePersonData element={onePersonData} />
       </div>
       <div className="ComponentA-intro">
         <button onClick={getPrevPageSWPeople}> {`<<<`} </button>

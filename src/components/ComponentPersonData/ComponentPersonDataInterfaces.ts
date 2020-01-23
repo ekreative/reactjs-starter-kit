@@ -1,13 +1,12 @@
 export interface IPropsData {
-  swPeoplePage: number
+  swPeoplePage: number;
   id: number;
   element: {
     name: string;
     url: string;
   };
   value: number;
-  increment: () => void;
-  decrement: () => void;
+  getOnePersonData: Function;
 }
 
 export interface IElement {

@@ -40,7 +40,7 @@ export const ComponentPlanet: React.FC<IPropsPlanet> = props => {
     <div className="ComponentA">
       <div>
         {planets?.results.map((element: IElement, id: number) => {
-          return <div>{element.name}</div>;
+          return <div key={id}>{element.name}</div>;
         })}
       </div>
       <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
