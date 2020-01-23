@@ -8,6 +8,7 @@ import ComponentAContainer from "./ComponentsA/ComponentAContainer";
 import ComponentBContainer from "./ComponentsB/ComponentBContainer";
 import ComponentPersonContainer from "./ComponentPerson/ComponentPersonContainer";
 import ComponentPlanetContainer from "./ComponentPlanets/ComponentPlanetContainer";
+import ComponentStarshipsContainer from "./ComponentStarships/ComponentStarshipsContainer";
 // @ts-ignore
 import logo from "../assets/images/logo.svg";
 import "./App.css";
@@ -56,6 +57,9 @@ export const App: React.FC<IProps> = props => {
             <li>
               <Link to="/componentPlanet">componentPlanet</Link>
             </li>
+            <li>
+              <Link to="/componentStarships">componentStarships</Link>
+            </li>
           </ul>
         </div>
 
@@ -88,6 +92,7 @@ export const App: React.FC<IProps> = props => {
             <Route path="/componentA" component={ComponentAContainer} />
             <Route path="/componentPerson" component={ComponentPersonContainer} />
             <Route path="/componentPlanet" component={ComponentPlanetContainer} />
+            <Route path="/componentStarships" component={ComponentStarshipsContainer} />
             <Route
               path="/componentB"
               render={obj => {

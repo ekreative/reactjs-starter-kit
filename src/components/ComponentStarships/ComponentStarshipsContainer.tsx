@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { changeStateProp } from "../../actions";
-import { ComponentPerson } from "./ComponentPerson";
+import { ComponentStarships } from "./ComponentStarships";
 
 const mapStateToProps = ({ main: { value } }: any) => {
   return {
@@ -11,15 +11,13 @@ const mapStateToProps = ({ main: { value } }: any) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    // bind actions with dispatch
     ...bindActionCreators({ changeStateProp }, dispatch),
-    // example that we can add our custom funcs to props
   };
 };
 
-const ComponentPersonContainer = connect(
+const ComponentStarshipsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ComponentPerson);
+)(ComponentStarships);
 
-export default ComponentPersonContainer;
+export default ComponentStarshipsContainer;
