@@ -5,6 +5,7 @@ import { IPropsPlanet } from "./PlanetInterfaces";
 import API from "../../services/api";
 import { IElement } from "../Person/PersonInterfaces";
 import SinglePlanetContainer from "../SinglePlanet/SinglePlanetContainer";
+import { PlanetElement } from "./PlanetsElements";
 
 export const Planet: React.FC<IPropsPlanet> = props => {
   const [planets, setPlanets] = useState({ results: [] });
@@ -49,21 +50,21 @@ export const Planet: React.FC<IPropsPlanet> = props => {
         <button onClick={getSWPlanets}>Get Planets</button>
         <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
       </div>
-      <div className="Planets">
+      <PlanetElement>
         <div>
-        {planets?.results.map((element: IElement, id: number) => {
-          return (
-            <SinglePlanetContainer
-              key={id}
-              element={element}
-              planetName={element.name}
-              getsinglePlanetData={getsinglePlanetData}
-            />
-          );
-        })}
+          {planets?.results.map((element: IElement, id: number) => {
+            return (
+              <SinglePlanetContainer
+                key={id}
+                element={element}
+                planetName={element.name}
+                getsinglePlanetData={getsinglePlanetData}
+              />
+            );
+          })}
         </div>
         <div>{onePlanetData.name}</div>
-      </div>
+      </PlanetElement>
     </div>
   );
 };
