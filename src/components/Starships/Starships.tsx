@@ -1,12 +1,12 @@
 // @ts-ignore
 import React, { useState } from "react";
-import "./ComponentStarships.css";
-import { IPropsStarships } from "./ComponentStarshipsInterfaces";
+import "./Starships.css";
+import { IPropsStarships } from "./StarshipsInterfaces";
 import API from "../../services/api";
-import { IElement } from "../ComponentPerson/ComponentPersonInterfaces";
-import ComponsntSingleStarshipContainer from "../ComponentSingleStarship/ComponsntSingleStarshipContainer";
+import { IElement } from "../Person/PersonInterfaces";
+import SingleStarshipContainer from "../SingleStarship/SingleStarshipContainer";
 
-export const ComponentStarships: React.FC<IPropsStarships> = props => {
+export const Starships: React.FC<IPropsStarships> = props => {
   const [starships, setStarships] = useState({ results: [] });
   const [swStarshipsPage, setSwStarshipsPage] = useState(1);
 
@@ -44,7 +44,7 @@ export const ComponentStarships: React.FC<IPropsStarships> = props => {
         return (
           <div>
             <div>
-              <ComponsntSingleStarshipContainer key={id} element={element} />
+              <SingleStarshipContainer key={id} element={element} />
             </div>
           </div>
         );

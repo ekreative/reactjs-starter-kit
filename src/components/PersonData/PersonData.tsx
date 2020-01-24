@@ -1,9 +1,9 @@
 // @ts-ignore
 import React from "react";
-import "./ComponentPersonData.css";
-import { IPropsData } from "./ComponentPersonDataInterfaces";
+import "./PersonData.css";
+import { IPropsData } from "./PersonDataInterfaces";
 
-export const ComponentPersonData: React.FC<IPropsData> = props => {
+export const PersonData: React.FC<IPropsData> = props => {
   return (
     <div className="ComponentA">
       <div className="PersonName" onClick={()=>{props.getOnePersonData(props.element.url)}}>

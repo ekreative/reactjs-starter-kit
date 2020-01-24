@@ -1,12 +1,12 @@
 // @ts-ignore
 import React, { useState } from "react";
-import "./ComponentPlanet.css";
-import { IPropsPlanet } from "./ComponentPlanetInterfaces";
+import "./Planet.css";
+import { IPropsPlanet } from "./PlanetInterfaces";
 import API from "../../services/api";
-import { IElement } from "../ComponentPerson/ComponentPersonInterfaces";
-import ComponentSinglePlanetContainer from "../ComponentSinglePlanet/ComponentSinglePlanetContainer";
+import { IElement } from "../Person/PersonInterfaces";
+import SinglePlanetContainer from "../SinglePlanet/SinglePlanetContainer";
 
-export const ComponentPlanet: React.FC<IPropsPlanet> = props => {
+export const Planet: React.FC<IPropsPlanet> = props => {
   const [planets, setPlanets] = useState({ results: [] });
   const [swPlanetsPage, setSwPlanetsPage] = useState(1);
   const [onePlanetData, setOnePlanetData] = useState({ name: "" });
@@ -55,7 +55,7 @@ export const ComponentPlanet: React.FC<IPropsPlanet> = props => {
         <div>
         {planets?.results.map((element: IElement, id: number) => {
           return (
-            <ComponentSinglePlanetContainer
+            <SinglePlanetContainer
               key={id}
               element={element}
               planetName={element.name}

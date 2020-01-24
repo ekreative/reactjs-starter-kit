@@ -1,12 +1,12 @@
 // @ts-ignore
 import React, { useState } from "react";
-import "./ComponentPerson.css";
-import { IProps, IElement } from "./ComponentPersonInterfaces";
+import "./Person.scss";
+import { IProps, IElement } from "./PersonInterfaces";
 import API from "../../services/api";
-import ComponentPersonDataContainer from "../ComponentPersonData/ComponentPersonDataContainer";
-import ComponentSinglePersonDataContainer from "../ComponentSinglePersonData/ComponentSinglePersonDataContainer";
+import PersonDataContainer from "../PersonData/PersonDataContainer";
+import SinglePersonDataContainer from "../SinglePersonData/SinglePersonDataContainer";
 
-export const ComponentPerson: React.FC<IProps> = props => {
+export const Person: React.FC<IProps> = props => {
   const [people, setPeople] = useState({ results: [] });
   const [swPeoplePage, setSwPeoplePage] = useState(1);
   const [onePersonData, setOnePersonData] = useState({ results: [] });
@@ -63,7 +63,7 @@ export const ComponentPerson: React.FC<IProps> = props => {
         <div>
           {people?.results.map((element: IElement, id: number) => {
             return (
-              <ComponentPersonDataContainer
+              <PersonDataContainer
                 id={id}
                 key={element.url}
                 element={element}
@@ -73,7 +73,7 @@ export const ComponentPerson: React.FC<IProps> = props => {
             );
           })}
         </div>
-        <ComponentSinglePersonDataContainer
+        <SinglePersonDataContainer
           element={onePersonData}
           getOnePersonHomeworld={getOnePersonHomeworld}
           onePersonHomeworld={onePersonHomeworld.name}

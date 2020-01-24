@@ -1,9 +1,9 @@
 // @ts-ignore
 import React from "react";
-import "./ComponentSinglePlanet.css";
-import { IPropsSinglePlanet } from "./ComponentSinglePlanetInterfaces";
+import "./SinglePlanet.css";
+import { IPropsSinglePlanet } from "./SinglePlanetInterfaces";
 
-export const ComponentSinglePlanet: React.FC<IPropsSinglePlanet> = props => {
+export const SinglePlanet: React.FC<IPropsSinglePlanet> = props => {
   return (
     <div className={'SinglePlanets'}
       onClick={() => {

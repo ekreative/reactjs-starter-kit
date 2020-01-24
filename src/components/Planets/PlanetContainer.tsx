@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { changeStateProp } from "../../actions";
-import { ComponentPlanet } from "./ComponentPlanet";
+import { Planet } from "./Planet";
 
 const mapStateToProps = ({ main: { value } }: any) => {
   return {
@@ -15,9 +15,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const ComponentPlanetContainer = connect(
+const PlanetContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ComponentPlanet);
+)(Planet);
 
-export default ComponentPlanetContainer;
+export default PlanetContainer;
