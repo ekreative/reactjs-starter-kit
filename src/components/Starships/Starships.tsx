@@ -1,6 +1,6 @@
 // @ts-ignore
 import React, { useState } from "react";
-import "./Starships.css";
+import "./Starships.scss";
 import { IPropsStarships } from "./StarshipsInterfaces";
 import API from "../../services/api";
 import { IElement } from "../Person/PersonInterfaces";
@@ -11,7 +11,6 @@ export const Starships: React.FC<IPropsStarships> = props => {
   const [swStarshipsPage, setSwStarshipsPage] = useState(1);
 
   const getSWStarships = async () => {
-    console.log(starships);
     let peopleData = await API.get(`https://swapi.co/api/starships/?page=1`);
     await setStarships(peopleData);
   };

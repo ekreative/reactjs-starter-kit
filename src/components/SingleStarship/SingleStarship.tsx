@@ -1,6 +1,6 @@
 // @ts-ignore
 import React from "react";
-import "./SingleStarship.css";
+import "./SingleStarship.scss";
 import { IPropsSingleStarship } from "./SingleStarshipInterfaces";
 
 export const SingleStarship: React.FC<IPropsSingleStarship> = props => {

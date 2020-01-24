@@ -11,7 +11,7 @@ import PlanetContainer from "./Planets/PlanetContainer";
 import StarshipsContainer from "./Starships/StarshipsContainer";
 // @ts-ignore
 import logo from "../assets/images/logo.svg";
-import "./App.css";
+import "./App.scss";
 import { IProps } from "./AppInterfaces";
 
 const NotFound = () => {

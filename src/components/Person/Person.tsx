@@ -1,4 +1,3 @@
-// @ts-ignore
 import React, { useState } from "react";
 import "./Person.scss";
 import { IProps, IElement } from "./PersonInterfaces";
@@ -13,7 +12,6 @@ export const Person: React.FC<IProps> = props => {
   const [onePersonHomeworld, setOnePersonHomeworld] = useState({name: ''});
 
   const getSWPeople = async () => {
-    console.log(people);
     setSwPeoplePage(1);
     let peopleData = await API.get(`https://swapi.co/api/people/?page=1`);
     await setPeople(peopleData);
@@ -44,7 +42,6 @@ export const Person: React.FC<IProps> = props => {
   };
 
   const getOnePersonHomeworld = async (url: string) => {
-    console.log(555);
     let onePersonHomeworld = await API.get(url);
     await setOnePersonHomeworld(onePersonHomeworld)
   };

@@ -1,6 +1,6 @@
 // @ts-ignore
 import React from "react";
-import "./SinglePersonData.css";
+import "./SinglePersonData.scss";
 import { IPropsSinglePerson } from "./SinglePersonDataInterfaces";
 
 export const SinglePersonData: React.FC<IPropsSinglePerson> = props => {

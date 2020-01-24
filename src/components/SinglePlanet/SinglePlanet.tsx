@@ -1,6 +1,6 @@
 // @ts-ignore
 import React from "react";
-import "./SinglePlanet.css";
+import "./SinglePlanet.scss";
 import { IPropsSinglePlanet } from "./SinglePlanetInterfaces";
 
 export const SinglePlanet: React.FC<IPropsSinglePlanet> = props => {

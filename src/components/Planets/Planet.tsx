@@ -1,6 +1,6 @@
 // @ts-ignore
 import React, { useState } from "react";
-import "./Planet.css";
+import "./Planet.scss";
 import { IPropsPlanet } from "./PlanetInterfaces";
 import API from "../../services/api";
 import { IElement } from "../Person/PersonInterfaces";
@@ -12,7 +12,6 @@ export const Planet: React.FC<IPropsPlanet> = props => {
   const [onePlanetData, setOnePlanetData] = useState({ name: "" });
 
   const getSWPlanets = async () => {
-    console.log(planets);
     setSwPlanetsPage(1);
     let planetsData = await API.get(`https://swapi.co/api/planets/?page=1`);
     await setPlanets(planetsData);
@@ -39,7 +38,6 @@ export const Planet: React.FC<IPropsPlanet> = props => {
   };
 
   const getsinglePlanetData = async (url: string) => {
-    console.log("onePlanetData", onePlanetData);
     let getOnePlanetData = await API.get(url);
     await setOnePlanetData(getOnePlanetData);
   };
