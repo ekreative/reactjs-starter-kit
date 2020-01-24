@@ -3,26 +3,24 @@ import { IProps, IElement } from "./PersonInterfaces";
 import API from "../../services/api";
 import PersonDataContainer from "../PersonData/PersonDataContainer";
 import SinglePersonDataContainer from "../SinglePersonData/SinglePersonDataContainer";
-import { PersonContainer } from "./PersonElements"
+import { PersonContainer } from "./PersonElements";
 
 export const Person: React.FC<IProps> = props => {
   const [people, setPeople] = useState({ results: [] });
   const [swPeoplePage, setSwPeoplePage] = useState(1);
   const [onePersonData, setOnePersonData] = useState({ results: [] });
-  const [onePersonHomeworld, setOnePersonHomeworld] = useState({name: ''});
+  const [onePersonHomeworld, setOnePersonHomeworld] = useState({ name: "" });
 
   const getSWPeople = async () => {
     setSwPeoplePage(1);
-    let peopleData = await API.get(`https://swapi.co/api/people/?page=1`);
+    let peopleData = await API.getPeople("1");
     await setPeople(peopleData);
   };
 
   const getNextPageSWPeople = async () => {
     if (swPeoplePage < 9) {
       setSwPeoplePage(swPeoplePage + 1);
-      let peopleData = await API.get(
-        `https://swapi.co/api/people/?page=${swPeoplePage + 1}`
-      );
+      let peopleData = await API.getPeople(`${swPeoplePage + 1}`);
       await setPeople(peopleData);
     }
   };
@@ -30,9 +28,7 @@ export const Person: React.FC<IProps> = props => {
   const getPrevPageSWPeople = async () => {
     if (swPeoplePage > 1) {
       setSwPeoplePage(swPeoplePage - 1);
-      let peopleData = await API.get(
-        `https://swapi.co/api/people/?page=${swPeoplePage - 1}`
-      );
+      let peopleData = await API.getPeople(`${swPeoplePage - 1}`);
       await setPeople(peopleData);
     }
   };
@@ -43,7 +39,7 @@ export const Person: React.FC<IProps> = props => {
 
   const getOnePersonHomeworld = async (url: string) => {
     let onePersonHomeworld = await API.get(url);
-    await setOnePersonHomeworld(onePersonHomeworld)
+    await setOnePersonHomeworld(onePersonHomeworld);
   };
 
   return (

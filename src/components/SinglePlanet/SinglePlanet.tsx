@@ -1,16 +1,16 @@
 // @ts-ignore
 import React from "react";
-import "./SinglePlanet.scss";
 import { IPropsSinglePlanet } from "./SinglePlanetInterfaces";
+import { SinglePlanetsElement } from "./SinglePlanetElements";
 
 export const SinglePlanet: React.FC<IPropsSinglePlanet> = props => {
   return (
-    <div className={'SinglePlanets'}
+    <SinglePlanetsElement
       onClick={() => {
-        props.getsinglePlanetData(props.element.url);
+        props.getSinglePlanetData(props.element.url);
       }}
     >
       Planet name: {props.element.name}
-    </div>
+    </SinglePlanetsElement>
   );
 };

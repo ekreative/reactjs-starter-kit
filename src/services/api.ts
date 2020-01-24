@@ -18,17 +18,14 @@ export default class API {
         }
       )
       .then(response => {
-        return response.data; // return response;
+        return response.data;
       })
       .catch(error => {
         if (error.response) {
-          // The request was made, but the server responded with a status code
-          // that falls out of the range of 2xx
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
         } else {
-          // Something happened in setting up the request that triggered an Error
           console.log("Strange Error", error.message);
         }
         console.log(error.config);
@@ -38,17 +35,65 @@ export default class API {
     return axios
       .get(url)
       .then(response => {
-        return response.data; // return response;
+        return response.data;
       })
       .catch(error => {
         if (error.response) {
-          // The request was made, but the server responded with a status code
-          // that falls out of the range of 2xx
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
         } else {
-          // Something happened in setting up the request that triggered an Error
+          console.log("Strange Error", error.message);
+        }
+        console.log(error.config);
+      });
+  }
+  static getPeople(peoplePage: string) {
+    return axios
+      .get(`https://swapi.co/api/people/?page=${peoplePage}`)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else {
+          console.log("Strange Error", error.message);
+        }
+        console.log(error.config);
+      });
+  }
+  static getPlanets(planetsPage: string) {
+    return axios
+      .get(`https://swapi.co/api/planets/?page=${planetsPage}`)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else {
+          console.log("Strange Error", error.message);
+        }
+        console.log(error.config);
+      });
+  }
+  static getStarships(starshipPage: string) {
+    return axios
+      .get(`https://swapi.co/api/starships/?page=${starshipPage}`)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else {
           console.log("Strange Error", error.message);
         }
         console.log(error.config);

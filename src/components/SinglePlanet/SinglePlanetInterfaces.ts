@@ -1,6 +1,6 @@
 export interface IPropsSinglePlanet {
   planetName: string;
-  getsinglePlanetData: any;
+  getSinglePlanetData: any;
   element: {
     name: string;
     url: string;

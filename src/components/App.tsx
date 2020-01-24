@@ -1,18 +1,15 @@
-// @ts-ignore
 import React from "react";
-// router
 import { Route, Switch } from "react-router";
 import { HashRouter, Link, RouteComponentProps } from "react-router-dom";
-// components
 import ComponentAContainer from "./ComponentsA/ComponentAContainer";
 import ComponentBContainer from "./ComponentsB/ComponentBContainer";
 import PersonContainer from "./Person/PersonContainer";
 import PlanetContainer from "./Planets/PlanetContainer";
 import StarshipsContainer from "./Starships/StarshipsContainer";
-// @ts-ignore
 import logo from "../assets/images/logo.svg";
 import "./App.scss";
 import { IProps } from "./AppInterfaces";
+import { AppElement, AppHeaderElement, AppIntro } from "./AppElements"
 
 const NotFound = () => {
   return (
@@ -34,11 +31,11 @@ const NotFound = () => {
 export const App: React.FC<IProps> = props => {
   return (
     <HashRouter>
-      <div className="App">
-        <div className="App-header">
+      <AppElement>
+        <AppHeaderElement>
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
-        </div>
+        </AppHeaderElement>
 
         <div>
           <ul>
@@ -72,9 +69,9 @@ export const App: React.FC<IProps> = props => {
                 return (
                   <div>
                     <h2>Welcome to App</h2>
-                    <p className="App-intro">
+                    <AppIntro>
                       <code>src/components/App.js</code>
-                    </p>
+                    </AppIntro>
                     <p>Value: {props.value}</p>
                     <p>
                       <button
@@ -107,7 +104,7 @@ export const App: React.FC<IProps> = props => {
             <Route component={NotFound} />
           </Switch>
         </div>
-      </div>
+      </AppElement>
     </HashRouter>
   );
 };

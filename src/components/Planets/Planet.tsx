@@ -1,6 +1,5 @@
 // @ts-ignore
 import React, { useState } from "react";
-import "./Planet.scss";
 import { IPropsPlanet } from "./PlanetInterfaces";
 import API from "../../services/api";
 import { IElement } from "../Person/PersonInterfaces";
@@ -14,16 +13,14 @@ export const Planet: React.FC<IPropsPlanet> = props => {
 
   const getSWPlanets = async () => {
     setSwPlanetsPage(1);
-    let planetsData = await API.get(`https://swapi.co/api/planets/?page=1`);
+    let planetsData = await API.getPlanets(`1`);
     await setPlanets(planetsData);
   };
 
   const getNextPageSWPlanets = async () => {
     if (swPlanetsPage < 7) {
       setSwPlanetsPage(swPlanetsPage + 1);
-      let peopleData = await API.get(
-        `https://swapi.co/api/planets/?page=${swPlanetsPage + 1}`
-      );
+      let peopleData = await API.getPlanets(`${swPlanetsPage + 1}`);
       await setPlanets(peopleData);
     }
   };
@@ -31,14 +28,12 @@ export const Planet: React.FC<IPropsPlanet> = props => {
   const getPrevPageSWPlanets = async () => {
     if (swPlanetsPage > 1) {
       setSwPlanetsPage(swPlanetsPage - 1);
-      let peopleData = await API.get(
-        `https://swapi.co/api/planets/?page=${swPlanetsPage - 1}`
-      );
+      let peopleData = await API.getPlanets(`${swPlanetsPage - 1}`);
       await setPlanets(peopleData);
     }
   };
 
-  const getsinglePlanetData = async (url: string) => {
+  const getSinglePlanetData = async (url: string) => {
     let getOnePlanetData = await API.get(url);
     await setOnePlanetData(getOnePlanetData);
   };
@@ -58,7 +53,7 @@ export const Planet: React.FC<IPropsPlanet> = props => {
                 key={id}
                 element={element}
                 planetName={element.name}
-                getsinglePlanetData={getsinglePlanetData}
+                getSinglePlanetData={getSinglePlanetData}
               />
             );
           })}

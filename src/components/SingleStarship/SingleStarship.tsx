@@ -1,12 +1,11 @@
-// @ts-ignore
 import React from "react";
-import "./SingleStarship.scss";
 import { IPropsSingleStarship } from "./SingleStarshipInterfaces";
+import { SingleStarshipElement } from "./SingleStarshipElements"
 
 export const SingleStarship: React.FC<IPropsSingleStarship> = props => {
   return (
-    <div className={"SingleStarship"}>
+    <SingleStarshipElement>
       Starship Name: {props.element.name}
-    </div>
+    </SingleStarshipElement>
   );
 };

@@ -1,13 +1,13 @@
 // @ts-ignore
 import React from "react";
-import "./SinglePersonData.scss";
 import { IPropsSinglePerson } from "./SinglePersonDataInterfaces";
+import { SinglePersonDataElement } from "./SinglePersonDataElements"
 
 export const SinglePersonData: React.FC<IPropsSinglePerson> = props => {
 
   return (
     <div>
-      <div>
+      <SinglePersonDataElement>
         {props.element.name && <p>Name: {props.element.name}</p>}
         {props.element.height && <p>Height: {props.element.height}</p>}
         {props.element.homeworld && (
@@ -16,7 +16,7 @@ export const SinglePersonData: React.FC<IPropsSinglePerson> = props => {
           </button>
         )}
         {props?.onePersonHomeworld && <p>{props?.onePersonHomeworld}</p>}
-      </div>
+      </SinglePersonDataElement>
     </div>
   );
 };
