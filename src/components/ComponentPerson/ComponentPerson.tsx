@@ -10,6 +10,7 @@ export const ComponentPerson: React.FC<IProps> = props => {
   const [people, setPeople] = useState({ results: [] });
   const [swPeoplePage, setSwPeoplePage] = useState(1);
   const [onePersonData, setOnePersonData] = useState({ results: [] });
+  const [onePersonHomeworld, setOnePersonHomeworld] = useState({name: ''});
 
   const getSWPeople = async () => {
     console.log(people);
@@ -42,10 +43,21 @@ export const ComponentPerson: React.FC<IProps> = props => {
     await setOnePersonData(onePersonData);
   };
 
+  const getOnePersonHomeworld = async (url: string) => {
+    console.log(555);
+    let onePersonHomeworld = await API.get(url);
+    await setOnePersonHomeworld(onePersonHomeworld)
+  };
+
   return (
     <div className="ComponentA">
       <div className="ComponentA-header">
         <h2>Welcome to SWapi People Component</h2>
+      </div>
+      <div className="ComponentA-intro">
+        <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
+        <button onClick={getSWPeople}>get SW People page 1</button>
+        <button onClick={getNextPageSWPeople}> {`>>>`} </button>
       </div>
       <div className="ComponentA-intro">
         <div>
@@ -61,12 +73,11 @@ export const ComponentPerson: React.FC<IProps> = props => {
             );
           })}
         </div>
-        <ComponentSinglePersonDataContainer element={onePersonData} />
-      </div>
-      <div className="ComponentA-intro">
-        <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
-        <button onClick={getSWPeople}>get SW People page 1</button>
-        <button onClick={getNextPageSWPeople}> {`>>>`} </button>
+        <ComponentSinglePersonDataContainer
+          element={onePersonData}
+          getOnePersonHomeworld={getOnePersonHomeworld}
+          onePersonHomeworld={onePersonHomeworld.name}
+        />
       </div>
     </div>
   );

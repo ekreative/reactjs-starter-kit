@@ -11,9 +11,7 @@ const mapStateToProps = ({ main: { value } }: any) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    // bind actions with dispatch
     ...bindActionCreators({ changeStateProp }, dispatch)
-    // example that we can add our custom funcs to props
   };
 };
 

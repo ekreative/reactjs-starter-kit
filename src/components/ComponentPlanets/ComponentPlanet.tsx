@@ -4,10 +4,12 @@ import "./ComponentPlanet.css";
 import { IPropsPlanet } from "./ComponentPlanetInterfaces";
 import API from "../../services/api";
 import { IElement } from "../ComponentPerson/ComponentPersonInterfaces";
+import ComponentSinglePlanetContainer from "../ComponentSinglePlanet/ComponentSinglePlanetContainer";
 
 export const ComponentPlanet: React.FC<IPropsPlanet> = props => {
   const [planets, setPlanets] = useState({ results: [] });
   const [swPlanetsPage, setSwPlanetsPage] = useState(1);
+  const [onePlanetData, setOnePlanetData] = useState({ name: "" });
 
   const getSWPlanets = async () => {
     console.log(planets);
@@ -36,16 +38,34 @@ export const ComponentPlanet: React.FC<IPropsPlanet> = props => {
     }
   };
 
+  const getsinglePlanetData = async (url: string) => {
+    console.log("onePlanetData", onePlanetData);
+    let getOnePlanetData = await API.get(url);
+    await setOnePlanetData(getOnePlanetData);
+  };
+
   return (
-    <div className="ComponentA">
+    <div>
       <div>
-        {planets?.results.map((element: IElement, id: number) => {
-          return <div key={id}>{element.name}</div>;
-        })}
+        <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
+        <button onClick={getSWPlanets}>Get Planets</button>
+        <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
       </div>
-      <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
-      <button onClick={getSWPlanets}>Get Planets</button>
-      <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
+      <div className="Planets">
+        <div>
+        {planets?.results.map((element: IElement, id: number) => {
+          return (
+            <ComponentSinglePlanetContainer
+              key={id}
+              element={element}
+              planetName={element.name}
+              getsinglePlanetData={getsinglePlanetData}
+            />
+          );
+        })}
+        </div>
+        <div>{onePlanetData.name}</div>
+      </div>
     </div>
   );
 };
