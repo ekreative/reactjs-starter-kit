@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./Person.scss";
 import { IProps, IElement } from "./PersonInterfaces";
 import API from "../../services/api";
 import PersonDataContainer from "../PersonData/PersonDataContainer";
 import SinglePersonDataContainer from "../SinglePersonData/SinglePersonDataContainer";
+import { PersonContainer } from "./PersonElements"
 
 export const Person: React.FC<IProps> = props => {
   const [people, setPeople] = useState({ results: [] });
@@ -51,12 +51,12 @@ export const Person: React.FC<IProps> = props => {
       <div className="ComponentA-header">
         <h2>Welcome to SWapi People Component</h2>
       </div>
-      <div className="ComponentA-intro">
+      <PersonContainer>
         <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
         <button onClick={getSWPeople}>get SW People page 1</button>
         <button onClick={getNextPageSWPeople}> {`>>>`} </button>
-      </div>
-      <div className="ComponentA-intro">
+      </PersonContainer>
+      <PersonContainer>
         <div>
           {people?.results.map((element: IElement, id: number) => {
             return (
@@ -75,7 +75,7 @@ export const Person: React.FC<IProps> = props => {
           getOnePersonHomeworld={getOnePersonHomeworld}
           onePersonHomeworld={onePersonHomeworld.name}
         />
-      </div>
+      </PersonContainer>
     </div>
   );
 };
