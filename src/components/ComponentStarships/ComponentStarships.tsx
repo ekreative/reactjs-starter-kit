@@ -4,7 +4,7 @@ import "./ComponentStarships.css";
 import { IPropsStarships } from "./ComponentStarshipsInterfaces";
 import API from "../../services/api";
 import { IElement } from "../ComponentPerson/ComponentPersonInterfaces";
-import ComponentPersonDataContainer from "../ComponentPersonData/ComponentPersonDataContainer";
+import ComponsntSingleStarshipContainer from "../ComponentSingleStarship/ComponsntSingleStarshipContainer"
 
 export const ComponentStarships: React.FC<IPropsStarships> = props => {
   const [starships, setStarships] = useState({ results: [] });
@@ -19,7 +19,10 @@ export const ComponentStarships: React.FC<IPropsStarships> = props => {
       <button className="ComponentA" onClick={getSWPeople}>getStarships</button>
       {starships?.results.map((element: IElement, id: number) => {
         return (
-          <p key={element.url}>{element.name}</p>
+          <div>
+            <ComponsntSingleStarshipContainer key={id} element={element}/>
+            <div>123</div>
+          </div>
         );
       })}
     </>

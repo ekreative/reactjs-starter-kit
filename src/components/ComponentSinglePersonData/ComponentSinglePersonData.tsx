@@ -1,11 +1,9 @@
 // @ts-ignore
-import React, { useState } from "react";
+import React from "react";
 import "./ComponentSinglePersonData.css";
 import { IPropsSinglePerson } from "./ComponentSinglePersonDataInterfaces";
 
 export const ComponentSinglePersonData: React.FC<IPropsSinglePerson> = props => {
-  const [personPlanet, setPersonPlanet] = useState({name: null});
-  console.log(111, props);
 
   return (
     <div>
