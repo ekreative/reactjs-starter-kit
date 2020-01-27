@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import { IPropsStarships } from "./StarshipsInterfaces";
 import API from "../../services/api";
-import { IElement } from "../Person/PersonInterfaces";
 import SingleStarshipContainer from "../SingleStarship/SingleStarshipContainer";
 import { StarshipsDataElement } from "./StarshipsElements";
+
+interface IElement {
+  name: string;
+  url: string;
+}
+
+interface IPropsStarships {
+  value: number;
+}
 
 export const Starships: React.FC<IPropsStarships> = props => {
   const [starships, setStarships] = useState({ results: [] });
@@ -43,7 +50,6 @@ export const Starships: React.FC<IPropsStarships> = props => {
           </div>
         );
       })}
-      <div>some Text</div>
     </StarshipsDataElement>
   );
 };

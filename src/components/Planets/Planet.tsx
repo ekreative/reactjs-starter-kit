@@ -1,10 +1,17 @@
 // @ts-ignore
 import React, { useState } from "react";
-import { IPropsPlanet } from "./PlanetInterfaces";
 import API from "../../services/api";
-import { IElement } from "../Person/PersonInterfaces";
 import SinglePlanetContainer from "../SinglePlanet/SinglePlanetContainer";
 import { PlanetElement } from "./PlanetsElements";
+
+interface IElement {
+  name: string;
+  url: string;
+}
+
+interface IPropsPlanet {
+  value: number;
+}
 
 export const Planet: React.FC<IPropsPlanet> = props => {
   const [planets, setPlanets] = useState({ results: [] });

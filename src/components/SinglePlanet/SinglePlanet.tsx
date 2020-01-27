@@ -1,7 +1,15 @@
 // @ts-ignore
 import React from "react";
-import { IPropsSinglePlanet } from "./SinglePlanetInterfaces";
 import { SinglePlanetsElement } from "./SinglePlanetElements";
+
+interface IPropsSinglePlanet {
+  planetName: string;
+  getSinglePlanetData: any;
+  element: {
+    name: string;
+    url: string;
+  };
+}
 
 export const SinglePlanet: React.FC<IPropsSinglePlanet> = props => {
   return (

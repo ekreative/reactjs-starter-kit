@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import { IProps, IElement } from "./PersonInterfaces";
 import API from "../../services/api";
 import PersonDataContainer from "../PersonData/PersonDataContainer";
 import SinglePersonDataContainer from "../SinglePersonData/SinglePersonDataContainer";
 import { PersonContainer } from "./PersonElements";
+
+interface IProps {
+  value: number;
+}
+interface IElement {
+  name: string;
+  url: string;
+}
 
 export const Person: React.FC<IProps> = props => {
   const [people, setPeople] = useState({ results: [] });

@@ -7,8 +7,13 @@ import PersonContainer from "./Person/PersonContainer";
 import PlanetContainer from "./Planets/PlanetContainer";
 import StarshipsContainer from "./Starships/StarshipsContainer";
 import logo from "../assets/images/logo.svg";
-import { IProps } from "./AppInterfaces";
 import { AppElement, AppHeaderElement, AppIntro, AppLogo } from "./AppElements"
+
+interface IProps {
+  value: number;
+  changeStateProp: (first: string, second: number, third: string) => void;
+  myCustomPropsFunc: any;
+}
 
 const NotFound = () => {
   return (
@@ -48,13 +53,13 @@ export const App: React.FC<IProps> = props => {
               <Link to="/componentB">ComponentBContainer</Link>
             </li>
             <li>
-              <Link to="/componentPerson">componentPerson</Link>
+              <Link to="/person">Person</Link>
             </li>
             <li>
-              <Link to="/componentPlanet">componentPlanet</Link>
+              <Link to="/planet">Planet</Link>
             </li>
             <li>
-              <Link to="/componentStarships">componentStarships</Link>
+              <Link to="/starships">Starships</Link>
             </li>
           </ul>
         </div>
@@ -86,9 +91,9 @@ export const App: React.FC<IProps> = props => {
               }}
             />
             <Route path="/componentA" component={ComponentAContainer} />
-            <Route path="/componentPerson" component={PersonContainer} />
-            <Route path="/componentPlanet" component={PlanetContainer} />
-            <Route path="/componentStarships" component={StarshipsContainer} />
+            <Route path="/person" component={PersonContainer} />
+            <Route path="/planet" component={PlanetContainer} />
+            <Route path="/starships" component={StarshipsContainer} />
             <Route
               path="/componentB"
               render={obj => {
