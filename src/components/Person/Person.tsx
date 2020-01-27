@@ -3,6 +3,7 @@ import API from "../../services/api";
 import PersonDataContainer from "../PersonData/PersonDataContainer";
 import SinglePersonDataContainer from "../SinglePersonData/SinglePersonDataContainer";
 import { PersonContainer } from "./PersonElements";
+import { Spinner } from "../Spinner/Spinner";
 
 interface IProps {
   value: number;
@@ -65,13 +66,16 @@ export const Person: React.FC<IProps> = props => {
         <div>
           {people?.results.map((element: IElement, id: number) => {
             return (
-              <PersonDataContainer
-                id={id}
-                key={element.url}
-                element={element}
-                swPeoplePage={swPeoplePage}
-                getOnePersonData={getOnePersonData}
-              />
+              <div>
+                <PersonDataContainer
+                  id={id}
+                  key={element.url}
+                  element={element}
+                  swPeoplePage={swPeoplePage}
+                  getOnePersonData={getOnePersonData}
+                />
+                <Spinner />
+              </div>
             );
           })}
         </div>
