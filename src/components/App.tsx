@@ -7,9 +7,8 @@ import PersonContainer from "./Person/PersonContainer";
 import PlanetContainer from "./Planets/PlanetContainer";
 import StarshipsContainer from "./Starships/StarshipsContainer";
 import logo from "../assets/images/logo.svg";
-import "./App.scss";
 import { IProps } from "./AppInterfaces";
-import { AppElement, AppHeaderElement, AppIntro } from "./AppElements"
+import { AppElement, AppHeaderElement, AppIntro, AppLogo } from "./AppElements"
 
 const NotFound = () => {
   return (
@@ -33,7 +32,7 @@ export const App: React.FC<IProps> = props => {
     <HashRouter>
       <AppElement>
         <AppHeaderElement>
-          <img src={logo} className="App-logo" alt="logo" />
+          <AppLogo src={logo} alt="logo" />
           <h2>Welcome to React</h2>
         </AppHeaderElement>
 
