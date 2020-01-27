@@ -18,6 +18,7 @@ interface IProps {
 const NotFound = () => {
   return (
     <Route
+        // @ts-ignore
       render={({ staticContext }: RouteComponentProps<string, any, string>) => {
         if (staticContext) {
           staticContext.status = 404;

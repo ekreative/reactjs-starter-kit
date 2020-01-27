@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { css } from "@emotion/core";
 import { ClipLoader } from "react-spinners";
 
@@ -12,7 +12,7 @@ const override = css`
 `;
 
 export const Spinner: React.FC<ISomething> = props => {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   return (
     <div className="sweet-loading">
@@ -21,7 +21,7 @@ export const Spinner: React.FC<ISomething> = props => {
         size={30}
         //size={"150px"} this also works
         color={"#123abc"}
-        loading={loading}
+        loading={true}
       />
     </div>
   );

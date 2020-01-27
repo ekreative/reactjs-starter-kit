@@ -7,6 +7,8 @@ import { Spinner } from "../Spinner/Spinner";
 
 interface IProps {
   value: number;
+  spinnerIsLoading: any;
+  isLoading: boolean;
 }
 interface IElement {
   name: string;
@@ -14,6 +16,7 @@ interface IElement {
 }
 
 export const Person: React.FC<IProps> = props => {
+  console.log(121212, props)
   const [people, setPeople] = useState({ results: [] });
   const [swPeoplePage, setSwPeoplePage] = useState(1);
   const [onePersonData, setOnePersonData] = useState({ results: [] });
@@ -23,6 +26,8 @@ export const Person: React.FC<IProps> = props => {
     setSwPeoplePage(1);
     let peopleData = await API.getPeople("1");
     await setPeople(peopleData);
+    await console.log(props.isLoading)
+    await props.spinnerIsLoading();
   };
 
   const getNextPageSWPeople = async () => {
@@ -49,11 +54,13 @@ export const Person: React.FC<IProps> = props => {
     let onePersonHomeworld = await API.get(url);
     await setOnePersonHomeworld(onePersonHomeworld);
   };
+
   useEffect(() => {
     getSWPeople();
   }, []);
 
   return (
+      props.isLoading ? <Spinner />:
     <div className="ComponentA">
       <div className="ComponentA-header">
         <h2>Welcome to SWapi People Component</h2>
@@ -66,16 +73,13 @@ export const Person: React.FC<IProps> = props => {
         <div>
           {people?.results.map((element: IElement, id: number) => {
             return (
-              <div>
-                <PersonDataContainer
-                  id={id}
-                  key={element.url}
-                  element={element}
-                  swPeoplePage={swPeoplePage}
-                  getOnePersonData={getOnePersonData}
-                />
-                <Spinner />
-              </div>
+              <PersonDataContainer
+                id={id}
+                key={element.url}
+                element={element}
+                swPeoplePage={swPeoplePage}
+                getOnePersonData={getOnePersonData}
+              />
             );
           })}
         </div>

@@ -1,23 +1,22 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { changeStateProp } from "../../actions";
+import { spinnerIsLoading } from "../../actions/main";
 import { Person } from "./Person";
 
-const mapStateToProps = ({ main: { value } }: any) => {
+const mapStateToProps = ({ main: { value, isLoading } }: any) => {
   return {
-    value
+    value,
+    isLoading
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ changeStateProp }, dispatch),
+    ...bindActionCreators({ changeStateProp, spinnerIsLoading }, dispatch)
   };
 };
 
-const PersonContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Person);
+const PersonContainer = connect(mapStateToProps, mapDispatchToProps)(Person);
 
 export default PersonContainer;
