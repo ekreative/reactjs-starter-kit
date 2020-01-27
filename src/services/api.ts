@@ -1,5 +1,10 @@
 import axios from "axios";
-import { API_HOST } from "../config";
+import {
+  API_HOST,
+  API_HOST_PEOPLE,
+  API_HOST_PLANETS,
+  API_HOST_STARSHIPS
+} from "../config";
 
 axios.defaults.baseURL = API_HOST;
 
@@ -50,7 +55,7 @@ export default class API {
   }
   static getPeople(peoplePage: string) {
     return axios
-      .get(`https://swapi.co/api/people/?page=${peoplePage}`)
+      .get(API_HOST_PEOPLE + `${peoplePage}`)
       .then(response => {
         return response.data;
       })
@@ -67,7 +72,7 @@ export default class API {
   }
   static getPlanets(planetsPage: string) {
     return axios
-      .get(`https://swapi.co/api/planets/?page=${planetsPage}`)
+      .get(API_HOST_PLANETS + `${planetsPage}`)
       .then(response => {
         return response.data;
       })
@@ -84,7 +89,7 @@ export default class API {
   }
   static getStarships(starshipPage: string) {
     return axios
-      .get(`https://swapi.co/api/starships/?page=${starshipPage}`)
+      .get(API_HOST_STARSHIPS + `${starshipPage}`)
       .then(response => {
         return response.data;
       })
