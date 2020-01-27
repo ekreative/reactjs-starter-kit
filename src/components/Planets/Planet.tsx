@@ -1,5 +1,5 @@
 // @ts-ignore
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import API from "../../services/api";
 import SinglePlanetContainer from "../SinglePlanet/SinglePlanetContainer";
 import { PlanetElement } from "./PlanetsElements";
@@ -44,12 +44,14 @@ export const Planet: React.FC<IPropsPlanet> = props => {
     let getOnePlanetData = await API.get(url);
     await setOnePlanetData(getOnePlanetData);
   };
+  useEffect(() => {
+    getSWPlanets();
+  }, []);
 
   return (
     <div>
       <div>
         <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
-        <button onClick={getSWPlanets}>Get Planets</button>
         <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
       </div>
       <PlanetElement>

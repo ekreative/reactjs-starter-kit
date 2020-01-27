@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import API from "../../services/api";
 import SingleStarshipContainer from "../SingleStarship/SingleStarshipContainer";
 import { StarshipsDataElement } from "./StarshipsElements";
@@ -36,10 +36,14 @@ export const Starships: React.FC<IPropsStarships> = props => {
       await setStarships(starshipsData);
     }
   };
+
+  useEffect(() => {
+    getSWStarships();
+  }, []);
+
   return (
     <StarshipsDataElement>
       <button onClick={getPrevPageSWStarships}> {`<<<`} </button>
-      <button onClick={getSWStarships}>getStarships</button>
       <button onClick={getNextPageSWStarships}> {`>>>`} </button>
       {starships?.results.map((element: IElement, id: number) => {
         return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import API from "../../services/api";
 import PersonDataContainer from "../PersonData/PersonDataContainer";
 import SinglePersonDataContainer from "../SinglePersonData/SinglePersonDataContainer";
@@ -48,6 +48,9 @@ export const Person: React.FC<IProps> = props => {
     let onePersonHomeworld = await API.get(url);
     await setOnePersonHomeworld(onePersonHomeworld);
   };
+  useEffect(() => {
+    getSWPeople();
+  }, []);
 
   return (
     <div className="ComponentA">
@@ -56,7 +59,6 @@ export const Person: React.FC<IProps> = props => {
       </div>
       <PersonContainer>
         <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
-        <button onClick={getSWPeople}>get SW People page 1</button>
         <button onClick={getNextPageSWPeople}> {`>>>`} </button>
       </PersonContainer>
       <PersonContainer>
