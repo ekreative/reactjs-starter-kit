@@ -7,7 +7,7 @@ import { Spinner } from "../Spinner/Spinner";
 
 interface IProps {
   value: number;
-  spinnerIsLoading: () =>{};
+  spinnerIsLoading: () => {};
   isLoading: boolean;
 }
 interface IElement {
@@ -44,7 +44,7 @@ export const Person: React.FC<IProps> = props => {
       setSwPeoplePage(swPeoplePage - 1);
       let peopleData = await API.getPeople(`${swPeoplePage - 1}`);
       await setPeople(peopleData);
-      await props.spinnerIsLoading()
+      await props.spinnerIsLoading();
     }
   };
   const getOnePersonData = async (url: string) => {
@@ -66,8 +66,9 @@ export const Person: React.FC<IProps> = props => {
     getSWPeople();
   }, []);
 
-  return (
-      props.isLoading ? <Spinner />:
+  return props.isLoading ? (
+    <Spinner />
+  ) : (
     <div className="ComponentA">
       <div className="ComponentA-header">
         <h2>Welcome to SWapi People Component</h2>
