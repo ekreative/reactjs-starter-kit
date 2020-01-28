@@ -7,7 +7,7 @@ import { Spinner } from "../Spinner/Spinner";
 
 interface IProps {
   value: number;
-  spinnerIsLoading: any;
+  spinnerIsLoading: () =>{};
   isLoading: boolean;
 }
 interface IElement {
