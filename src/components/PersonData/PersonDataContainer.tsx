@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { changeStateProp } from "../../actions";
-import { spinnerIsLoading } from "../../actions/main";
 import { PersonData } from "./PersonData";
 
 const mapStateToProps = ({ main: { value } }: any) => {
@@ -12,7 +11,7 @@ const mapStateToProps = ({ main: { value } }: any) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ changeStateProp, spinnerIsLoading }, dispatch),
+    ...bindActionCreators({ changeStateProp }, dispatch),
   };
 };
 
