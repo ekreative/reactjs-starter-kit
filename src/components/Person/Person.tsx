@@ -16,7 +16,6 @@ interface IElement {
 }
 
 export const Person: React.FC<IProps> = props => {
-  console.log(121212, props)
   const [people, setPeople] = useState({ results: [] });
   const [swPeoplePage, setSwPeoplePage] = useState(1);
   const [onePersonData, setOnePersonData] = useState({ results: [] });
@@ -26,23 +25,26 @@ export const Person: React.FC<IProps> = props => {
     setSwPeoplePage(1);
     let peopleData = await API.getPeople("1");
     await setPeople(peopleData);
-    await console.log(props.isLoading)
     await props.spinnerIsLoading();
   };
 
   const getNextPageSWPeople = async () => {
     if (swPeoplePage < 9) {
+      props.spinnerIsLoading();
       setSwPeoplePage(swPeoplePage + 1);
       let peopleData = await API.getPeople(`${swPeoplePage + 1}`);
       await setPeople(peopleData);
+      await props.spinnerIsLoading();
     }
   };
 
   const getPrevPageSWPeople = async () => {
     if (swPeoplePage > 1) {
+      props.spinnerIsLoading();
       setSwPeoplePage(swPeoplePage - 1);
       let peopleData = await API.getPeople(`${swPeoplePage - 1}`);
       await setPeople(peopleData);
+      await props.spinnerIsLoading()
     }
   };
   const getOnePersonData = async (url: string) => {
@@ -51,11 +53,12 @@ export const Person: React.FC<IProps> = props => {
   };
 
   const getOnePersonHomeworld = async (url: string) => {
+
     let onePersonHomeworld = await API.get(url);
     await setOnePersonHomeworld(onePersonHomeworld);
   };
-
   useEffect(() => {
+    props.spinnerIsLoading();
     getSWPeople();
   }, []);
 
