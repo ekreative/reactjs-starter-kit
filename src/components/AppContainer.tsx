@@ -4,8 +4,9 @@ import { bindActionCreators } from "redux";
 import { changeStateProp } from "../actions";
 import { App } from "./App";
 
-const mapStateToProps = ({ main: { value } }: any) => {
+const mapStateToProps = ({ main: { value }, ui: { isLoading } }: any) => {
   return {
+    isLoading,
     value
   };
 };

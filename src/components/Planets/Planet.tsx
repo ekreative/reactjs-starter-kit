@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import API from "../../services/api";
 import SinglePlanetContainer from "../SinglePlanet/SinglePlanetContainer";
 import { PlanetElement } from "./PlanetsElements";
-import { Spinner } from "../Spinner/Spinner";
-// @ts-ignore
-import LoadingOverlay from "react-loading-overlay";
 
 interface IElement {
   name: string;
@@ -62,28 +59,26 @@ export const Planet: React.FC<IPropsPlanet> = props => {
   }, []); // eslint-disable-line
 
   return (
-    <LoadingOverlay active={props.isLoading} spinner={<Spinner />}>
+    <div>
       <div>
-        <div>
-          <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
-          <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
-        </div>
-        <PlanetElement>
-          <div>
-            {planets?.results.map((element: IElement, id: number) => {
-              return (
-                <SinglePlanetContainer
-                  key={id}
-                  element={element}
-                  planetName={element.name}
-                  getSinglePlanetData={getSinglePlanetData}
-                />
-              );
-            })}
-          </div>
-          <div>{onePlanetData.name}</div>
-        </PlanetElement>
+        <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
+        <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
       </div>
-    </LoadingOverlay>
+      <PlanetElement>
+        <div>
+          {planets?.results.map((element: IElement, id: number) => {
+            return (
+              <SinglePlanetContainer
+                key={id}
+                element={element}
+                planetName={element.name}
+                getSinglePlanetData={getSinglePlanetData}
+              />
+            );
+          })}
+        </div>
+        <div>{onePlanetData.name}</div>
+      </PlanetElement>
+    </div>
   );
 };

@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import API from "../../services/api";
 import SingleStarshipContainer from "../SingleStarship/SingleStarshipContainer";
 import { StarshipsDataElement } from "./StarshipsElements";
-import { Spinner } from "../Spinner/Spinner";
-// @ts-ignore
-import LoadingOverlay from "react-loading-overlay";
 
 interface IElement {
   name: string;
@@ -54,20 +51,12 @@ export const Starships: React.FC<IPropsStarships> = props => {
   }, []); // eslint-disable-line
 
   return (
-    <LoadingOverlay active={props.isLoading} spinner={<Spinner />}>
-      <StarshipsDataElement>
-        <button onClick={getPrevPageSWStarships}> {`<<<`} </button>
-        <button onClick={getNextPageSWStarships}> {`>>>`} </button>
-        {starships?.results.map((element: IElement, id: number) => {
-          return (
-            <div>
-              <div>
-                <SingleStarshipContainer key={id} element={element} />
-              </div>
-            </div>
-          );
-        })}
-      </StarshipsDataElement>
-    </LoadingOverlay>
+    <StarshipsDataElement>
+      <button onClick={getPrevPageSWStarships}> {`<<<`} </button>
+      <button onClick={getNextPageSWStarships}> {`>>>`} </button>
+      {starships?.results.map((element: IElement, id: number) => {
+        return <SingleStarshipContainer key={id} element={element} />;
+      })}
+    </StarshipsDataElement>
   );
 };
