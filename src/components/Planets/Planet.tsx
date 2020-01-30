@@ -1,9 +1,10 @@
-// @ts-ignore
 import React, { useEffect, useState } from "react";
 import API from "../../services/api";
 import SinglePlanetContainer from "../SinglePlanet/SinglePlanetContainer";
 import { PlanetElement } from "./PlanetsElements";
 import { Spinner } from "../Spinner/Spinner";
+// @ts-ignore
+import LoadingOverlay from "react-loading-overlay";
 
 interface IElement {
   name: string;
@@ -17,7 +18,6 @@ interface IPropsPlanet {
 }
 
 export const Planet: React.FC<IPropsPlanet> = props => {
-  console.log(121212, props);
   const [planets, setPlanets] = useState({ results: [] });
   const [swPlanetsPage, setSwPlanetsPage] = useState(1);
   const [onePlanetData, setOnePlanetData] = useState({ name: "" });
@@ -58,31 +58,31 @@ export const Planet: React.FC<IPropsPlanet> = props => {
   useEffect(() => {
     props.spinnerIsLoading();
     getSWPlanets();
-  }, []);
+  }, []); // eslint-disable-line
 
-  return props.isLoading ? (
-    <Spinner />
-  ) : (
-    <div>
+  return (
+    <LoadingOverlay active={props.isLoading} spinner={<Spinner />}>
       <div>
-        <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
-        <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
-      </div>
-      <PlanetElement>
         <div>
-          {planets?.results.map((element: IElement, id: number) => {
-            return (
-              <SinglePlanetContainer
-                key={id}
-                element={element}
-                planetName={element.name}
-                getSinglePlanetData={getSinglePlanetData}
-              />
-            );
-          })}
+          <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
+          <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
         </div>
-        <div>{onePlanetData.name}</div>
-      </PlanetElement>
-    </div>
+        <PlanetElement>
+          <div>
+            {planets?.results.map((element: IElement, id: number) => {
+              return (
+                <SinglePlanetContainer
+                  key={id}
+                  element={element}
+                  planetName={element.name}
+                  getSinglePlanetData={getSinglePlanetData}
+                />
+              );
+            })}
+          </div>
+          <div>{onePlanetData.name}</div>
+        </PlanetElement>
+      </div>
+    </LoadingOverlay>
   );
 };

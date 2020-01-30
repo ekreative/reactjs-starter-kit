@@ -3,6 +3,8 @@ import API from "../../services/api";
 import SingleStarshipContainer from "../SingleStarship/SingleStarshipContainer";
 import { StarshipsDataElement } from "./StarshipsElements";
 import { Spinner } from "../Spinner/Spinner";
+// @ts-ignore
+import LoadingOverlay from "react-loading-overlay";
 
 interface IElement {
   name: string;
@@ -48,23 +50,23 @@ export const Starships: React.FC<IPropsStarships> = props => {
   useEffect(() => {
     props.spinnerIsLoading();
     getSWStarships();
-  }, []);
+  }, []); // eslint-disable-line
 
-  return props.isLoading ? (
-    <Spinner />
-  ) : (
-    <StarshipsDataElement>
-      <button onClick={getPrevPageSWStarships}> {`<<<`} </button>
-      <button onClick={getNextPageSWStarships}> {`>>>`} </button>
-      {starships?.results.map((element: IElement, id: number) => {
-        return (
-          <div>
+  return (
+    <LoadingOverlay active={props.isLoading} spinner={<Spinner />}>
+      <StarshipsDataElement>
+        <button onClick={getPrevPageSWStarships}> {`<<<`} </button>
+        <button onClick={getNextPageSWStarships}> {`>>>`} </button>
+        {starships?.results.map((element: IElement, id: number) => {
+          return (
             <div>
-              <SingleStarshipContainer key={id} element={element} />
+              <div>
+                <SingleStarshipContainer key={id} element={element} />
+              </div>
             </div>
-          </div>
-        );
-      })}
-    </StarshipsDataElement>
+          );
+        })}
+      </StarshipsDataElement>
+    </LoadingOverlay>
   );
 };

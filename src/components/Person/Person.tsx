@@ -4,6 +4,8 @@ import PersonDataContainer from "../PersonData/PersonDataContainer";
 import SinglePersonDataContainer from "../SinglePersonData/SinglePersonDataContainer";
 import { PersonContainer } from "./PersonElements";
 import { Spinner } from "../Spinner/Spinner";
+// @ts-ignore
+import LoadingOverlay from "react-loading-overlay";
 
 interface IProps {
   value: number;
@@ -64,39 +66,39 @@ export const Person: React.FC<IProps> = props => {
   useEffect(() => {
     props.spinnerIsLoading();
     getSWPeople();
-  }, []);
+  }, []); // eslint-disable-line
 
-  return props.isLoading ? (
-    <Spinner />
-  ) : (
-    <div className="ComponentA">
-      <div className="ComponentA-header">
-        <h2>Welcome to SWapi People Component</h2>
-      </div>
-      <PersonContainer>
-        <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
-        <button onClick={getNextPageSWPeople}> {`>>>`} </button>
-      </PersonContainer>
-      <PersonContainer>
-        <div>
-          {people?.results.map((element: IElement, id: number) => {
-            return (
-              <PersonDataContainer
-                id={id}
-                key={element.url}
-                element={element}
-                swPeoplePage={swPeoplePage}
-                getOnePersonData={getOnePersonData}
-              />
-            );
-          })}
+  return (
+    <LoadingOverlay active={props.isLoading} spinner={<Spinner />}>
+      <div className="ComponentA">
+        <div className="ComponentA-header">
+          <h2>Welcome to SWapi People Component</h2>
         </div>
-        <SinglePersonDataContainer
-          element={onePersonData}
-          getOnePersonHomeworld={getOnePersonHomeworld}
-          onePersonHomeworld={onePersonHomeworld.name}
-        />
-      </PersonContainer>
-    </div>
+        <PersonContainer>
+          <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
+          <button onClick={getNextPageSWPeople}> {`>>>`} </button>
+        </PersonContainer>
+        <PersonContainer>
+          <div>
+            {people?.results.map((element: IElement, id: number) => {
+              return (
+                <PersonDataContainer
+                  id={id}
+                  key={element.url}
+                  element={element}
+                  swPeoplePage={swPeoplePage}
+                  getOnePersonData={getOnePersonData}
+                />
+              );
+            })}
+          </div>
+          <SinglePersonDataContainer
+            element={onePersonData}
+            getOnePersonHomeworld={getOnePersonHomeworld}
+            onePersonHomeworld={onePersonHomeworld.name}
+          />
+        </PersonContainer>
+      </div>
+    </LoadingOverlay>
   );
 };

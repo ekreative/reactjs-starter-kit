@@ -9,7 +9,6 @@ const defaultState: { value: number; isLoading: boolean } = {
 };
 
 export default (state = defaultState, action: any) => {
-  console.log(111, state, action)
   switch (action.type) {
     case INCREMENT:
       return {
