@@ -19,7 +19,6 @@ interface IElement {
 }
 
 export const Person: React.FC<IProps> = props => {
-  console.log(props)
   const [people, setPeople] = useState({ results: [] });
   const [swPeoplePage, setSwPeoplePage] = useState(1);
   const [onePersonData, setOnePersonData] = useState({ results: [] });

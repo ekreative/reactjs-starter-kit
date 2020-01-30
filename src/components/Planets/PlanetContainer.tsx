@@ -4,9 +4,8 @@ import { changeStateProp } from "../../actions";
 import { spinnerStartLoading, spinnerEndLoading } from "../../actions/main";
 import { Planet } from "./Planet";
 
-const mapStateToProps = ({ main: { value, isLoading } }: any) => {
+const mapStateToProps = ({ ui: { isLoading } }: any) => {
   return {
-    value,
     isLoading
   };
 };

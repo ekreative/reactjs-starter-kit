@@ -13,7 +13,8 @@ interface IElement {
 
 interface IPropsPlanet {
   value: number;
-  spinnerIsLoading: () => {};
+  spinnerStartLoading: () => {};
+  spinnerEndLoading: () => {};
   isLoading: boolean;
 }
 
@@ -26,37 +27,37 @@ export const Planet: React.FC<IPropsPlanet> = props => {
     setSwPlanetsPage(1);
     let planetsData = await API.getPlanets(`1`);
     await setPlanets(planetsData);
-    await props.spinnerIsLoading();
+    await props.spinnerEndLoading();
   };
 
   const getNextPageSWPlanets = async () => {
     if (swPlanetsPage < 7) {
-      props.spinnerIsLoading();
+      props.spinnerStartLoading();
       setSwPlanetsPage(swPlanetsPage + 1);
       let peopleData = await API.getPlanets(`${swPlanetsPage + 1}`);
       await setPlanets(peopleData);
-      await props.spinnerIsLoading();
+      await props.spinnerEndLoading();
     }
   };
 
   const getPrevPageSWPlanets = async () => {
     if (swPlanetsPage > 1) {
-      props.spinnerIsLoading();
+      props.spinnerStartLoading();
       setSwPlanetsPage(swPlanetsPage - 1);
       let peopleData = await API.getPlanets(`${swPlanetsPage - 1}`);
       await setPlanets(peopleData);
-      await props.spinnerIsLoading();
+      await props.spinnerEndLoading();
     }
   };
 
   const getSinglePlanetData = async (url: string) => {
-    props.spinnerIsLoading();
+    props.spinnerStartLoading();
     let getOnePlanetData = await API.get(url);
     await setOnePlanetData(getOnePlanetData);
-    await props.spinnerIsLoading();
+    await props.spinnerEndLoading();
   };
   useEffect(() => {
-    props.spinnerIsLoading();
+    props.spinnerStartLoading();
     getSWPlanets();
   }, []); // eslint-disable-line
 

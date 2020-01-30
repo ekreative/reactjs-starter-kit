@@ -5,7 +5,6 @@ const defaultState: { isLoading: boolean | null } = {
 };
 
 export default (state = defaultState, action: any) => {
-  console.log(action.type);
   switch (action.type) {
     case SPINNER_START_LOADING:
       return {
