@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { changeStateProp } from "../../actions";
-import { spinnerIsLoading } from "../../actions/main";
+import { spinnerStartLoading, spinnerEndLoading } from "../../actions/main";
 import { Planet } from "./Planet";
 
 const mapStateToProps = ({ main: { value, isLoading } }: any) => {
@@ -13,7 +13,10 @@ const mapStateToProps = ({ main: { value, isLoading } }: any) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ changeStateProp, spinnerIsLoading }, dispatch)
+    ...bindActionCreators(
+      { changeStateProp, spinnerStartLoading, spinnerEndLoading },
+      dispatch
+    )
   };
 };
 

@@ -1,3 +1,4 @@
 import main from "./main";
+import ui from "./ui"
 
-export default { main };
+export default { main, ui };

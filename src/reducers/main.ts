@@ -1,11 +1,10 @@
 import update from "immutability-helper";
 import { CHANGE_STATE_PROP } from "../actions";
-import { DECREMENT, INCREMENT, SPINNER_IS_LOADING } from "../actions/main";
+import { DECREMENT, INCREMENT } from "../actions/main";
 
 const REDUCER = "MAIN";
-const defaultState: { value: number; isLoading: boolean } = {
-  value: 0,
-  isLoading: false
+const defaultState: { value: number } = {
+  value: 0
 };
 
 export default (state = defaultState, action: any) => {
@@ -19,11 +18,6 @@ export default (state = defaultState, action: any) => {
       return {
         ...state,
         value: state.value - 1
-      };
-    case SPINNER_IS_LOADING:
-      return {
-        ...state,
-        isLoading: !state.isLoading
       };
     case REDUCER + CHANGE_STATE_PROP:
       return update(state, {

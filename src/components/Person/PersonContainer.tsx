@@ -1,19 +1,21 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { changeStateProp } from "../../actions";
-import { spinnerIsLoading } from "../../actions/main";
+import { spinnerStartLoading, spinnerEndLoading } from "../../actions/main";
 import { Person } from "./Person";
 
-const mapStateToProps = ({ main: { value, isLoading } }: any) => {
+const mapStateToProps = ({ ui: { isLoading } }: any) => {
   return {
-    value,
     isLoading
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ changeStateProp, spinnerIsLoading }, dispatch)
+    ...bindActionCreators(
+      { changeStateProp, spinnerStartLoading, spinnerEndLoading },
+      dispatch
+    )
   };
 };
 

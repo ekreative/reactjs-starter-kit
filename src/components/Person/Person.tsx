@@ -9,7 +9,8 @@ import LoadingOverlay from "react-loading-overlay";
 
 interface IProps {
   value: number;
-  spinnerIsLoading: () => {};
+  spinnerStartLoading: () => {};
+  spinnerEndLoading: () => {};
   isLoading: boolean;
 }
 interface IElement {
@@ -18,6 +19,7 @@ interface IElement {
 }
 
 export const Person: React.FC<IProps> = props => {
+  console.log(props)
   const [people, setPeople] = useState({ results: [] });
   const [swPeoplePage, setSwPeoplePage] = useState(1);
   const [onePersonData, setOnePersonData] = useState({ results: [] });
@@ -27,44 +29,44 @@ export const Person: React.FC<IProps> = props => {
     setSwPeoplePage(1);
     let peopleData = await API.getPeople("1");
     await setPeople(peopleData);
-    await props.spinnerIsLoading();
+    await props.spinnerEndLoading();
   };
 
   const getNextPageSWPeople = async () => {
     if (swPeoplePage < 9) {
-      props.spinnerIsLoading();
+      props.spinnerStartLoading();
       setSwPeoplePage(swPeoplePage + 1);
       let peopleData = await API.getPeople(`${swPeoplePage + 1}`);
       await setPeople(peopleData);
-      await props.spinnerIsLoading();
+      await props.spinnerEndLoading();
     }
   };
 
   const getPrevPageSWPeople = async () => {
     if (swPeoplePage > 1) {
-      props.spinnerIsLoading();
+      props.spinnerStartLoading();
       setSwPeoplePage(swPeoplePage - 1);
       let peopleData = await API.getPeople(`${swPeoplePage - 1}`);
       await setPeople(peopleData);
-      await props.spinnerIsLoading();
+      await props.spinnerEndLoading();
     }
   };
   const getOnePersonData = async (url: string) => {
-    props.spinnerIsLoading();
+    props.spinnerStartLoading();
     let onePersonData = await API.get(url);
     await setOnePersonData(onePersonData);
-    await props.spinnerIsLoading();
+    await props.spinnerEndLoading();
   };
 
   const getOnePersonHomeworld = async (url: string) => {
-    props.spinnerIsLoading();
+    props.spinnerStartLoading();
     let onePersonHomeworld = await API.get(url);
     await setOnePersonHomeworld(onePersonHomeworld);
-    await props.spinnerIsLoading();
+    await props.spinnerEndLoading();
   };
 
   useEffect(() => {
-    props.spinnerIsLoading();
+    props.spinnerStartLoading();
     getSWPeople();
   }, []); // eslint-disable-line
 
