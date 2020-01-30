@@ -49,14 +49,14 @@ export const Person: React.FC<IProps> = props => {
   };
   const getOnePersonData = async (url: string) => {
     props.spinnerStartLoading();
-    setOnePersonHomeworld({ name: "" })
+    setOnePersonHomeworld({ name: "" });
     let onePersonData = await API.get(url);
     await setOnePersonData(onePersonData);
     await props.spinnerEndLoading();
   };
 
   const getOnePersonHomeworld = async (url: string) => {
-    props.spinnerStartLoading();;
+    props.spinnerStartLoading();
     let onePersonHomeworld = await API.get(url);
     await setOnePersonHomeworld(onePersonHomeworld);
     await props.spinnerEndLoading();

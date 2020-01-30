@@ -1,4 +1,6 @@
 import styled, { keyframes } from "styled-components";
+// @ts-ignore
+import LoadingOverlay from "react-loading-overlay";
 
 const rotate360 = keyframes`
   from {
@@ -30,5 +32,17 @@ export const AppLogo = styled.img`
   height: 80px;
   &:hover {
     animation: ${rotate360} infinite 1.5s linear;
+  }
+`;
+
+export const StyledLoader = styled(LoadingOverlay)`
+  width: 100%;
+  height: 98vh;
+  overflow: hidden;
+  .MyLoader_overlay {
+    background: rgba(255, 0, 0, 0.5);
+  }
+  &.MyLoader_wrapper--active {
+    overflow: hidden;
   }
 `;

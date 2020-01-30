@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import API from "../../services/api";
 import SinglePlanetContainer from "../SinglePlanet/SinglePlanetContainer";
-import { PlanetElements, PlanetElement } from "./PlanetsElements";
+import {
+  PlanetElements,
+  PlanetElement,
+  PlanetsContainerButton
+} from "./PlanetsElements";
 
 interface IElement {
   name: string;
@@ -78,10 +82,10 @@ export const Planet: React.FC<IPropsPlanet> = props => {
         </PlanetElement>
         <div>{onePlanetData.name}</div>
       </PlanetElements>
-      <div>
+      <PlanetsContainerButton>
         <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
         <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
-      </div>
+      </PlanetsContainerButton>
     </div>
   );
 };

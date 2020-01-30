@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import API from "../../services/api";
 import SingleStarshipContainer from "../SingleStarship/SingleStarshipContainer";
-import { StarshipsDataElement } from "./StarshipsElements";
+import {
+  StarshipsDataElement,
+  StarshipsContainerButton
+} from "./StarshipsElements";
 
 interface IElement {
   name: string;
@@ -59,8 +62,10 @@ export const Starships: React.FC<IPropsStarships> = props => {
         {starships?.results.map((element: IElement, id: number) => {
           return <SingleStarshipContainer key={id} element={element} />;
         })}
-        <button onClick={getPrevPageSWStarships}> {`<<<`} </button>
-        <button onClick={getNextPageSWStarships}> {`>>>`} </button>
+        <StarshipsContainerButton>
+          <button onClick={getPrevPageSWStarships}> {`<<<`} </button>
+          <button onClick={getNextPageSWStarships}> {`>>>`} </button>
+        </StarshipsContainerButton>
       </StarshipsDataElement>
     </div>
   );

@@ -10,7 +10,7 @@ import logo from "../assets/images/logo.svg";
 import { AppElement, AppHeaderElement, AppIntro, AppLogo } from "./AppElements";
 import { Spinner } from "./Spinner/Spinner";
 // @ts-ignore
-import LoadingOverlay from "react-loading-overlay";
+import { StyledLoader } from "./AppElements";
 
 interface IProps {
   isLoading: boolean | null;
@@ -40,7 +40,10 @@ const NotFound = () => {
 export const App: React.FC<IProps> = props => {
   return (
     <HashRouter>
-      <LoadingOverlay active={props.isLoading} spinner={<Spinner />}>
+      <StyledLoader
+        active={props.isLoading}
+        spinner={<Spinner />}
+      >
         <AppElement>
           <AppHeaderElement>
             <AppLogo src={logo} alt="logo" />
@@ -115,7 +118,7 @@ export const App: React.FC<IProps> = props => {
             </Switch>
           </div>
         </AppElement>
-      </LoadingOverlay>
+      </StyledLoader>
     </HashRouter>
   );
 };

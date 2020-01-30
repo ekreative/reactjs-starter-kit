@@ -11,3 +11,8 @@ export const PlanetElement = styled.div`
   cursor: pointer;
   text-decoration: underline;
 `;
+
+export const PlanetsContainerButton = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
