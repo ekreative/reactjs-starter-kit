@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import API from "../../services/api";
 import PersonDataContainer from "../PersonData/PersonDataContainer";
 import SinglePersonDataContainer from "../SinglePersonData/SinglePersonDataContainer";
-import { PersonContainer } from "./PersonElements";
+import { PersonContainer, PersonContainerButton } from "./PersonElements";
 
 interface IProps {
   value: number;
@@ -49,13 +49,14 @@ export const Person: React.FC<IProps> = props => {
   };
   const getOnePersonData = async (url: string) => {
     props.spinnerStartLoading();
+    setOnePersonHomeworld({ name: "" })
     let onePersonData = await API.get(url);
     await setOnePersonData(onePersonData);
     await props.spinnerEndLoading();
   };
 
   const getOnePersonHomeworld = async (url: string) => {
-    props.spinnerStartLoading();
+    props.spinnerStartLoading();;
     let onePersonHomeworld = await API.get(url);
     await setOnePersonHomeworld(onePersonHomeworld);
     await props.spinnerEndLoading();
@@ -69,12 +70,8 @@ export const Person: React.FC<IProps> = props => {
   return (
     <div className="ComponentA">
       <div className="ComponentA-header">
-        <h2>Welcome to SWapi People Component</h2>
+        <h2>Welcome to SWapi Person Component</h2>
       </div>
-      <PersonContainer>
-        <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
-        <button onClick={getNextPageSWPeople}> {`>>>`} </button>
-      </PersonContainer>
       <PersonContainer>
         <div>
           {people?.results.map((element: IElement, id: number) => {
@@ -95,6 +92,10 @@ export const Person: React.FC<IProps> = props => {
           onePersonHomeworld={onePersonHomeworld.name}
         />
       </PersonContainer>
+      <PersonContainerButton>
+        <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
+        <button onClick={getNextPageSWPeople}> {`>>>`} </button>
+      </PersonContainerButton>
     </div>
   );
 };

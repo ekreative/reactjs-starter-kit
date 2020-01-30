@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import API from "../../services/api";
 import SinglePlanetContainer from "../SinglePlanet/SinglePlanetContainer";
-import { PlanetElement } from "./PlanetsElements";
+import { PlanetElements, PlanetElement } from "./PlanetsElements";
 
 interface IElement {
   name: string;
@@ -60,12 +60,11 @@ export const Planet: React.FC<IPropsPlanet> = props => {
 
   return (
     <div>
-      <div>
-        <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
-        <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
+      <div className="ComponentA-header">
+        <h2>Welcome to SWapi Planets Component</h2>
       </div>
-      <PlanetElement>
-        <div>
+      <PlanetElements>
+        <PlanetElement>
           {planets?.results.map((element: IElement, id: number) => {
             return (
               <SinglePlanetContainer
@@ -76,9 +75,13 @@ export const Planet: React.FC<IPropsPlanet> = props => {
               />
             );
           })}
-        </div>
+        </PlanetElement>
         <div>{onePlanetData.name}</div>
-      </PlanetElement>
+      </PlanetElements>
+      <div>
+        <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
+        <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
+      </div>
     </div>
   );
 };

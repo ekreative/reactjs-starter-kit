@@ -51,12 +51,17 @@ export const Starships: React.FC<IPropsStarships> = props => {
   }, []); // eslint-disable-line
 
   return (
-    <StarshipsDataElement>
-      <button onClick={getPrevPageSWStarships}> {`<<<`} </button>
-      <button onClick={getNextPageSWStarships}> {`>>>`} </button>
-      {starships?.results.map((element: IElement, id: number) => {
-        return <SingleStarshipContainer key={id} element={element} />;
-      })}
-    </StarshipsDataElement>
+    <div>
+      <div className="ComponentA-header">
+        <h2>Welcome to SWapi Starships Component</h2>
+      </div>
+      <StarshipsDataElement>
+        {starships?.results.map((element: IElement, id: number) => {
+          return <SingleStarshipContainer key={id} element={element} />;
+        })}
+        <button onClick={getPrevPageSWStarships}> {`<<<`} </button>
+        <button onClick={getNextPageSWStarships}> {`>>>`} </button>
+      </StarshipsDataElement>
+    </div>
   );
 };
