@@ -6,8 +6,8 @@ import { PersonContainer, PersonContainerButton } from "./PersonElements";
 
 interface IProps {
   value: number;
-  spinnerStartLoading: () => {};
-  spinnerEndLoading: () => {};
+  showLoading: () => {};
+  hideLoading: () => {};
   isLoading: boolean;
 }
 interface IElement {
@@ -25,45 +25,45 @@ export const Person: React.FC<IProps> = props => {
     setSwPeoplePage(1);
     let peopleData = await API.getPeople("1");
     await setPeople(peopleData);
-    await props.spinnerEndLoading();
+    await props.hideLoading();
   };
 
   const getNextPageSWPeople = async () => {
     if (swPeoplePage < 9) {
-      props.spinnerStartLoading();
+      props.showLoading();
       setSwPeoplePage(swPeoplePage + 1);
       let peopleData = await API.getPeople(`${swPeoplePage + 1}`);
       await setPeople(peopleData);
-      await props.spinnerEndLoading();
+      await props.hideLoading();
     }
   };
 
   const getPrevPageSWPeople = async () => {
     if (swPeoplePage > 1) {
-      props.spinnerStartLoading();
+      props.showLoading();
       setSwPeoplePage(swPeoplePage - 1);
       let peopleData = await API.getPeople(`${swPeoplePage - 1}`);
       await setPeople(peopleData);
-      await props.spinnerEndLoading();
+      await props.hideLoading();
     }
   };
   const getOnePersonData = async (url: string) => {
-    props.spinnerStartLoading();
+    props.showLoading();
     setOnePersonHomeworld({ name: "" });
     let onePersonData = await API.get(url);
     await setOnePersonData(onePersonData);
-    await props.spinnerEndLoading();
+    await props.hideLoading();
   };
 
   const getOnePersonHomeworld = async (url: string) => {
-    props.spinnerStartLoading();
+    props.showLoading();
     let onePersonHomeworld = await API.get(url);
     await setOnePersonHomeworld(onePersonHomeworld);
-    await props.spinnerEndLoading();
+    await props.hideLoading();
   };
 
   useEffect(() => {
-    props.spinnerStartLoading();
+    props.showLoading();
     getSWPeople();
   }, []); // eslint-disable-line
 

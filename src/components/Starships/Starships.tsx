@@ -13,8 +13,8 @@ interface IElement {
 
 interface IPropsStarships {
   value: number;
-  spinnerStartLoading: () => {};
-  spinnerEndLoading: () => {};
+  showLoading: () => {};
+  hideLoading: () => {};
   isLoading: boolean;
 }
 
@@ -25,31 +25,31 @@ export const Starships: React.FC<IPropsStarships> = props => {
   const getSWStarships = async () => {
     let peopleData = await API.getStarships(`1`);
     await setStarships(peopleData);
-    await props.spinnerEndLoading();
+    await props.hideLoading();
   };
 
   const getNextPageSWStarships = async () => {
     if (swStarshipsPage < 4) {
-      props.spinnerStartLoading();
+      props.showLoading();
       setSwStarshipsPage(swStarshipsPage + 1);
       let starshipsData = await API.getStarships(`${swStarshipsPage + 1}`);
       await setStarships(starshipsData);
-      await props.spinnerEndLoading();
+      await props.hideLoading();
     }
   };
 
   const getPrevPageSWStarships = async () => {
     if (swStarshipsPage > 1) {
-      props.spinnerStartLoading();
+      props.showLoading();
       setSwStarshipsPage(swStarshipsPage - 1);
       let starshipsData = await API.getStarships(`${swStarshipsPage - 1}`);
       await setStarships(starshipsData);
-      await props.spinnerEndLoading();
+      await props.hideLoading();
     }
   };
 
   useEffect(() => {
-    props.spinnerStartLoading();
+    props.showLoading();
     getSWStarships();
   }, []); // eslint-disable-line
 

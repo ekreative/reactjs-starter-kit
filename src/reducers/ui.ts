@@ -1,4 +1,4 @@
-import { SPINNER_START_LOADING, SPINNER_END_LOADING } from "../actions/main";
+import { SPINNER_START_LOADING, SPINNER_END_LOADING } from "../constants";
 
 const defaultState: { isLoading: boolean | null } = {
   isLoading: null
