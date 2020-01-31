@@ -65,17 +65,19 @@ export const Planet: React.FC<IPropsPlanet> = props => {
   return (
     <div>
       <div className="ComponentA-header">
-        <h2>Welcome to SWapi Planets Component</h2>
+        <h2>SW Planets</h2>
       </div>
       <PlanetElements>
         <PlanetElement>
           {planets?.results.map((element: IElement, id: number) => {
             return (
               <SinglePlanetContainer
-                key={id}
+                id={id}
+                key={element.url}
                 element={element}
                 planetName={element.name}
                 getSinglePlanetData={getSinglePlanetData}
+                swPlanetsPage={swPlanetsPage}
               />
             );
           })}
@@ -84,6 +86,7 @@ export const Planet: React.FC<IPropsPlanet> = props => {
       </PlanetElements>
       <PlanetsContainerButton>
         <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>
+        <div>page: {swPlanetsPage}</div>
         <button onClick={getNextPageSWPlanets}> {`>>>`} </button>
       </PlanetsContainerButton>
     </div>

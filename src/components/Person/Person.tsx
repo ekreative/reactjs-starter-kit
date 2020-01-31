@@ -70,7 +70,7 @@ export const Person: React.FC<IProps> = props => {
   return (
     <div className="ComponentA">
       <div className="ComponentA-header">
-        <h2>Welcome to SWapi Person Component</h2>
+        <h2>SW Persons</h2>
       </div>
       <PersonContainer>
         <div>
@@ -94,6 +94,7 @@ export const Person: React.FC<IProps> = props => {
       </PersonContainer>
       <PersonContainerButton>
         <button onClick={getPrevPageSWPeople}> {`<<<`} </button>
+        <div>page: {swPeoplePage}</div>
         <button onClick={getNextPageSWPeople}> {`>>>`} </button>
       </PersonContainerButton>
     </div>

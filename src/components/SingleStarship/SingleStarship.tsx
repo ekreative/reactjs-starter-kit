@@ -1,7 +1,9 @@
 import React from "react";
-import { SingleStarshipElement } from "./SingleStarshipElements"
+import { SingleStarshipElement } from "./SingleStarshipElements";
 
 interface IPropsSingleStarship {
+  swStarshipsPage: number;
+  id: number;
   element: {
     name: string;
   };
@@ -10,7 +12,7 @@ interface IPropsSingleStarship {
 export const SingleStarship: React.FC<IPropsSingleStarship> = props => {
   return (
     <SingleStarshipElement>
-      Starship Name: {props.element.name}
+      {props.swStarshipsPage * 10 + props.id + 1 - 10}. {props.element.name}
     </SingleStarshipElement>
   );
 };
