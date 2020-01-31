@@ -23,6 +23,7 @@ interface IPropsStarships {
 export const Starships: React.FC<IPropsStarships> = props => {
   const [starships, setStarships] = useState({ results: [] });
   const [swStarshipsPage, setSwStarshipsPage] = useState(1);
+  const [oneStarshipData, setOneStarshipData] = useState({name: ""})
 
   const getSWStarships = async () => {
     let peopleData = await API.getStarships(`1`);
@@ -50,6 +51,13 @@ export const Starships: React.FC<IPropsStarships> = props => {
     }
   };
 
+  const getOneStarshipData = async (url: string) => {
+    props.showLoading();
+    setOneStarshipData({ name: "" });
+    let oneStarshipData = await API.get(url);
+    await setOneStarshipData(oneStarshipData);
+    await props.hideLoading();
+  };
   useEffect(() => {
     props.showLoading();
     getSWStarships();
@@ -70,6 +78,7 @@ export const Starships: React.FC<IPropsStarships> = props => {
                 key={element.url}
                 id={id}
                 element={element}
+                getOneStarshipData={getOneStarshipData}
               />
             );
           })}

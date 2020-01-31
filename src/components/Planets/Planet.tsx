@@ -4,7 +4,8 @@ import SinglePlanetContainer from "../SinglePlanet/SinglePlanetContainer";
 import {
   PlanetElements,
   PlanetElement,
-  PlanetsContainerButton
+  PlanetsContainerButton,
+  SinglePlanetElement
 } from "./PlanetsElements";
 
 interface IElement {
@@ -82,7 +83,7 @@ export const Planet: React.FC<IPropsPlanet> = props => {
             );
           })}
         </PlanetElement>
-        <div>{onePlanetData.name}</div>
+        <SinglePlanetElement>{onePlanetData.name}</SinglePlanetElement>
       </PlanetElements>
       <PlanetsContainerButton>
         <button onClick={getPrevPageSWPlanets}> {`<<<`} </button>

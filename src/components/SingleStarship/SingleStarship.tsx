@@ -2,6 +2,7 @@ import React from "react";
 import { SingleStarshipElement } from "./SingleStarshipElements";
 
 interface IPropsSingleStarship {
+  getOneStarshipData: any;
   swStarshipsPage: number;
   id: number;
   element: {
