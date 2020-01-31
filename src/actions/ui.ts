@@ -1,10 +1,10 @@
 import { Dispatch } from "redux";
-import {SPINNER_START_LOADING, SPINNER_END_LOADING} from "../constants"
+import { SHOW_LOADING, HIDE_LOADING } from "../constants";
 
 export function showLoading() {
   return (dispatch: Dispatch) => {
     dispatch({
-      type: SPINNER_START_LOADING
+      type: SHOW_LOADING
     });
   };
 }
@@ -12,7 +12,7 @@ export function showLoading() {
 export function hideLoading() {
   return (dispatch: Dispatch) => {
     dispatch({
-      type: SPINNER_END_LOADING
+      type: HIDE_LOADING
     });
   };
 }

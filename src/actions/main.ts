@@ -1,8 +1,5 @@
 import { Dispatch } from "redux";
-
-export const INCREMENT = "INCREMENT";
-export const DECREMENT = "DECREMENT";
-
+import { INCREMENT, DECREMENT } from "../constants";
 
 export function increment() {
   return (dispatch: Dispatch) => {

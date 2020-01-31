@@ -1,6 +1,5 @@
 import update from "immutability-helper";
-import { CHANGE_STATE_PROP } from "../actions";
-import { DECREMENT, INCREMENT } from "../actions/main";
+import { DECREMENT, INCREMENT, CHANGE_STATE_PROP } from "../constants";
 
 const REDUCER = "MAIN";
 const defaultState: { value: number } = {

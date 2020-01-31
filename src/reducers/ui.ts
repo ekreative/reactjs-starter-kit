@@ -1,4 +1,4 @@
-import { SPINNER_START_LOADING, SPINNER_END_LOADING } from "../constants";
+import { SHOW_LOADING, HIDE_LOADING } from "../constants";
 
 const defaultState: { isLoading: boolean | null } = {
   isLoading: null
@@ -6,12 +6,12 @@ const defaultState: { isLoading: boolean | null } = {
 
 export default (state = defaultState, action: any) => {
   switch (action.type) {
-    case SPINNER_START_LOADING:
+    case SHOW_LOADING:
       return {
         ...state,
         isLoading: true
       };
-    case SPINNER_END_LOADING:
+    case HIDE_LOADING:
       return {
         ...state,
         isLoading: false
