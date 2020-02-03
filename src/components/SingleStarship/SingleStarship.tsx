@@ -19,7 +19,7 @@ export const SingleStarship: React.FC<IPropsSingleStarship> = props => {
         props.getOneStarshipData(props.element.url);
       }}
     >
-      <Link to={`/starships/${props.id}`}>
+      <Link to={`/starships/${props.element.name}`}>
         {props.swStarshipsPage * 10 + props.id + 1 - 10}. {props.element.name}
       </Link>
     </SingleStarshipElement>
