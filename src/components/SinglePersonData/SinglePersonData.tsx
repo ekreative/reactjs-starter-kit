@@ -18,7 +18,7 @@ export const SinglePersonData: React.FC<IPropsSinglePerson> = props => {
         {props.element.height && <p>Height: {props.element.height}</p>}
         {props.element.homeworld && (
           <div onClick={() => {props.getOnePersonHomeworld(props.element.homeworld)}}>
-          <Link to={`/person/${props.element.name}` + '/homeworld'}>
+          <Link to={`/person/${props.element.name}/homeworld`}>
             Homeworld
           </Link>
             </div>
