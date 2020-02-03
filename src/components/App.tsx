@@ -6,6 +6,7 @@ import ComponentBContainer from "./ComponentsB/ComponentBContainer";
 import PersonContainer from "./Person/PersonContainer";
 import PlanetContainer from "./Planets/PlanetContainer";
 import StarshipsContainer from "./Starships/StarshipsContainer";
+import GoogleMapsContainer from "./GoogleMaps/GoogleMapsContainer"
 import logo from "../assets/images/logo.svg";
 import { AppElement, AppHeaderElement, AppIntro, AppLogo } from "./AppElements";
 import { Spinner } from "./Spinner/Spinner";
@@ -70,6 +71,9 @@ export const App: React.FC<IProps> = props => {
               <li>
                 <Link to="/starships">Starships</Link>
               </li>
+              <li>
+                <Link to="/googleMaps">googleMaps</Link>
+              </li>
             </ul>
           </div>
 
@@ -99,10 +103,6 @@ export const App: React.FC<IProps> = props => {
                   );
                 }}
               />
-              <Route path="/componentA" component={ComponentAContainer} />
-              <Route path="/person" component={PersonContainer} />
-              <Route path="/planet" component={PlanetContainer} />
-              <Route path="/starships" component={StarshipsContainer} />
               <Route
                 path="/componentB"
                 render={obj => {
@@ -114,6 +114,11 @@ export const App: React.FC<IProps> = props => {
                   );
                 }}
               />
+              <Route path="/componentA" component={ComponentAContainer} />
+              <Route path="/person" component={PersonContainer} />
+              <Route path="/planet" component={PlanetContainer} />
+              <Route path="/starships" component={StarshipsContainer} />
+              <Route path="/googleMaps" component={GoogleMapsContainer} />
               <Route component={NotFound} />
             </Switch>
           </div>
