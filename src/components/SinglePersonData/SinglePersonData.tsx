@@ -1,6 +1,7 @@
 // @ts-ignore
 import React from "react";
 import { SinglePersonDataElement } from "./SinglePersonDataElements"
+import { Link } from "react-router-dom";
 
 interface IPropsSinglePerson {
   element: any;
@@ -16,9 +17,11 @@ export const SinglePersonData: React.FC<IPropsSinglePerson> = props => {
         {props.element.name && <p>Name: {props.element.name}</p>}
         {props.element.height && <p>Height: {props.element.height}</p>}
         {props.element.homeworld && (
-          <button onClick={() => {props.getOnePersonHomeworld(props.element.homeworld)}}>
+          <div onClick={() => {props.getOnePersonHomeworld(props.element.homeworld)}}>
+          <Link to={`/person/${props.element.name}` + '/homeworld'}>
             Homeworld
-          </button>
+          </Link>
+            </div>
         )}
         {props?.onePersonHomeworld && <p>{props?.onePersonHomeworld}</p>}
       </SinglePersonDataElement>

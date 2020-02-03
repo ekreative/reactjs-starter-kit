@@ -1,6 +1,7 @@
 // @ts-ignore
 import React from "react";
 import { PersonContainer } from "./PersonDataElements";
+import { Link } from "react-router-dom";
 
 interface IPropsData {
   getOnePersonData: any;
@@ -20,9 +21,9 @@ export const PersonData: React.FC<IPropsData> = props => {
           props.getOnePersonData(props.element.url);
         }}
       >
-        <p>
+        <Link to={`/person/${props.element.name}`}>
           {props.swPeoplePage * 10 + props.id + 1 - 10}. {props.element.name}
-        </p>
+        </Link>
       </PersonContainer>
     </div>
   );
