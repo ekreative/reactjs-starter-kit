@@ -85,7 +85,7 @@ export const Starships: React.FC<IPropsStarships> = props => {
             );
           })}
           </div>
-          <SingleStarshipDataContainer />
+          <SingleStarshipDataContainer oneStarshipData={oneStarshipData}/>
         </StarshipsWrapper>
         <StarshipsContainerButton>
           <button onClick={getPrevPageSWStarships}> {`<<<`} </button>

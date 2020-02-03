@@ -8,14 +8,20 @@ interface IPropsSingleStarship {
   id: number;
   element: {
     name: string;
+    url: string;
   };
 }
 
 export const SingleStarship: React.FC<IPropsSingleStarship> = props => {
-  console.log('singleStarship', props);
   return (
-    <SingleStarshipElement onClick={props.getOneStarshipData}>
-      <Link to={`/starships/${props.id}`}>{props.swStarshipsPage * 10 + props.id + 1 - 10}. {props.element.name}</Link>
+    <SingleStarshipElement
+      onClick={() => {
+        props.getOneStarshipData(props.element.url);
+      }}
+    >
+      <Link to={`/starships/${props.id}`}>
+        {props.swStarshipsPage * 10 + props.id + 1 - 10}. {props.element.name}
+      </Link>
     </SingleStarshipElement>
   );
 };
