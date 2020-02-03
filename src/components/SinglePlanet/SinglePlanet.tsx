@@ -14,7 +14,6 @@ interface IPropsSinglePlanet {
 }
 
 export const SinglePlanet: React.FC<IPropsSinglePlanet> = props => {
-
   return (
     <SinglePlanetsElement
       onClick={() => {
@@ -22,7 +21,7 @@ export const SinglePlanet: React.FC<IPropsSinglePlanet> = props => {
       }}
     >
       <Link to={`/planet/${props.element.name}`}>
-      {props.swPlanetsPage * 10 + props.id + 1 - 10}. {props.element.name}
+        {props.swPlanetsPage * 10 + props.id + 1 - 10}. {props.element.name}
       </Link>
     </SinglePlanetsElement>
   );

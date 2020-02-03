@@ -5,7 +5,7 @@ import SingleStarshipDataContainer from "../SingleStarshipData/SingleStarshipDat
 import {
   StarshipsDataElement,
   StarshipsContainerButton,
-  StarshipsWrapper,
+  StarshipsWrapper
 } from "./StarshipsElements";
 
 interface IElement {
@@ -23,7 +23,7 @@ interface IPropsStarships {
 export const Starships: React.FC<IPropsStarships> = props => {
   const [starships, setStarships] = useState({ results: [] });
   const [swStarshipsPage, setSwStarshipsPage] = useState(1);
-  const [oneStarshipData, setOneStarshipData] = useState({name: ""})
+  const [oneStarshipData, setOneStarshipData] = useState({ name: "" });
 
   const getSWStarships = async () => {
     let peopleData = await API.getStarships(`1`);
@@ -71,19 +71,19 @@ export const Starships: React.FC<IPropsStarships> = props => {
       <StarshipsDataElement>
         <StarshipsWrapper>
           <div>
-          {starships?.results.map((element: IElement, id: number) => {
-            return (
-              <SingleStarshipContainer
-                swStarshipsPage={swStarshipsPage}
-                key={element.url}
-                id={id}
-                element={element}
-                getOneStarshipData={getOneStarshipData}
-              />
-            );
-          })}
+            {starships?.results.map((element: IElement, id: number) => {
+              return (
+                <SingleStarshipContainer
+                  swStarshipsPage={swStarshipsPage}
+                  key={element.url}
+                  id={id}
+                  element={element}
+                  getOneStarshipData={getOneStarshipData}
+                />
+              );
+            })}
           </div>
-          <SingleStarshipDataContainer oneStarshipData={oneStarshipData}/>
+          <SingleStarshipDataContainer oneStarshipData={oneStarshipData} />
         </StarshipsWrapper>
         <StarshipsContainerButton>
           <button onClick={getPrevPageSWStarships}> {`<<<`} </button>
