@@ -52,8 +52,6 @@ export const Starships: React.FC<IPropsStarships> = props => {
   };
 
   const getOneStarshipData = async (url: string) => {
-    console.log(555)
-    console.log(oneStarshipData)
     props.showLoading();
     setOneStarshipData({ name: "" });
     let getOneStarshipData = await API.get(url);
