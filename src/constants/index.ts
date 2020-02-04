@@ -4,3 +4,5 @@ export const HIDE_LOADING = "HIDE_LOADING";
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
 export const CHANGE_STATE_PROP = "_CHANGE_STATE_PROP";
+export const CREATE_MAP_POINT = "CREATE_MAP_POINT";
+export const DELETE_MAP_POINT = "DELETE_MAP_POINT";
