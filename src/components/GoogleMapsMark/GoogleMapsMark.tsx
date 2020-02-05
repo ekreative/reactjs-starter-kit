@@ -11,7 +11,7 @@ interface ICard {
 
 interface IGoogleMapsMark {
   lat: number;
-  lng: number
+  lng: number;
   element: {
     lat: number;
   };
@@ -27,7 +27,6 @@ const Card = (props: ICard) => (
 );
 
 const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
-  console.log(11, props)
   return (
     <StyledDiv>
       <Popup
