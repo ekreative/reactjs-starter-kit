@@ -45,13 +45,21 @@ const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
       </form>
     </div>
   ) : (
-    <StyledDiv onClick={() => {props.inFocus(props.element.pointId)}}>
+    <StyledDiv
+      onClick={() => {
+        props.inFocus(props.element.pointId);
+      }}
+    >
       <Popup
         trigger={<ImgElement src={marker} />}
         position="bottom center"
         on="hover"
       >
-        <Card title="Bottom Center" lat={props.lat} lng={props.lng} />
+        <Card
+          title={props.element.newPointText}
+          lat={props.lat}
+          lng={props.lng}
+        />
       </Popup>
     </StyledDiv>
   );
