@@ -15,6 +15,7 @@ interface IGoogleMapsMark {
   lat: number;
   lng: number;
   element: {
+    inFocus: boolean;
     pointId: string;
     newPointText: string;
     lat: number;
@@ -36,21 +37,23 @@ const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
     props.changeGoogleMapMarkText(props.element.pointId, value);
     props.inFocus(props.element.pointId);
   };
-  return (
+
+  return props.element.inFocus ? (
     <div>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder={props.element.newPointText} />
       </form>
-      {/*<StyledDiv>*/}
-      {/*  <Popup*/}
-      {/*    trigger={<ImgElement src={marker} />}*/}
-      {/*    position="bottom center"*/}
-      {/*    on="hover"*/}
-      {/*  >*/}
-      {/*    <Card title="Bottom Center" lat={props.lat} lng={props.lng} />*/}
-      {/*  </Popup>*/}
-      {/*</StyledDiv>*/}
     </div>
+  ) : (
+    <StyledDiv onClick={() => {props.inFocus(props.element.pointId)}}>
+      <Popup
+        trigger={<ImgElement src={marker} />}
+        position="bottom center"
+        on="hover"
+      >
+        <Card title="Bottom Center" lat={props.lat} lng={props.lng} />
+      </Popup>
+    </StyledDiv>
   );
 };
 
