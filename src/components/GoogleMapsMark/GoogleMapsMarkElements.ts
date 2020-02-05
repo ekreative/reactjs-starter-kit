@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
-export const PersonContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
+export const ImgElement = styled.img`
+position:absolute;
+  width: 25px;
+  height: 40px;
 `;
 
-export const PersonContainerButton = styled.div`
-  display: flex;
-  justify-content: space-around;
+export const StyledDiv = styled.div`
+  position: absolute;
+  bottom: 40px;
+  right: 12px;
 `;

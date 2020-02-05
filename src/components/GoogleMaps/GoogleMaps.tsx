@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import GoogleMapsMarkContainer from '../GoogleMapsMark/GoogleMapsMarkContainer'
+import GoogleMapsMarkContainer from "../GoogleMapsMark/GoogleMapsMarkContainer";
 
 interface IProps {
   center: any;
@@ -31,13 +31,13 @@ const GoogleMaps: React.FC<IProps> = props => {
         onClick={handleClick}
       >
         {props.googleMap.map(
-          (element: { lat: number; lng: number; text: string }, id: number) => {
+          (element: { lat: any; lng: number; text: string }, id: number) => {
             return (
               <GoogleMapsMarkContainer
                 key={id}
                 lat={element.lat}
+                // @ts-ignore
                 lng={element.lng}
-                text='newMark'
               />
             );
           }
