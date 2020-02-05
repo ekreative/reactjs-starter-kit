@@ -11,6 +11,7 @@ interface ICard {
 
 interface IGoogleMapsMark {
   changeGoogleMapMarkText: (pointId: string, value: string) => {};
+  inFocus: (pointId: string) => {};
   lat: number;
   lng: number;
   element: {
@@ -33,14 +34,12 @@ const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
   const handleSubmit = (e: any) => {
     const value = e.target[0].value;
     props.changeGoogleMapMarkText(props.element.pointId, value);
+    props.inFocus(props.element.pointId);
   };
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder={props.element.newPointText}
-        />
+        <input type="text" placeholder={props.element.newPointText} />
       </form>
       {/*<StyledDiv>*/}
       {/*  <Popup*/}
