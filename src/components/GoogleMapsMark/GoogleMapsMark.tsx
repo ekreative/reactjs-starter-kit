@@ -13,6 +13,7 @@ interface IGoogleMapsMark {
   lat: number;
   lng: number;
   element: {
+    newPointText: string;
     lat: number;
   };
 }
@@ -26,17 +27,33 @@ const Card = (props: ICard) => (
   </div>
 );
 
+const handleSubmit = (e: any) => {
+  console.log(e.target[0].value);
+};
+
 const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
+  console.log(props);
   return (
-    <StyledDiv>
-      <Popup
-        trigger={<ImgElement src={marker} />}
-        position="bottom center"
-        on="hover"
-      >
-        <Card title="Bottom Center" lat={props.lat} lng={props.lng} />
-      </Popup>
-    </StyledDiv>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder={props.element.newPointText}
+          // onChange={e => {
+          //   console.log(e.target.value);
+          // }}
+        />
+      </form>
+      {/*<StyledDiv>*/}
+      {/*  <Popup*/}
+      {/*    trigger={<ImgElement src={marker} />}*/}
+      {/*    position="bottom center"*/}
+      {/*    on="hover"*/}
+      {/*  >*/}
+      {/*    <Card title="Bottom Center" lat={props.lat} lng={props.lng} />*/}
+      {/*  </Popup>*/}
+      {/*</StyledDiv>*/}
+    </div>
   );
 };
 

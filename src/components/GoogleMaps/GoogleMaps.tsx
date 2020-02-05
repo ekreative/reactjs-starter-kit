@@ -5,7 +5,7 @@ import GoogleMapsMarkContainer from "../GoogleMapsMark/GoogleMapsMarkContainer";
 interface IProps {
   center: any;
   zoom: any;
-  createMapPoint: (lat: number, lng: number) => {};
+  createMapPoint: (lat: number, lng: number, newPointText: string) => {};
   googleMap: any;
 }
 
@@ -18,7 +18,9 @@ interface IMaps {
 }
 const GoogleMaps: React.FC<IProps> = props => {
   const handleClick = (event: IMaps) => {
-    props.createMapPoint(event.lat, event.lng);
+    console.log(event);
+    const newPointText = "changeMe";
+    props.createMapPoint(event.lat, event.lng, newPointText);
   };
 
   return (
@@ -32,6 +34,7 @@ const GoogleMaps: React.FC<IProps> = props => {
       >
         {props.googleMap.map(
           (element: { lat: any; lng: number; text: string }, id: number) => {
+            console.log(1212121, element)
             return (
               <GoogleMapsMarkContainer
                 key={id}
