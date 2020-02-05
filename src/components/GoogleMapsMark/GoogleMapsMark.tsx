@@ -5,25 +5,29 @@ import { ImgElement, StyledDiv } from "./GoogleMapsMarkElements";
 
 interface ICard {
   title: string;
+  lat: number;
+  lng: number;
 }
 
 interface IGoogleMapsMark {
-  lat: any;
+  lat: number;
+  lng: number
   element: {
-    lat: any;
+    lat: number;
   };
 }
-const Card = ({ title }: ICard) => (
+const Card = (props: ICard) => (
   <div className="card">
-    <div className="header">{title} position </div>
+    <div className="header">{props.title}</div>
     <div className="content">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit autem
-      sapiente labore architecto exercitationem optio quod dolor cupiditate
+      <p>lat: {props.lat}</p>
+      <p>lng: {props.lng}</p>
     </div>
   </div>
 );
 
 const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
+  console.log(11, props)
   return (
     <StyledDiv>
       <Popup
@@ -31,7 +35,7 @@ const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
         position="bottom center"
         on="hover"
       >
-        <Card title="Bottom Center" />
+        <Card title="Bottom Center" lat={props.lat} lng={props.lng} />
       </Popup>
     </StyledDiv>
   );

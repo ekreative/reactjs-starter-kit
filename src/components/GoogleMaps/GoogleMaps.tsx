@@ -26,7 +26,7 @@ const GoogleMaps: React.FC<IProps> = props => {
     <div style={{ height: "60vh", width: "100vw" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyC_rxY1EtLVw7vFxaxwTpUZtaxf9SCzVWg" }}
-        defaultCenter={{ lat: 49.4, lng: 32 }}
+        defaultCenter={{ lat: 49.43047625295346, lng: 32.0584773497735 }}
         defaultZoom={15}
         onClick={handleClick}
       >
@@ -38,6 +38,7 @@ const GoogleMaps: React.FC<IProps> = props => {
                 lat={element.lat}
                 // @ts-ignore
                 lng={element.lng}
+                element={element}
               />
             );
           }
