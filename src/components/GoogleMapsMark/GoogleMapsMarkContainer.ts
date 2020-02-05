@@ -1,19 +1,15 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import GoogleMapsMark from "./GoogleMapsMark";
+import { changeGoogleMapMarkText } from "../../actions/googleMap";
 
-const mapStateToProps = ( googleMap: any) => {
+const mapStateToProps = (googleMap: any) => {
   return googleMap;
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators(
-      {
-
-      },
-      dispatch
-    )
+    ...bindActionCreators({ changeGoogleMapMarkText }, dispatch)
   };
 };
 

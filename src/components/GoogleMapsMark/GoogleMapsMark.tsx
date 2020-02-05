@@ -10,9 +10,11 @@ interface ICard {
 }
 
 interface IGoogleMapsMark {
+  changeGoogleMapMarkText: (pointId: string, value: string) => {};
   lat: number;
   lng: number;
   element: {
+    pointId: string;
     newPointText: string;
     lat: number;
   };
@@ -27,21 +29,17 @@ const Card = (props: ICard) => (
   </div>
 );
 
-const handleSubmit = (e: any) => {
-  console.log(e.target[0].value);
-};
-
 const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
-  console.log(props);
+  const handleSubmit = (e: any) => {
+    const value = e.target[0].value;
+    props.changeGoogleMapMarkText(props.element.pointId, value);
+  };
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder={props.element.newPointText}
-          // onChange={e => {
-          //   console.log(e.target.value);
-          // }}
         />
       </form>
       {/*<StyledDiv>*/}
