@@ -23,7 +23,7 @@ interface IGoogleMapsMark {
 }
 const Card = (props: ICard) => (
   <div className="card">
-    <div className="header">{props.title}</div>
+    <div className="header">Title: {props.title}</div>
     <div className="content">
       <p>lat: {props.lat}</p>
       <p>lng: {props.lng}</p>
