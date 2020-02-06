@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const SinglePersonDataElement = styled.div`
+export const StarshipDataElement = styled.div`
   color: green;
 `;

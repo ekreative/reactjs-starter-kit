@@ -1,5 +1,5 @@
 import React from "react";
-import { SingleStarshipElement } from "./SingleStarshipElements";
+import { StarshipElement } from "./StarshipElements";
 import { Link } from "react-router-dom";
 
 interface IPropsSingleStarship {
@@ -12,9 +12,9 @@ interface IPropsSingleStarship {
   };
 }
 
-export const SingleStarship: React.FC<IPropsSingleStarship> = props => {
+export const Starship: React.FC<IPropsSingleStarship> = props => {
   return (
-    <SingleStarshipElement
+    <StarshipElement
       onClick={() => {
         props.getOneStarshipData(props.element.url);
       }}
@@ -22,6 +22,6 @@ export const SingleStarship: React.FC<IPropsSingleStarship> = props => {
       <Link to={`/starships/${props.element.name}`}>
         {props.swStarshipsPage * 10 + props.id + 1 - 10}. {props.element.name}
       </Link>
-    </SingleStarshipElement>
+    </StarshipElement>
   );
 };

@@ -1,30 +1,33 @@
 // @ts-ignore
 import React from "react";
-import { PersonContainer } from "./PersonDataElements";
+import { PersonDataElement } from "./PersonDataElements";
 import { Link } from "react-router-dom";
 
-interface IPropsData {
-  getOnePersonData: any;
-  swPeoplePage: number;
-  id: number;
-  element: {
-    name: string;
-    url: string;
-  };
+interface IPropsSinglePerson {
+  element: any;
+  getOnePersonHomeworld: any;
+  onePersonHomeworld: string;
 }
 
-export const PersonData: React.FC<IPropsData> = props => {
+export const PersonData: React.FC<IPropsSinglePerson> = props => {
   return (
     <div>
-      <PersonContainer
-        onClick={() => {
-          props.getOnePersonData(props.element.url);
-        }}
-      >
-        <Link to={`/person/${props.element.name}`}>
-          {props.swPeoplePage * 10 + props.id + 1 - 10}. {props.element.name}
-        </Link>
-      </PersonContainer>
+      <PersonDataElement>
+        {props.element.name && <p>Name: {props.element.name}</p>}
+        {props.element.height && <p>Height: {props.element.height}</p>}
+        {props.element.homeworld && (
+          <div
+            onClick={() => {
+              props.getOnePersonHomeworld(props.element.homeworld);
+            }}
+          >
+            <Link to={`/person/${props.element.name}/homeworld`}>
+              Homeworld
+            </Link>
+          </div>
+        )}
+        {props?.onePersonHomeworld && <p>{props?.onePersonHomeworld}</p>}
+      </PersonDataElement>
     </div>
   );
 };

@@ -3,8 +3,8 @@ import { Route, Switch } from "react-router";
 import { HashRouter, Link, RouteComponentProps } from "react-router-dom";
 import ComponentAContainer from "./ComponentsA/ComponentAContainer";
 import ComponentBContainer from "./ComponentsB/ComponentBContainer";
-import PersonContainer from "./Person/PersonContainer";
-import PlanetContainer from "./Planets/PlanetContainer";
+import PersonsContainer from "./Persons/PersonsContainer";
+import PlanetsContainer from "./Planets/PlanetsContainer";
 import StarshipsContainer from "./Starships/StarshipsContainer";
 import GoogleMapsContainer from "./GoogleMaps/GoogleMapsContainer"
 import logo from "../assets/images/logo.svg";
@@ -115,8 +115,8 @@ export const App: React.FC<IProps> = props => {
                 }}
               />
               <Route path="/componentA" component={ComponentAContainer} />
-              <Route path="/person" component={PersonContainer} />
-              <Route path="/planet" component={PlanetContainer} />
+              <Route path="/person" component={PersonsContainer} />
+              <Route path="/planet" component={PlanetsContainer} />
               <Route path="/starships" component={StarshipsContainer} />
               <Route path="/googleMaps" component={GoogleMapsContainer} />
               <Route component={NotFound} />

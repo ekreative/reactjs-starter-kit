@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SingleStarshipElement = styled.div`
+export const StarshipElement = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
   color: red;

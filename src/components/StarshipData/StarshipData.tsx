@@ -1,14 +1,13 @@
-// @ts-ignore
 import React from "react";
-import { SingleStarshipDataElement } from "./SingleStarshipsDataElements";
+import { StarshipDataElement } from "./StarshipsDataElements";
 
 interface ISingleStarshipData {
   oneStarshipData: any;
 }
 
-export const SingleStarshipData: React.FC<ISingleStarshipData> = props => {
+export const StarshipData: React.FC<ISingleStarshipData> = props => {
   return (
-    <SingleStarshipDataElement>
+    <StarshipDataElement>
       {props?.oneStarshipData.name && (
         <p>name: {props?.oneStarshipData.name}</p>
       )}
@@ -27,6 +26,6 @@ export const SingleStarshipData: React.FC<ISingleStarshipData> = props => {
       {props?.oneStarshipData.cargo_capacity && (
         <p>cargo capacity: {props?.oneStarshipData.cargo_capacity}</p>
       )}
-    </SingleStarshipDataElement>
+    </StarshipDataElement>
   );
 };

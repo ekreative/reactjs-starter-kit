@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { changeStateProp } from "../../actions";
-import { Planet } from "./Planet";
-import { hideLoading, showLoading } from "../../actions/ui";
+import { showLoading, hideLoading } from "../../actions/ui";
+import { Persons } from "./Persons";
 
 const mapStateToProps = ({ ui: { isLoading } }: any) => {
   return {
@@ -19,6 +19,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const PlanetContainer = connect(mapStateToProps, mapDispatchToProps)(Planet);
+const PersonsContainer = connect(mapStateToProps, mapDispatchToProps)(Persons);
 
-export default PlanetContainer;
+export default PersonsContainer;

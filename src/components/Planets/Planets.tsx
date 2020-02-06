@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../../services/api";
-import SinglePlanetContainer from "../SinglePlanet/SinglePlanetContainer";
+import PlanetContainer from "../Planet/PlanetContainer";
 import {
   PlanetElements,
   PlanetElement,
@@ -20,7 +20,7 @@ interface IPropsPlanet {
   isLoading: boolean;
 }
 
-export const Planet: React.FC<IPropsPlanet> = props => {
+export const Planets: React.FC<IPropsPlanet> = props => {
   const [planets, setPlanets] = useState({ results: [] });
   const [swPlanetsPage, setSwPlanetsPage] = useState(1);
   const [onePlanetData, setOnePlanetData] = useState({ name: "" });
@@ -72,7 +72,7 @@ export const Planet: React.FC<IPropsPlanet> = props => {
         <PlanetElement>
           {planets?.results.map((element: IElement, id: number) => {
             return (
-              <SinglePlanetContainer
+              <PlanetContainer
                 id={id}
                 key={element.url}
                 element={element}

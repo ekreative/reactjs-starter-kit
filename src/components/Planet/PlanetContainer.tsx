@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { changeStateProp } from "../../actions";
-import { SinglePersonData } from "./SinglePersonData";
+import { Planet } from "./Planet";
 
 const mapStateToProps = ({ main: { value } }: any) => {
   return {
@@ -11,13 +11,13 @@ const mapStateToProps = ({ main: { value } }: any) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ changeStateProp }, dispatch)
+    ...bindActionCreators({ changeStateProp }, dispatch),
   };
 };
 
-const SinglePersonDataContainer = connect(
+const PlanetContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SinglePersonData);
+)(Planet);
 
-export default SinglePersonDataContainer;
+export default PlanetContainer;

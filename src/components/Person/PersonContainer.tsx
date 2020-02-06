@@ -1,24 +1,23 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { changeStateProp } from "../../actions";
-import { showLoading, hideLoading } from "../../actions/ui";
 import { Person } from "./Person";
 
-const mapStateToProps = ({ ui: { isLoading } }: any) => {
+const mapStateToProps = ({ main: { value } }: any) => {
   return {
-    isLoading
+    value
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators(
-      { changeStateProp, showLoading, hideLoading },
-      dispatch
-    )
+    ...bindActionCreators({ changeStateProp }, dispatch),
   };
 };
 
-const PersonContainer = connect(mapStateToProps, mapDispatchToProps)(Person);
+const PersonContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Person);
 
 export default PersonContainer;

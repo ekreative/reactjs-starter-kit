@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const SinglePlanetsElement = styled.div`
+export const PlanetElement = styled.div`
 margin-bottom: 10px;
 `;
