@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import GoogleMapsMark from "./GoogleMapsMark";
+import { Card } from "./GoogleMapsMarkTooltip";
 import {
   deleteMapPoint
 } from "../../actions/googleMap";
@@ -21,6 +21,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 const GoogleMapsMarkContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GoogleMapsMark);
+)(Card);
 
 export default GoogleMapsMarkContainer;

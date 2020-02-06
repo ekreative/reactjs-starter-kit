@@ -2,14 +2,7 @@ import React from "react";
 import Popup from "reactjs-popup";
 import marker from "../../assets/images/marker.png";
 import { ImgElement, StyledDiv } from "./GoogleMapsMarkElements";
-
-interface ICard {
-  pointId: string;
-  title: string;
-  lat: number;
-  lng: number;
-  deleteMapPoint: (pointID: string) => {};
-}
+import GoogleMapsMarkContainer from "../GoogleMapsMarkTooltip/GoogleMapsMarkTooltipContainer";
 
 interface IGoogleMapsMark {
   changeGoogleMapMarkText: (pointId: string, value: string) => {};
@@ -24,24 +17,6 @@ interface IGoogleMapsMark {
     lat: number;
   };
 }
-const Card = (props: ICard) => {
-  return (
-    <div className="card">
-      <div className="header">Title: {props.title}</div>
-      <div className="content">
-        <p>lat: {props.lat}</p>
-        <p>lng: {props.lng}</p>
-        <button
-          onClick={() => {
-            props.deleteMapPoint(props.pointId);
-          }}
-        >
-          Delete Mark
-        </button>
-      </div>
-    </div>
-  );
-};
 
 const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
   const handleSubmit = (e: any) => {
@@ -67,7 +42,7 @@ const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
         position="bottom center"
         on="hover"
       >
-        <Card
+        <GoogleMapsMarkContainer
           title={props.element.newPointText}
           lat={props.lat}
           lng={props.lng}
