@@ -4,13 +4,16 @@ import marker from "../../assets/images/marker.png";
 import { ImgElement, StyledDiv } from "./GoogleMapsMarkElements";
 
 interface ICard {
+  pointId: string;
   title: string;
   lat: number;
   lng: number;
+  deleteMapPoint: (pointID: string) => {};
 }
 
 interface IGoogleMapsMark {
   changeGoogleMapMarkText: (pointId: string, value: string) => {};
+  deleteMapPoint: () => {};
   inFocus: (pointId: string) => {};
   lat: number;
   lng: number;
@@ -21,15 +24,24 @@ interface IGoogleMapsMark {
     lat: number;
   };
 }
-const Card = (props: ICard) => (
-  <div className="card">
-    <div className="header">Title: {props.title}</div>
-    <div className="content">
-      <p>lat: {props.lat}</p>
-      <p>lng: {props.lng}</p>
+const Card = (props: ICard) => {
+  return (
+    <div className="card">
+      <div className="header">Title: {props.title}</div>
+      <div className="content">
+        <p>lat: {props.lat}</p>
+        <p>lng: {props.lng}</p>
+        <button
+          onClick={() => {
+            props.deleteMapPoint(props.pointId);
+          }}
+        >
+          Delete Mark
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
   const handleSubmit = (e: any) => {
@@ -59,6 +71,8 @@ const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
           title={props.element.newPointText}
           lat={props.lat}
           lng={props.lng}
+          pointId={props.element.pointId}
+          deleteMapPoint={props.deleteMapPoint}
         />
       </Popup>
     </StyledDiv>

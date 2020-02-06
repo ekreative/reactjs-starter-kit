@@ -50,10 +50,13 @@ export function inFocus(pointId: string) {
   };
 }
 
-export function deleteMapPoint() {
+export function deleteMapPoint(pointId: string) {
   return (dispatch: Dispatch) => {
     dispatch({
-      type: DELETE_MAP_POINT
+      type: DELETE_MAP_POINT,
+      payload: {
+        pointId
+      }
     });
   };
 }

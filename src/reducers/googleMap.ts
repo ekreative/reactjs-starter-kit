@@ -38,9 +38,15 @@ export default (mapState = defaultMapState, action: any) => {
       return null;
 
     case DELETE_MAP_POINT:
-      return {
-        ...mapState
-      };
+      index = mapState.findIndex((element: { pointId: any }) => {
+        return element.pointId === action.payload.pointId;
+      });
+      if (index >= 0) {
+        return update(mapState, {
+          $splice: [[index, 1]]
+        });
+      }
+      return null;
 
     default:
       return mapState;
