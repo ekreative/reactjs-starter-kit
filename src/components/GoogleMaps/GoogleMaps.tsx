@@ -27,7 +27,7 @@ const GoogleMaps: React.FC<IProps> = props => {
 
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: "58vh", width: "100vw" }}>
+    <div style={{ height: "58vh", width: "98vw" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyC_rxY1EtLVw7vFxaxwTpUZtaxf9SCzVWg" }}
         defaultCenter={{ lat: 49.43047625295346, lng: 32.0584773497735 }}
