@@ -2,7 +2,9 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import GoogleMapsMark from "./GoogleMapsMark";
 import {
-  deleteMapPoint
+  deleteMapPoint,
+  inFocus,
+  changeGoogleMapMarkText
 } from "../../actions/googleMap";
 
 const mapStateToProps = (googleMap: any) => {
@@ -12,7 +14,7 @@ const mapStateToProps = (googleMap: any) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     ...bindActionCreators(
-      { deleteMapPoint },
+      { deleteMapPoint, inFocus, changeGoogleMapMarkText },
       dispatch
     )
   };
