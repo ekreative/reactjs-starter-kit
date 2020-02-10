@@ -26,11 +26,9 @@ const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
   };
 
   return props.element.inFocus ? (
-    <div>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder={props.element.newPointText} />
       </form>
-    </div>
   ) : (
     <StyledDiv
       onClick={() => {

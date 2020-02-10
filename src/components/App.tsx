@@ -7,6 +7,7 @@ import PersonsContainer from "./Persons/PersonsContainer";
 import PlanetsContainer from "./Planets/PlanetsContainer";
 import StarshipsContainer from "./Starships/StarshipsContainer";
 import GoogleMapsContainer from "./GoogleMaps/GoogleMapsContainer"
+import GoogleMapMarkFormContainer from "./GoogleMapMarkForm/GoogleMapMarkFormContainer"
 import logo from "../assets/images/logo.svg";
 import { AppElement, AppHeaderElement, AppIntro, AppLogo } from "./AppElements";
 import { Spinner } from "./Spinner/Spinner";
@@ -119,6 +120,7 @@ export const App: React.FC<IProps> = props => {
               <Route path="/planet" component={PlanetsContainer} />
               <Route path="/starships" component={StarshipsContainer} />
               <Route path="/googleMaps" component={GoogleMapsContainer} />
+              <Route path="/addGoogleMapMark" component={GoogleMapMarkFormContainer} />
               <Route component={NotFound} />
             </Switch>
           </div>
