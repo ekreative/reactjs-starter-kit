@@ -4,9 +4,7 @@ import GoogleMapsMarkContainer from "../GoogleMapsMark/GoogleMapsMarkContainer";
 import GoogleMapsAddMarkButtonContainer from "../GoogleMapsAddMarkButton/GoogleMapsAddMarkButtonContainer";
 const uuidv1 = require("uuid/v1");
 
-interface IProps {
-  center: any;
-  zoom: any;
+interface IGoogleMap {
   createMapPoint: (
     lat: number,
     lng: number,
@@ -24,13 +22,13 @@ interface IMaps {
   event: MouseEvent;
 }
 
-const GoogleMaps: React.FC<IProps> = props => {
-  const handleClick = (event: IMaps) => {
-    console.log(event);
-    const newPointText = "changeMe";
-    const pointId = uuidv1();
-    props.createMapPoint(event.lat, event.lng, newPointText, pointId);
-  };
+const GoogleMaps: React.FC<IGoogleMap> = props => {
+  // const handleClick = (event: IMaps) => {
+  //   console.log(event);
+  //   const newPointText = "changeMe";
+  //   const pointId = uuidv1();
+  //   props.createMapPoint(event.lat, event.lng, newPointText, pointId);
+  // }; 49.43392966465381 32.06383539755687
 
   return (
     // Important! Always set the container height explicitly
@@ -40,7 +38,7 @@ const GoogleMaps: React.FC<IProps> = props => {
         bootstrapURLKeys={{ key: "AIzaSyC_rxY1EtLVw7vFxaxwTpUZtaxf9SCzVWg" }}
         defaultCenter={{ lat: 49.43047625295346, lng: 32.0584773497735 }}
         defaultZoom={15}
-        onClick={handleClick}
+        // onClick={handleClick}
       >
         {props.googleMap.map(
           (element: { lat: any; lng: number; text: string }, id: number) => {

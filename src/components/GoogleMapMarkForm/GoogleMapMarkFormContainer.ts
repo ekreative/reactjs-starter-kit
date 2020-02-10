@@ -4,10 +4,9 @@ import { changeStateProp } from "../../actions";
 import { AddGoogleMapMarkForm } from "./GoogleMapMarkForm";
 import { createMapPoint } from "../../actions/googleMap"
 
-const mapStateToProps = ({ main: { value } }: any) => {
-  return {
-    value
-  };
+const mapStateToProps = (googleMap: any) => {
+  console.log(123123, googleMap)
+  return googleMap;
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
