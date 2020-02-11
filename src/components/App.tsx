@@ -8,8 +8,7 @@ import PlanetsContainer from "./Planets/PlanetsContainer";
 import StarshipsContainer from "./Starships/StarshipsContainer";
 import GoogleMapsContainer from "./GoogleMaps/GoogleMapsContainer"
 import GoogleMapMarkFormContainer from "./GoogleMapMarkForm/GoogleMapMarkFormContainer"
-import logo from "../assets/images/logo.svg";
-import { AppElement, AppHeaderElement, AppIntro, AppLogo } from "./AppElements";
+import { AppElement, AppIntro } from "./AppElements";
 import { Spinner } from "./Spinner/Spinner";
 import { StyledLoader } from "./AppElements";
 

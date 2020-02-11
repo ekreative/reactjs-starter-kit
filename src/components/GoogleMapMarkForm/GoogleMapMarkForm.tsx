@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Formik, Form, Field } from "formik";
-import { PElement, HElement } from "./GoogleMapMarkFormElements"
+import { PElement } from "./GoogleMapMarkFormElements"
 import GoogleMapReact from "google-map-react";
 import GoogleMapsMarkContainer from "../GoogleMapsMark/GoogleMapsMarkContainer";
 const uuidv1 = require("uuid/v1");
@@ -45,7 +45,6 @@ export const AddGoogleMapMarkForm = (props: any) => {
 
   return (
     <div>
-      <HElement>My Example</HElement>
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {
@@ -100,7 +99,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
                 );
               }}
             </Field>
-            <button>Submit</button>
+            <button type={'submit'}>Submit</button>
           </Form>
         )}
       </Formik>
