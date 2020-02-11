@@ -15,18 +15,15 @@ interface ISome {
 }
 
 export const AddGoogleMapMarkForm = (props: any) => {
-  console.log(999, props.googleMap)
   const initialValues: MyFormValues = { title: "", lng: "", lat: "" };
   const GoogleMaps = (props: any) => {
-    console.log(props)
-
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: "58vh", width: "99vw" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyC_rxY1EtLVw7vFxaxwTpUZtaxf9SCzVWg" }}
           defaultCenter={{ lat: 49.43047625295346, lng: 32.0584773497735 }}
-          defaultZoom={15}
+          defaultZoom={8}
         >
           {props.props.googleMap.map(
             (element: { lat: any; lng: number; text: string }, id: number) => {
@@ -52,7 +49,6 @@ export const AddGoogleMapMarkForm = (props: any) => {
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {
-          console.log(555, { values, actions });
           actions.setSubmitting(false);
           //@ts-ignore
           props.createMapPoint(
@@ -70,7 +66,6 @@ export const AddGoogleMapMarkForm = (props: any) => {
               name="title"
               // @ts-ignore
             >{({ field, form, meta }) => {
-                console.log(111, form.values);
                 return (
                   <div>
                     <input type="text" {...field} placeholder="Title" />

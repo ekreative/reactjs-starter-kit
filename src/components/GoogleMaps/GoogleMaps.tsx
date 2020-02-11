@@ -23,13 +23,6 @@ interface IMaps {
 }
 
 const GoogleMaps: React.FC<IGoogleMap> = props => {
-  // const handleClick = (event: IMaps) => {
-  //   console.log(event);
-  //   const newPointText = "changeMe";
-  //   const pointId = uuidv1();
-  //   props.createMapPoint(event.lat, event.lng, newPointText, pointId);
-  // }; 49.43392966465381 32.06383539755687
-
   return (
     // Important! Always set the container height explicitly
     <div style={{ height: "58vh", width: "99vw" }}>
@@ -37,8 +30,7 @@ const GoogleMaps: React.FC<IGoogleMap> = props => {
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyC_rxY1EtLVw7vFxaxwTpUZtaxf9SCzVWg" }}
         defaultCenter={{ lat: 49.43047625295346, lng: 32.0584773497735 }}
-        defaultZoom={15}
-        // onClick={handleClick}
+        defaultZoom={8}
       >
         {props.googleMap.map(
           (element: { lat: any; lng: number; text: string }, id: number) => {

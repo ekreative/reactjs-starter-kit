@@ -2,7 +2,7 @@ import React from "react";
 import Popup from "reactjs-popup";
 import marker from "../../assets/images/marker.png";
 import { ImgElement, StyledDiv } from "./GoogleMapsMarkElements";
-import GoogleMapsMarkContainer from "../GoogleMapsMarkTooltip/GoogleMapsMarkTooltipContainer";
+import GoogleMapsMarkTooltipContainer from "../GoogleMapsMarkTooltip/GoogleMapsMarkTooltipContainer";
 
 interface IGoogleMapsMark {
   changeGoogleMapMarkText: (pointId: string, value: string) => {};
@@ -26,26 +26,23 @@ const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
   };
 
   return props.element.inFocus ? (
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder={props.element.newPointText} />
-      </form>
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder={props.element.newPointText} />
+    </form>
   ) : (
-    <StyledDiv
-      onClick={() => {
-        props.inFocus(props.element.pointId);
-      }}
-    >
+    <StyledDiv>
       <Popup
         trigger={<ImgElement src={marker} />}
         position="bottom center"
         on="hover"
       >
-        <GoogleMapsMarkContainer
+        <GoogleMapsMarkTooltipContainer
           title={props.element.newPointText}
           lat={props.lat}
           lng={props.lng}
           pointId={props.element.pointId}
           deleteMapPoint={props.deleteMapPoint}
+          inFocus={props.inFocus}
         />
       </Popup>
     </StyledDiv>

@@ -6,9 +6,10 @@ interface ICard {
   lat: number;
   lng: number;
   deleteMapPoint: (pointID: string) => {};
+  inFocus: (pointID: string) => {};
 }
 
-export const Card = (props: ICard) => {
+export const GoogleMapsMarkTooltip = (props: ICard) => {
   return (
     <div className="card">
       <div className="header">Title: {props.title}</div>
@@ -21,6 +22,13 @@ export const Card = (props: ICard) => {
           }}
         >
           Delete Mark
+        </button>
+        <button
+          onClick={() => {
+            props.inFocus(props.pointId);
+          }}
+        >
+          Edit Title
         </button>
       </div>
     </div>

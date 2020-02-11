@@ -5,7 +5,6 @@ import { AddGoogleMapMarkForm } from "./GoogleMapMarkForm";
 import { createMapPoint } from "../../actions/googleMap"
 
 const mapStateToProps = (googleMap: any) => {
-  console.log(123123, googleMap)
   return googleMap;
 };
 
