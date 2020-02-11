@@ -26,8 +26,9 @@ const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
   };
 
   return props.element.inFocus ? (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{width: "150px"}}>
       <input type="text" placeholder={props.element.newPointText} />
+      <button>Ok</button>
     </form>
   ) : (
     <StyledDiv>

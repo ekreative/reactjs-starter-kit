@@ -10,9 +10,6 @@ interface MyFormValues {
   lng: string;
   lat: string;
 }
-interface ISome {
-
-}
 
 export const AddGoogleMapMarkForm = (props: any) => {
   const initialValues: MyFormValues = { title: "", lng: "", lat: "" };
@@ -22,7 +19,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
       <div style={{ height: "58vh", width: "99vw" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyC_rxY1EtLVw7vFxaxwTpUZtaxf9SCzVWg" }}
-          defaultCenter={{ lat: 49.43047625295346, lng: 32.0584773497735 }}
+          defaultCenter={{ lat: 49.5, lng: 32 }}
           defaultZoom={8}
         >
           {props.props.googleMap.map(
@@ -73,19 +70,6 @@ export const AddGoogleMapMarkForm = (props: any) => {
                 );
               }}
             </Field>
-            <PElement>lng</PElement>
-            <Field
-              name="lng"
-              // @ts-ignore
-            >{({ field, form, meta }) => {
-                return (
-                  <div>
-                    <input type="text" {...field} placeholder="lng" />
-                    {meta.touched && meta.error && meta.error}
-                  </div>
-                );
-              }}
-            </Field>
             <PElement>lat</PElement>
             <Field
               name="lat"
@@ -99,11 +83,24 @@ export const AddGoogleMapMarkForm = (props: any) => {
                 );
               }}
             </Field>
+            <PElement>lng</PElement>
+            <Field
+              name="lng"
+              // @ts-ignore
+            >{({ field, form, meta }) => {
+              return (
+                <div>
+                  <input type="text" {...field} placeholder="lng" />
+                  {meta.touched && meta.error && meta.error}
+                </div>
+              );
+            }}
+            </Field>
             <button type={'submit'}>Submit</button>
           </Form>
         )}
       </Formik>
-     <GoogleMaps props={props}/>
+     <GoogleMaps props={props} />
     </div>
   );
 };

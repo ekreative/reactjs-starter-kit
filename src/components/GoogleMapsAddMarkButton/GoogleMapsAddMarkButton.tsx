@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {ButtonElement} from "./GoogleMapsAddMarkButtonElements"
 
 interface IGoogleMapsAddMarkButton {
   x: number;
@@ -8,8 +9,9 @@ interface IGoogleMapsAddMarkButton {
 
 const GoogleMapsAddMarkButton: React.FC<IGoogleMapsAddMarkButton> = props => {
   return (
-    <button><Link to="/addGoogleMapMark">AddGoogleMapMark</Link></button>
-
+    <ButtonElement>
+      <Link to="/addGoogleMapMark">AddGoogleMapMark</Link>
+    </ButtonElement>
   );
 };
 
