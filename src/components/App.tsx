@@ -11,7 +11,6 @@ import GoogleMapMarkFormContainer from "./GoogleMapMarkForm/GoogleMapMarkFormCon
 import logo from "../assets/images/logo.svg";
 import { AppElement, AppHeaderElement, AppIntro, AppLogo } from "./AppElements";
 import { Spinner } from "./Spinner/Spinner";
-// @ts-ignore
 import { StyledLoader } from "./AppElements";
 
 interface IProps {
@@ -47,11 +46,6 @@ export const App: React.FC<IProps> = props => {
         spinner={<Spinner />}
       >
         <AppElement>
-          <AppHeaderElement>
-            <AppLogo src={logo} alt="logo" />
-            <h2>Welcome to React</h2>
-          </AppHeaderElement>
-
           <div>
             <ul>
               <li>

@@ -8,7 +8,8 @@ interface IGoogleMapsAddMarkButton {
 
 const GoogleMapsAddMarkButton: React.FC<IGoogleMapsAddMarkButton> = props => {
   return (
-    <Link to="/addGoogleMapMark">AddGoogleMapMark</Link>
+    <button><Link to="/addGoogleMapMark">AddGoogleMapMark</Link></button>
+
   );
 };
 

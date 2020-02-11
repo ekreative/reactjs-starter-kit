@@ -2,7 +2,6 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import GoogleMapsMarkContainer from "../GoogleMapsMark/GoogleMapsMarkContainer";
 import GoogleMapsAddMarkButtonContainer from "../GoogleMapsAddMarkButton/GoogleMapsAddMarkButtonContainer";
-const uuidv1 = require("uuid/v1");
 
 interface IGoogleMap {
   createMapPoint: (
@@ -25,7 +24,7 @@ interface IMaps {
 const GoogleMaps: React.FC<IGoogleMap> = props => {
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: "58vh", width: "99vw" }}>
+    <div style={{ height: "78vh", width: "99vw" }}>
       <GoogleMapsAddMarkButtonContainer x={0} y={0} />
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyC_rxY1EtLVw7vFxaxwTpUZtaxf9SCzVWg" }}
