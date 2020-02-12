@@ -58,7 +58,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
           props.createMapPoint(
             formValues.lat,
             formValues.lng,
-            "newPointText",
+            values.title,
             uuidv1()
           );
         }}
