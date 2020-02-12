@@ -19,18 +19,7 @@ interface IGoogleMapsMark {
 }
 
 const GoogleMapsMark: React.FC<IGoogleMapsMark> = props => {
-  const handleSubmit = (e: any) => {
-    const value = e.target[0].value;
-    props.changeGoogleMapMarkText(props.element.pointId, value);
-    props.inFocus(props.element.pointId);
-  };
-
-  return props.element.inFocus ? (
-    <form onSubmit={handleSubmit} style={{width: "150px"}}>
-      <input type="text" placeholder={props.element.newPointText} />
-      <button>Ok</button>
-    </form>
-  ) : (
+  return (
     <StyledDiv>
       <Popup
         trigger={<ImgElement src={marker} />}

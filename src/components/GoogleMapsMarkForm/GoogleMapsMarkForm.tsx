@@ -15,6 +15,10 @@ interface MyFormValues {
 }
 
 export const AddGoogleMapMarkForm = (props: any) => {
+  let something = props.googleMap.findIndex((element: { pointId: any }) => {
+    return element.pointId === props?.currentMarkId;
+  });
+  const [currentMarkId, setCurrentMarkId] = useState(something);
   const [formValues, setFormValues] = useState({ lat: 49.5, lng: 32 });
   const initialValues: { title: string } = { title: "" };
   const [zoom, setZoom] = useState(8);
@@ -26,13 +30,21 @@ export const AddGoogleMapMarkForm = (props: any) => {
       setFormValues({ x, y, lat, lng, event });
       setZoom(tempZoom);
     };
+
     return (
       // Important! Always set the container height explicitly
       <GoogleMapsNewMarkWrapperElement>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyC_rxY1EtLVw7vFxaxwTpUZtaxf9SCzVWg" }}
           // @ts-ignore
-          defaultCenter={{ lat: formValues.lat, lng: formValues.lng }}
+          defaultCenter={
+            currentMarkId >= 0
+              ? {
+                  lat: props.props.googleMap[currentMarkId].lat,
+                  lng: props.props.googleMap[currentMarkId].lng
+                }
+              : { lat: formValues.lat, lng: formValues.lng }
+          }
           defaultZoom={zoom}
           onClick={handleClick}
           onZoomAnimationEnd={e => {
@@ -40,9 +52,16 @@ export const AddGoogleMapMarkForm = (props: any) => {
           }}
         >
           <GoogleMapsNewMarkContainer
-            lat={formValues.lat}
-            lng={formValues.lng}
-            text={"55555"}
+            lat={
+              currentMarkId >= 0
+                ? props.props.googleMap[currentMarkId].lat
+                : formValues.lat
+            }
+            lng={
+              currentMarkId >= 0
+                ? props.props.googleMap[currentMarkId].lng
+                : formValues.lng
+            }
           />
         </GoogleMapReact>
       </GoogleMapsNewMarkWrapperElement>
@@ -52,16 +71,26 @@ export const AddGoogleMapMarkForm = (props: any) => {
     <div>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values, actions) => {
-          actions.setSubmitting(false);
-          //@ts-ignore
-          props.createMapPoint(
-            formValues.lat,
-            formValues.lng,
-            values.title,
-            uuidv1()
-          );
-        }}
+        //@ts-ignore
+        onSubmit={
+          currentMarkId >= 0
+            ? (values, actions) => {
+                props.changeGoogleMapMarkText(
+                  props.googleMap[currentMarkId].pointId,
+                  values.title
+                );
+              }
+            : (values, actions) => {
+                actions.setSubmitting(false);
+                //@ts-ignore
+                props.createMapPoint(
+                  formValues.lat,
+                  formValues.lng,
+                  values.title,
+                  uuidv1()
+                );
+              }
+        }
       >
         {formikBag => (
           <Form>

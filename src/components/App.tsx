@@ -114,6 +114,13 @@ export const App: React.FC<IProps> = props => {
               <Route path="/starships" component={StarshipsContainer} />
               <Route path="/googleMaps" component={GoogleMapsContainer} />
               <Route path="/addGoogleMapMark" component={GoogleMapsMarkFormContainer} />
+              <Route path="/editGoogleMapMark"
+                     render={(props: any) => {
+                       return(
+                         <GoogleMapsMarkFormContainer {...props.location.state}/>
+                       )
+                     }}
+              />
               <Route component={NotFound} />
             </Switch>
           </div>

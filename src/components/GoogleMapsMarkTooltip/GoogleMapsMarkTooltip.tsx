@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface ICard {
   pointId: string;
@@ -23,12 +24,12 @@ export const GoogleMapsMarkTooltip = (props: ICard) => {
         >
           Delete Mark
         </button>
-        <button
-          onClick={() => {
-            props.inFocus(props.pointId);
-          }}
-        >
-          Edit Title
+        <button>
+          <Link to={{
+            pathname: "/editGoogleMapMark",
+          state: {
+              currentMarkId: props.pointId
+          }}}>Edit</Link>
         </button>
       </div>
     </div>

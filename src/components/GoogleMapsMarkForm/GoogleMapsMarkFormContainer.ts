@@ -2,7 +2,10 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { changeStateProp } from "../../actions";
 import { AddGoogleMapMarkForm } from "./GoogleMapsMarkForm";
-import { createMapPoint } from "../../actions/googleMap"
+import {
+  createMapPoint,
+  changeGoogleMapMarkText
+} from "../../actions/googleMap";
 
 const mapStateToProps = (googleMap: any) => {
   return googleMap;
@@ -10,7 +13,10 @@ const mapStateToProps = (googleMap: any) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ changeStateProp, createMapPoint }, dispatch),
+    ...bindActionCreators(
+      { changeStateProp, createMapPoint, changeGoogleMapMarkText },
+      dispatch
+    )
   };
 };
 
