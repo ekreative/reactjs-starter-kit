@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
-import { PElement } from "./GoogleMapsMarkFormElements";
+import {
+  PElement,
+  GoogleMapsNewMarkWrapperElement
+} from "./GoogleMapsMarkFormElements";
 import GoogleMapReact from "google-map-react";
 import GoogleMapsNewMarkContainer from "../GoogleMapsNewMark/GoogleMapsNewMarkContainer";
 const uuidv1 = require("uuid/v1");
@@ -12,29 +15,38 @@ interface MyFormValues {
 }
 
 export const AddGoogleMapMarkForm = (props: any) => {
-  const [formValues, setFormValues] = useState({lat: 49.5, lng: 32, });
-  const initialValues: MyFormValues = { title: "", lng: "", lat: "" };
-  const GoogleMaps = (props: any) => {
+  const [formValues, setFormValues] = useState({ lat: 49.5, lng: 32 });
+  const initialValues: { title: string } = { title: "" };
+  const [zoom, setZoom] = useState(8);
+  let tempZoom = 8;
 
-    const handleClick = ({ x, y, lat, lng, event }: any) =>
+  const GoogleMaps = (props: any) => {
+    const handleClick = ({ x, y, lat, lng, event }: any) => {
       // @ts-ignore
       setFormValues({ x, y, lat, lng, event });
-
+      setZoom(tempZoom);
+    };
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: "58vh", width: "99vw" }}>
+      <GoogleMapsNewMarkWrapperElement>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyC_rxY1EtLVw7vFxaxwTpUZtaxf9SCzVWg" }}
           // @ts-ignore
           defaultCenter={{ lat: formValues.lat, lng: formValues.lng }}
-          defaultZoom={8}
+          defaultZoom={zoom}
           onClick={handleClick}
+          onZoomAnimationEnd={e => {
+            tempZoom = e;
+            console.log(tempZoom);
+          }}
         >
-          <GoogleMapsNewMarkContainer lat={formValues.lat}
-                                      lng={formValues.lng}
-                                      text={'55555'}/>
+          <GoogleMapsNewMarkContainer
+            lat={formValues.lat}
+            lng={formValues.lng}
+            text={"55555"}
+          />
         </GoogleMapReact>
-      </div>
+      </GoogleMapsNewMarkWrapperElement>
     );
   };
   console.log(333, formValues);
@@ -46,8 +58,8 @@ export const AddGoogleMapMarkForm = (props: any) => {
           actions.setSubmitting(false);
           //@ts-ignore
           props.createMapPoint(
-            values.lat,
-            values.lng,
+            formValues.lat,
+            formValues.lng,
             "newPointText",
             uuidv1()
           );
@@ -68,41 +80,6 @@ export const AddGoogleMapMarkForm = (props: any) => {
                 );
               }}
             </Field>
-            {/*<PElement>lat</PElement>*/}
-            {/*<Field*/}
-            {/*  name="lat"*/}
-            {/*  // @ts-ignore*/}
-            {/*>{({ field, form, meta }) => {*/}
-            {/*    return (*/}
-            {/*      <div>*/}
-            {/*        <input*/}
-            {/*          type="text"*/}
-            {/*          {...field}*/}
-            {/*          placeholder="for example: 49.5"*/}
-            {/*          value={formValues.lat}*/}
-            {/*        />*/}
-            {/*        {meta.touched && meta.error && meta.error}*/}
-            {/*      </div>*/}
-            {/*    );*/}
-            {/*  }}*/}
-            {/*</Field>*/}
-            {/*<PElement>lng</PElement>*/}
-            {/*<Field*/}
-            {/*  name="lng"*/}
-            {/*  // @ts-ignore*/}
-            {/*>{({ field, form, meta }) => {*/}
-            {/*    return (*/}
-            {/*      <div>*/}
-            {/*        <input*/}
-            {/*          type="text"*/}
-            {/*          {...field}*/}
-            {/*          placeholder="for example: 32"*/}
-            {/*        />*/}
-            {/*        {meta.touched && meta.error && meta.error}*/}
-            {/*      </div>*/}
-            {/*    );*/}
-            {/*  }}*/}
-            {/*</Field>*/}
             <button type={"submit"}>Submit</button>
           </Form>
         )}
