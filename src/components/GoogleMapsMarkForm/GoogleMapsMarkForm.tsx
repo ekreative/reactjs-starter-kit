@@ -37,7 +37,6 @@ export const AddGoogleMapMarkForm = (props: any) => {
           onClick={handleClick}
           onZoomAnimationEnd={e => {
             tempZoom = e;
-            console.log(tempZoom);
           }}
         >
           <GoogleMapsNewMarkContainer
@@ -49,7 +48,6 @@ export const AddGoogleMapMarkForm = (props: any) => {
       </GoogleMapsNewMarkWrapperElement>
     );
   };
-  console.log(333, formValues);
   return (
     <div>
       <Formik
