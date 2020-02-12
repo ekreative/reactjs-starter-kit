@@ -30,7 +30,9 @@ export const AddGoogleMapMarkForm = (props: any) => {
           defaultZoom={8}
           onClick={handleClick}
         >
-          <GoogleMapsNewMarkContainer text={'55555'}/>
+          <GoogleMapsNewMarkContainer lat={formValues.lat}
+                                      lng={formValues.lng}
+                                      text={'55555'}/>
         </GoogleMapReact>
       </div>
     );
