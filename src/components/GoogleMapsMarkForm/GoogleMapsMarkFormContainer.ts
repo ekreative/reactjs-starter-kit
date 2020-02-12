@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { changeStateProp } from "../../actions";
-import { AddGoogleMapMarkForm } from "./GoogleMapMarkForm";
+import { AddGoogleMapMarkForm } from "./GoogleMapsMarkForm";
 import { createMapPoint } from "../../actions/googleMap"
 
 const mapStateToProps = (googleMap: any) => {
@@ -14,9 +14,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const GoogleMapMarkFormContainer = connect(
+const GoogleMapsMarkFormContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(AddGoogleMapMarkForm);
 
-export default GoogleMapMarkFormContainer;
+export default GoogleMapsMarkFormContainer;
