@@ -15,11 +15,23 @@ interface MyFormValues {
 }
 
 export const AddGoogleMapMarkForm = (props: any) => {
-  let something = props.googleMap.findIndex((element: { pointId: any }) => {
-    return element.pointId === props?.currentMarkId;
-  });
-  const [currentMarkId, setCurrentMarkId] = useState(something);
-  const [formValues, setFormValues] = useState({ lat: 49.5, lng: 32 });
+  let editableElement = props.googleMap.findIndex(
+    (element: { pointId: any }) => {
+      return element.pointId === props?.currentMarkId;
+    }
+  );
+  let initialMarkCoordinates = (editableElement: any) => {
+    if (editableElement >= 0) {
+      return {
+        lat: props.googleMap[currentMarkId].lat,
+        lng: props.googleMap[currentMarkId].lng
+      };
+    } else return { lat: 49.5, lng: 32 };
+  };
+  const [currentMarkId] = useState(editableElement);
+  const [formValues, setFormValues] = useState(
+    initialMarkCoordinates(editableElement)
+  );
   const initialValues: { title: string } = { title: "" };
   const [zoom, setZoom] = useState(8);
   let tempZoom = 8;
@@ -28,6 +40,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
     const handleClick = ({ x, y, lat, lng, event }: any) => {
       // @ts-ignore
       setFormValues({ x, y, lat, lng, event });
+      console.log(formValues);
       setZoom(tempZoom);
     };
 
@@ -36,15 +49,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
       <GoogleMapsNewMarkWrapperElement>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyC_rxY1EtLVw7vFxaxwTpUZtaxf9SCzVWg" }}
-          // @ts-ignore
-          defaultCenter={
-            currentMarkId >= 0
-              ? {
-                  lat: props.props.googleMap[currentMarkId].lat,
-                  lng: props.props.googleMap[currentMarkId].lng
-                }
-              : { lat: formValues.lat, lng: formValues.lng }
-          }
+          defaultCenter={{ lat: formValues.lat, lng: formValues.lng }}
           defaultZoom={zoom}
           onClick={handleClick}
           onZoomAnimationEnd={e => {
