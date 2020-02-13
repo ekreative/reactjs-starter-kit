@@ -19,9 +19,15 @@ export default (mapState = defaultMapState, action: any) => {
         return element.pointId === action.payload.pointId;
       });
       let newTitle = action.payload.value;
+      let newLat = action.payload.lat;
+      let newLng = action.payload.lng;
       if (index >= 0) {
         return update(mapState, {
-          [index]: { newPointText: { $set: newTitle } }
+          [index]: {
+            newPointText: { $set: newTitle },
+            lat: { $set: newLat },
+            lng: { $set: newLng }
+          }
         });
       }
       return null;

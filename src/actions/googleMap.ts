@@ -27,13 +27,20 @@ export function createMapPoint(
   };
 }
 
-export function changeGoogleMapMarkText(pointId: string, value: string) {
+export function changeGoogleMapMarkText(
+  pointId: string,
+  value: string,
+  lat: number,
+  lng: number
+) {
   return (dispatch: Dispatch) => {
     dispatch({
       type: CHANGE_GOOGLE_MAP_MARK_TEXT,
       payload: {
         pointId,
-        value
+        value,
+        lat,
+        lng
       }
     });
   };

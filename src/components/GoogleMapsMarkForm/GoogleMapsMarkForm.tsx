@@ -37,10 +37,8 @@ export const AddGoogleMapMarkForm = (props: any) => {
   let tempZoom = 8;
 
   const GoogleMaps = (props: any) => {
-    const handleClick = ({ x, y, lat, lng, event }: any) => {
-      // @ts-ignore
-      setFormValues({ x, y, lat, lng, event });
-      console.log(formValues);
+    const handleClick = ({ lat, lng }: any) => {
+      setFormValues({ lat, lng });
       setZoom(tempZoom);
     };
 
@@ -57,16 +55,8 @@ export const AddGoogleMapMarkForm = (props: any) => {
           }}
         >
           <GoogleMapsNewMarkContainer
-            lat={
-              currentMarkId >= 0
-                ? props.props.googleMap[currentMarkId].lat
-                : formValues.lat
-            }
-            lng={
-              currentMarkId >= 0
-                ? props.props.googleMap[currentMarkId].lng
-                : formValues.lng
-            }
+            lat={formValues.lat}
+            lng={formValues.lng}
           />
         </GoogleMapReact>
       </GoogleMapsNewMarkWrapperElement>
@@ -82,12 +72,13 @@ export const AddGoogleMapMarkForm = (props: any) => {
             ? (values, actions) => {
                 props.changeGoogleMapMarkText(
                   props.googleMap[currentMarkId].pointId,
-                  values.title
+                  values.title,
+                  formValues.lat,
+                  formValues.lng,
                 );
               }
             : (values, actions) => {
                 actions.setSubmitting(false);
-                //@ts-ignore
                 props.createMapPoint(
                   formValues.lat,
                   formValues.lng,
@@ -102,8 +93,8 @@ export const AddGoogleMapMarkForm = (props: any) => {
             <PElement>title</PElement>
             <Field
               name="title"
-              // @ts-ignore
-            >{({ field, form, meta }) => {
+            >
+              {({ field, form, meta }: any) => {
                 return (
                   <div>
                     <input type="text" {...field} placeholder="Title" />

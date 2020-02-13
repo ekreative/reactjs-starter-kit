@@ -1,4 +1,3 @@
-// @ts-ignore
 import React from "react";
 import { PersonDataElement } from "./PersonDataElements";
 import { Link } from "react-router-dom";
