@@ -16,11 +16,11 @@ interface MyFormValues {
 
 export const AddGoogleMapMarkForm = (props: any) => {
   let editableElement = props.googleMap.findIndex(
-    (element: { pointId: any }) => {
+    (element: { pointId: string }) => {
       return element.pointId === props?.currentMarkId;
     }
   );
-  let initialMarkCoordinates = (editableElement: any) => {
+  let initialMarkCoordinates = (editableElement: number) => {
     if (editableElement >= 0) {
       return {
         lat: props.googleMap[currentMarkId].lat,
@@ -85,6 +85,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
                   values.title,
                   uuidv1()
                 );
+              props.history.push(`/googleMaps`);
               }
         }
       >

@@ -32,7 +32,7 @@ const GoogleMaps: React.FC<IGoogleMap> = props => {
         defaultZoom={8}
       >
         {props.googleMap.map(
-          (element: { lat: any; lng: number; text: string }, id: number) => {
+          (element: { lat: number; lng: number; text: string }, id: number) => {
             return (
               <GoogleMapsMarkContainer
                 key={id}
