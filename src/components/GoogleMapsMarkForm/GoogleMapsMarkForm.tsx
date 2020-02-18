@@ -32,7 +32,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
   const [formValues, setFormValues] = useState(
     initialMarkCoordinates(editableElement)
   );
-  const initialValues: { title: string } = { title: "" };
+  const initialValues: { title: string } = { title: props?.googleMap[editableElement]?.newPointText };
   const [zoom, setZoom] = useState(8);
   let tempZoom = 8;
 
@@ -74,7 +74,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
                   props.googleMap[currentMarkId].pointId,
                   values.title,
                   formValues.lat,
-                  formValues.lng,
+                  formValues.lng
                 );
               }
             : (values, actions) => {
@@ -85,20 +85,22 @@ export const AddGoogleMapMarkForm = (props: any) => {
                   values.title,
                   uuidv1()
                 );
-              props.history.push(`/googleMaps`);
+                props.history.push(`/googleMaps`);
               }
         }
       >
         {formikBag => (
           <Form>
             <PElement>title</PElement>
-            <Field
-              name="title"
-            >
+            <Field name="title">
               {({ field, form, meta }: any) => {
                 return (
                   <div>
-                    <input type="text" {...field} placeholder="Title" />
+                    <input
+                      type="text"
+                      {...field}
+                      placeholder="Title"
+                    />
                     {meta.touched && meta.error && meta.error}
                   </div>
                 );
