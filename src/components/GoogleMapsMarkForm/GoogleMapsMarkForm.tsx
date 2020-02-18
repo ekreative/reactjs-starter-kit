@@ -32,7 +32,13 @@ export const AddGoogleMapMarkForm = (props: any) => {
   const [formValues, setFormValues] = useState(
     initialMarkCoordinates(editableElement)
   );
-  const initialValues: { title: string } = { title: props?.googleMap[editableElement]?.newPointText };
+  const [initialValues] = useState(
+    editableElement
+      ? {
+          title: props?.googleMap[editableElement]?.newPointText
+        }
+      : { title: "" }
+  );
   const [zoom, setZoom] = useState(8);
   let tempZoom = 8;
 
@@ -70,22 +76,26 @@ export const AddGoogleMapMarkForm = (props: any) => {
         onSubmit={
           currentMarkId >= 0
             ? (values, actions) => {
-                props.changeGoogleMapMarkText(
-                  props.googleMap[currentMarkId].pointId,
-                  values.title,
-                  formValues.lat,
-                  formValues.lng
-                );
+                if (window.confirm("change title???")) {
+                  props.changeGoogleMapMarkText(
+                    props.googleMap[currentMarkId].pointId,
+                    values.title,
+                    formValues.lat,
+                    formValues.lng
+                  );
+                }
               }
             : (values, actions) => {
-                actions.setSubmitting(false);
-                props.createMapPoint(
-                  formValues.lat,
-                  formValues.lng,
-                  values.title,
-                  uuidv1()
-                );
-                props.history.push(`/googleMaps`);
+                if (window.confirm("add new Mark???")) {
+                  actions.setSubmitting(false);
+                  props.createMapPoint(
+                    formValues.lat,
+                    formValues.lng,
+                    values.title,
+                    uuidv1()
+                  );
+                  props.history.push(`/googleMaps`);
+                }
               }
         }
       >
@@ -100,6 +110,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
                       type="text"
                       {...field}
                       placeholder="Title"
+                      onChange={props.handleChange}
                     />
                     {meta.touched && meta.error && meta.error}
                   </div>
