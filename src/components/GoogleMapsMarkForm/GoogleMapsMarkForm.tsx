@@ -8,12 +8,6 @@ import GoogleMapReact from "google-map-react";
 import GoogleMapsNewMarkContainer from "../GoogleMapsNewMark/GoogleMapsNewMarkContainer";
 const uuidv1 = require("uuid/v1");
 
-interface MyFormValues {
-  title: string;
-  lng: string;
-  lat: string;
-}
-
 export const AddGoogleMapMarkForm = (props: any) => {
   let editableElement = props.googleMap.findIndex(
     (element: { pointId: string }) => {
@@ -56,7 +50,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
           defaultCenter={{ lat: formValues.lat, lng: formValues.lng }}
           defaultZoom={zoom}
           onClick={handleClick}
-          onZoomAnimationEnd={e => {
+          onZoomAnimationEnd={(e) => {
             tempZoom = e;
           }}
         >
@@ -110,7 +104,6 @@ export const AddGoogleMapMarkForm = (props: any) => {
                       type="text"
                       {...field}
                       placeholder="Title"
-                      onChange={props.handleChange}
                     />
                     {meta.touched && meta.error && meta.error}
                   </div>

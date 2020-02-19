@@ -19,8 +19,9 @@ export const GoogleMapsMarkTooltip = (props: ICard) => {
         <p>lng: {props.lng}</p>
         <button
           onClick={() => {
+            if (window.confirm("Are you sure?")) {
             props.deleteMapPoint(props.pointId);
-          }}
+          }}}
         >
           Delete Mark
         </button>
