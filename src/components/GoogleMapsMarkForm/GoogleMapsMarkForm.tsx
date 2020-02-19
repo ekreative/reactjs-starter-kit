@@ -94,19 +94,19 @@ export const AddGoogleMapMarkForm = (props: any) => {
               }
         }
       >
-        {formikBag => (
+        {formikBag => {
+          return(
           <Form>
             <PElement>title</PElement>
             <Field name="title">
               {(props: any) => {
-                console.log(props);
                 return (
                   <div>
                     <input
                       type="text"
                       {...props.field}
                       placeholder="Title"
-                      value={props.field.value}
+                      value={formikBag.values.title}
                     />
                   </div>
                 );
@@ -114,7 +114,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
             </Field>
             <button type={"submit"}>Submit</button>
           </Form>
-        )}
+        )}}
       </Formik>
       <GoogleMaps props={props} />
     </div>
