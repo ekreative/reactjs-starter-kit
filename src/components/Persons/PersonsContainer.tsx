@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { changeStateProp } from "../../actions";
 import { showLoading, hideLoading } from "../../actions/ui";
 import { Persons } from "./Persons";
 
@@ -12,10 +11,7 @@ const mapStateToProps = ({ ui: { isLoading } }: any) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators(
-      { changeStateProp, showLoading, hideLoading },
-      dispatch
-    )
+    ...bindActionCreators({ showLoading, hideLoading }, dispatch)
   };
 };
 

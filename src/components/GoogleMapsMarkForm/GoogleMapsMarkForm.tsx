@@ -77,6 +77,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
                     formValues.lat,
                     formValues.lng
                   );
+                  window.history.back()
                 }
               }
             : (values, actions) => {

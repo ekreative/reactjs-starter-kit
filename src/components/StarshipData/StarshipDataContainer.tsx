@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { changeStateProp } from "../../actions";
 import { StarshipData } from "./StarshipData";
 
 const mapStateToProps = ({ main: { value } }: any) => {
@@ -11,7 +10,7 @@ const mapStateToProps = ({ main: { value } }: any) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ changeStateProp }, dispatch)
+    ...bindActionCreators({}, dispatch)
   };
 };
 
