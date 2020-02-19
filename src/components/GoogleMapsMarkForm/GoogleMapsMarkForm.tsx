@@ -97,15 +97,15 @@ export const AddGoogleMapMarkForm = (props: any) => {
           <Form>
             <PElement>title</PElement>
             <Field name="title">
-              {({ field, form, meta }: any) => {
+              {(props: any) => {
                 return (
                   <div>
                     <input
                       type="text"
-                      {...field}
+                      {...props.field}
                       placeholder="Title"
+                      value={props.field.value}
                     />
-                    {meta.touched && meta.error && meta.error}
                   </div>
                 );
               }}
