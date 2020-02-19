@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Formik, Form, Field } from "formik";
 import {
   PElement,
@@ -8,7 +8,7 @@ import GoogleMapReact from "google-map-react";
 import GoogleMapsNewMarkContainer from "../GoogleMapsNewMark/GoogleMapsNewMarkContainer";
 const uuidv1 = require("uuid/v1");
 
-export const AddGoogleMapMarkForm = (props: any) => {
+export const AddGoogleMapMarkForm = React.memo((props: any) => {
   let editableElement = props.googleMap.findIndex(
     (element: { pointId: string }) => {
       return element.pointId === props?.currentMarkId;
@@ -34,12 +34,13 @@ export const AddGoogleMapMarkForm = (props: any) => {
       : { title: "" }
   );
   const [zoom, setZoom] = useState(8);
-  let tempZoom = 8;
+  const zoomRef = React.useRef();
+  let tempZoom = useRef(8);
 
   const GoogleMaps = (props: any) => {
     const handleClick = ({ lat, lng }: any) => {
       setFormValues({ lat, lng });
-      setZoom(tempZoom);
+      setZoom(tempZoom.current);
     };
 
     return (
@@ -51,7 +52,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
           defaultZoom={zoom}
           onClick={handleClick}
           onZoomAnimationEnd={e => {
-            tempZoom = e;
+            tempZoom.current = e;
           }}
         >
           <GoogleMapsNewMarkContainer
@@ -95,28 +96,29 @@ export const AddGoogleMapMarkForm = (props: any) => {
         }
       >
         {formikBag => {
-          return(
-          <Form>
-            <PElement>title</PElement>
-            <Field name="title">
-              {(props: any) => {
-                return (
-                  <div>
-                    <input
-                      type="text"
-                      {...props.field}
-                      placeholder="Title"
-                      value={formikBag.values.title}
-                    />
-                  </div>
-                );
-              }}
-            </Field>
-            <button type={"submit"}>Submit</button>
-          </Form>
-        )}}
+          return (
+            <Form>
+              <PElement>title</PElement>
+              <Field name="title">
+                {(props: any) => {
+                  return (
+                    <div>
+                      <input
+                        type="text"
+                        {...props.field}
+                        placeholder="Title"
+                        value={formikBag.values.title}
+                      />
+                    </div>
+                  );
+                }}
+              </Field>
+              <button type={"submit"}>Submit</button>
+            </Form>
+          );
+        }}
       </Formik>
       <GoogleMaps props={props} />
     </div>
   );
-};
+});
