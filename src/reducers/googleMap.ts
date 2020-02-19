@@ -2,7 +2,6 @@ import {
   CHANGE_GOOGLE_MAP_MARK_TEXT,
   CREATE_MAP_POINT,
   DELETE_MAP_POINT,
-  INPUT_IN_FOCUS
 } from "../constants";
 import update from "immutability-helper";
 
@@ -28,17 +27,6 @@ export default (mapState = defaultMapState, action: any) => {
             lat: { $set: newLat },
             lng: { $set: newLng }
           }
-        });
-      }
-      return null;
-
-    case INPUT_IN_FOCUS:
-      index = mapState.findIndex((element: { pointId: any }) => {
-        return element.pointId === action.payload.pointId;
-      });
-      if (index >= 0) {
-        return update(mapState, {
-          [index]: { inFocus: { $set: !mapState[index].inFocus } }
         });
       }
       return null;

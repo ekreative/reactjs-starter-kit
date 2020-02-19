@@ -3,7 +3,6 @@ import {
   CREATE_MAP_POINT,
   DELETE_MAP_POINT,
   CHANGE_GOOGLE_MAP_MARK_TEXT,
-  INPUT_IN_FOCUS
 } from "../constants";
 
 export function createMapPoint(
@@ -11,7 +10,6 @@ export function createMapPoint(
   lng: number,
   newPointText: string,
   pointId: string,
-  inFocus: boolean
 ) {
   return (dispatch: Dispatch) => {
     dispatch({
@@ -41,17 +39,6 @@ export function changeGoogleMapMarkText(
         value,
         lat,
         lng
-      }
-    });
-  };
-}
-
-export function inFocus(pointId: string) {
-  return (dispatch: Dispatch) => {
-    dispatch({
-      type: INPUT_IN_FOCUS,
-      payload: {
-        pointId
       }
     });
   };
