@@ -1,8 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { changeStateProp } from "../../actions";
 import GoogleMaps from "./GoogleMaps";
-import { hideLoading, showLoading } from "../../actions/ui";
 import {
   createMapPoint,
   deleteMapPoint

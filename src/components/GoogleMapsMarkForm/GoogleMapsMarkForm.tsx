@@ -50,7 +50,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
           defaultCenter={{ lat: formValues.lat, lng: formValues.lng }}
           defaultZoom={zoom}
           onClick={handleClick}
-          onZoomAnimationEnd={(e) => {
+          onZoomAnimationEnd={e => {
             tempZoom = e;
           }}
         >
