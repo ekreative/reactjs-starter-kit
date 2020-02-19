@@ -27,7 +27,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
     initialMarkCoordinates(editableElement)
   );
   const [initialValues] = useState(
-    editableElement
+    editableElement >= 0
       ? {
           title: props?.googleMap[editableElement]?.newPointText
         }
@@ -77,7 +77,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
                     formValues.lat,
                     formValues.lng
                   );
-                  window.history.back()
+                  window.history.back();
                 }
               }
             : (values, actions) => {
@@ -99,6 +99,7 @@ export const AddGoogleMapMarkForm = (props: any) => {
             <PElement>title</PElement>
             <Field name="title">
               {(props: any) => {
+                console.log(props);
                 return (
                   <div>
                     <input
