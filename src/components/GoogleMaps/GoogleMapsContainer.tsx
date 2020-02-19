@@ -16,9 +16,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     ...bindActionCreators(
       {
-        changeStateProp,
-        showLoading,
-        hideLoading,
         createMapPoint,
         deleteMapPoint
       },

@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const PersonContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
+export const GoogleMapElement = styled.div`
+  height: "78vh", width: "99vw"
 `;
-
