@@ -1,6 +1,6 @@
 // @ts-ignore
 import React from "react";
-import "./ComponentB.css";
+import "./ComponentB.scss";
 import { IProps } from "./ComponentBInterfaces";
 
 export const ComponentB: React.FC<IProps> = props => {

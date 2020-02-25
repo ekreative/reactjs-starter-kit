@@ -1,6 +1,5 @@
 import { Dispatch } from "redux";
-
-export const CHANGE_STATE_PROP = "_CHANGE_STATE_PROP";
+import { CHANGE_STATE_PROP } from "../constants";
 
 export function changeStateProp(prop: string, value: number, reducer: string) {
   return (dispatch: Dispatch): void => {
